@@ -66,7 +66,7 @@ var storagevar = document.getElementById("storage");
 const storageInput = document.querySelector('.storage');
 const text =  document.querySelector('.text');
 const button = document.querySelector('.button');
-const storedInput = localStorage.getItem('textinput');
+const storedInput = localStorage.getItem('currentcoins');
 //check if something is in local storage and then set the text value to that
 if(storageInput){
     text.textContent = storedInput;
@@ -83,7 +83,7 @@ function buytwist(){
     if(passval=="grassisgreen" & qtwist > 0 & counter-(qtwist*20)>=0){
     counter=counter-(qtwist*20);
     text.textContent = counter;
-    localStorage.setItem('textinput', text.textContent)
+    localStorage.setItem('currentcoins', text.textContent)
     window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
@@ -98,7 +98,7 @@ function buyfigit(){
     if(passval=="grassisgreen" & counter-(qtwist*20)>=0){
     counter=counter-(qtwist*300);
     text.textContent = counter;
-    localStorage.setItem('textinput', text.textContent)
+    localStorage.setItem('currentcoins', text.textContent)
     window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
@@ -117,7 +117,7 @@ const saveToLocalStorage = () => {
     text.textContent = counter;
     counter++;
     
-    localStorage.setItem('textinput', text.textContent)
+    localStorage.setItem('currentcoins', text.textContent)
 }
 //checks if button is pressed and executes the function to save to local storage
 button.addEventListener('click', saveToLocalStorage)
