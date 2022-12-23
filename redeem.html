@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Redeem | Oricoins</title>
+</head>
+<body>
+    <header>
+        <a class="logo" href="/"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
+        <nav>
+            <ul class="nav__links">
+                
+                <li><a href="#" class="txt">Balance:</a></li>
+                <li><a class="text" id="text" href="#">currentbalance</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="index.html">Home</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a class="text" id="text" href="#">currentbalance</a>
+            <a href="#">Balance: </a>
+        </div>
+    </div>
+    <div class="container">
+        <input type="text" id="storage" class="storage">
+        <!--<p class="text" id="text">text</p>--->
+        <table>
+        
+        <div class="twistthings" style="float:left">
+            <h2 class="twisthead">Twisty Thing</h2>
+            <h3 class="twistheader">Makes cube when twisted.</h3>
+            <h6 >Price: 20 Oricoins each</h6>
+            <input type="number" id="twistq" value="1" placeholder="Quantity">
+            <input type="password" id="adpassstwist"  placeholder="Admin Password">
+            <button class="buy" onclick="buytwist()">Buy</button>
+            <h6>*Oricoins are immedietly deducted.</h6>
+        </div>
+        <div class="twistthings" style="float:left">
+            <h2 class="twisthead">Paper Figit Cube</h2>
+            <h3 class="twistheader">Title explains it.</h3>
+            <h6 >Price: 300 Oricoins each</h6>
+            <input type="password" id="adpasssfigit"  placeholder="Admin Password">
+            <button class="buy" onclick="buyfigit()">Buy</button>
+            <h6>*Oricoins are immedietly deducted.</h6>
+            <h4 class="twustheader" style="color:red;">Only one left in stock! Order soon.</h4>
+        </div>
+    </table>
+    </div>
+
+</body>
+</html>
+
+
+<script type="text/javascript" src="mobile.js"></script>
+<script>
+//declare variables
+var counter = 1;
+var twistq = document.getElementById('twistq');
+var storagevar = document.getElementById("storage");  
+const storageInput = document.querySelector('.storage');
+const text =  document.querySelector('.text');
+const button = document.querySelector('.button');
+const storedInput = localStorage.getItem('textinput');
+//check if something is in local storage and then set the text value to that
+if(storageInput){
+    text.textContent = storedInput;
+    var counter = storedInput;
+}
+//other
+storagevar.style.display = "none";
+var qtwist= twistq.value;
+var passval = document.getElementById("adpassstwist").value;
+var passval = document.getElementById("adpasssfigit").value;
+function buytwist(){
+    qtwist= twistq.value;
+    passval = document.getElementById("adpassstwist").value;
+    if(passval=="grassisgreen" & qtwist > 0 & counter-(qtwist*20)>=0){
+    counter=counter-(qtwist*20);
+    text.textContent = counter;
+    localStorage.setItem('textinput', text.textContent)
+    window.location.reload();
+    //document.getElementById("adpassstwist").value = "";
+    //twistq.value="1";
+    }else{
+        alert("Error!")
+}
+}
+
+function buyfigit(){
+    qtwist= twistq.value;
+    passval = document.getElementById("adpasssfigit").value;
+    if(passval=="grassisgreen" & counter-(qtwist*20)>=0){
+    counter=counter-(qtwist*300);
+    text.textContent = counter;
+    localStorage.setItem('textinput', text.textContent)
+    window.location.reload();
+    //document.getElementById("adpassstwist").value = "";
+    //twistq.value="1";
+    }else{
+        alert("Error!")
+}
+}
+//makes the text say whatever is in the input
+storageInput.addEventListener('input', letter => {  
+    //where it should be storagevar.value = counter; 
+    console.log(letter.target.value)
+    //text.textContent = counter;
+})
+//creates function to save text value to local storage
+const saveToLocalStorage = () => {
+    text.textContent = counter;
+    counter++;
+    
+    localStorage.setItem('textinput', text.textContent)
+}
+//checks if button is pressed and executes the function to save to local storage
+button.addEventListener('click', saveToLocalStorage)
+</script>
