@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Redeem | Oricoins</title>
+</head>
+<body>
+    <header>
+        <a class="logo" href="/"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
+        <nav>
+            <ul class="nav__links">
+                
+                <li><a href="#" class="txt">Balance:</a></li>
+                <li><a class="text" id="text" href="#">currentbalance</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="index.html">Home</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a class="text" id="text" href="#">currentbalance</a>
+            <a href="#">Balance: </a>
+        </div>
+    </div>
+    <div class="container">
+        <input type="text" id="storage" class="storage">
+        <!--<p class="text" id="text">text</p>--->
+        <table>
+        
+            <div class="container">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top">
+                                <h1>Figit</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img src="images/figitcube.png" id="figitimg" class="figitimg" >
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>Paper toys</p>
+                                <h2>Paper Figit Cube</h2>
+                                <h6>Color: <span style="color:rgb(0, 0, 0);margin-bottom: 0px;">BLACK & <span style="color:wheat">WHITE</span></span></h6>
+                                <h1>300 <span>Oricoins</span></h1>
+                                <input type="number" id="figitq" placeholder="Quantity">
+                                <input type="password" id="adpasssfigit"  placeholder="Admin Password">
+                                <button type="button" class="buy" onclick="buyfigit()">Buy Now</button>
+                                <h6>*Oricoins are immedietly deducted.</h6>
+                                <h5 style="color:red">*Only 1 left in stock, order soon</h5>
+                                <div class="color-select">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+            </div>
+            <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top product-top2">
+                                <h1>Twist</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img src="images/twistcube.png" id="figitimg" class="figitimg" >
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>Paper toys</p>
+                                <h2>Twist Cube</h2>
+                                <h6>Color: <span style="color:rgb(193, 193, 26);margin-bottom: 0px;">YELLOW</span></h6>
+                                <h1>20 <span>Oricoins</span></h1>
+                                
+                                
+                                <input type="number" id="twistq" placeholder="Quantity">
+                                <input type="password" id="adpassstwist"  placeholder="Admin Password">
+                                <button type="button" class="buy" onclick="buytwist()">Buy Now</button>
+                                <h6>*Oricoins are immedietly deducted.</h6>
+                                <h5 style="color:green">*In Stock</h5>
+                                <div class="color-select">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </table>
+    </div>
+
+</body>
+</html>
+
+
+<script type="text/javascript" src="mobile.js"></script>
+<script>
+//declare variables
+var counter = 1;
+var figitq = document.getElementById('figitq');
+var twistq = document.getElementById('twistq');
+var storagevar = document.getElementById("storage");  
+const storageInput = document.querySelector('.storage');
+const text =  document.querySelector('.text');
+const button = document.querySelector('.button');
+const storedInput = localStorage.getItem('currentcoins');
+//check if something is in local storage and then set the text value to that
+if(storageInput){
+    text.textContent = storedInput;
+    var counter = storedInput;
+}
+//other
+storagevar.style.display = "none";
+var qfigit = figitq.value;
+var qtwist= twistq.value;
+var passval = document.getElementById("adpassstwist").value;
+var passval = document.getElementById("adpasssfigit").value;
+function checkvalfigit(){
+    if(figitq.value != 1){
+        figitq.style.color="red";
+    }else{
+        figitq.style.color="#008384"
+    }
+}
+function checkvaltwist(){
+    if(twistq.value < 1){
+        twistq.style.color="red";
+    }else{
+        twistq.style.color="#008384"
+    }
+}
+figitq.addEventListener('input', checkvalfigit);
+twistq.addEventListener('input', checkvaltwist);
+function buytwist(){
+    qfigit = figitq.value;
+    qtwist= twistq.value;
+    passval = document.getElementById("adpassstwist").value;
+    if(passval=="grassisgreen" & qtwist > 0 & counter-(qtwist*20)>=0){
+    counter=counter-(qtwist*20);
+    text.textContent = counter;
+    localStorage.setItem('currentcoins', text.textContent)
+    alert("Transaction completed. Expect order to arrive within a week.")
+    window.location.reload();
+    //document.getElementById("adpassstwist").value = "";
+    //twistq.value="1";
+    }else{
+        alert("Error!")
+        window.location.reload();
+}
+}
+
+function buyfigit(){
+    qfigit = figitq.value;
+    qtwist= twistq.value;
+    passval = document.getElementById("adpasssfigit").value;
+    if(passval=="grassisgreen" & qtwist > 0 & qfigit < 2 & counter-(qfigit*300)>=0){
+    counter=counter-(qfigit*300);
+    text.textContent = counter;
+    localStorage.setItem('currentcoins', text.textContent)
+    alert("Transaction completed. Expect order to arrive within a week.")
+    passval="";
+    window.location.reload();
+    //document.getElementById("adpassstwist").value = "";
+    //twistq.value="1";
+    }else{
+        alert("Error!")
+        passval="";
+}
+}
+var figitimg = document.getElementById('figitimg');
+
+        setTimeout(() => {figitimg.style.opacity = "25%";}, 1);
+        function changeocapticty(){
+            figitimg.style.opacity = "100%";
+        }
+//makes the text say whatever is in the input
+storageInput.addEventListener('input', letter => {  
+    //where it should be storagevar.value = counter; 
+    console.log(letter.target.value)
+    //text.textContent = counter;
+})
+//creates function to save text value to local storage
+const saveToLocalStorage = () => {
+    text.textContent = counter;
+    counter++;
+    
+    localStorage.setItem('currentcoins', text.textContent)
+}
+//checks if button is pressed and executes the function to save to local storage
+button.addEventListener('click', saveToLocalStorage)
+</script>
