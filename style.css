@@ -355,6 +355,9 @@ body{
 .product-top2{
   background: linear-gradient(#c370fd, #3be1b8);
 }
+.product-top3{
+  background: linear-gradient(#70fdc5, #d6e13b);
+}
 
 #figitimg{
   width: 300px;
