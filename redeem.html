@@ -102,7 +102,7 @@
                                 <p>Paper Pillow</p>
                                 <h2>Pillow of Twist Cubes</h2>
                                 <h6>Color: <span style="color:rgb(214, 214, 184);margin-bottom: 0px;">WHITE</span></h6>
-                                <h1>600 <span>Oricoins</span></h1>
+                                <h1>550 <span>Oricoins</span></h1>
                                 
                                 
                                 <input type="number" id="pillowq" placeholder="Quantity">
@@ -221,7 +221,7 @@ function buyfigit(){
 function buypillow(){
     qpillow = pillowqvar.value;
     passval = document.getElementById("adpasspillow").value;
-    if(passval=="grassisgreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*600)>=0){
+    if(passval=="grassisgreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
     counter=counter-(qpillow*300);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
