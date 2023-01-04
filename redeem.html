@@ -45,10 +45,11 @@
                                 <h6>Color: <span style="color:rgb(0, 0, 0);margin-bottom: 0px;">BLACK &amp; <span style="color:wheat">WHITE</span></span></h6>
                                 <h1>450 <span>Oricoins</span></h1>
                                 <input type="number" id="figitq" placeholder="Quantity" class="disabled" disabled>
-                                <input type="password" id="adpasssfigit" placeholder="Admin Password" class="disabled" disabled>
+                                <input type="password" id="adpasssfigit"  placeholder="Admin Password" class="disabled" disabled>
                                 <button type="button" class="buy" onclick="buyfigit()" style="background-color:rgba(166, 149, 158, 0.38)" disabled>Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
-                                <h5 style="color:red">*OUT OF STOCK</h5>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">250 Oricoins</span></button>
+                                <h5 style="color:red">*One left in stock, Order Soon!</h5>
                                 <div class="color-select">
                                 </div>
                             </div>
@@ -71,13 +72,14 @@
                                 <p>Paper toys</p>
                                 <h2>Twist Cube</h2>
                                 <h6>Color: <span style="color:rgb(193, 193, 26);margin-bottom: 0px;">YELLOW</span></h6>
-                                <h1>50 <span>Oricoins</span></h1>
+                                <h1>20 <span>Oricoins</span></h1>
                                 
                                 
                                 <input type="number" id="twistq" placeholder="Quantity">
                                 <input type="password" id="adpassstwist" placeholder="Admin Password">
                                 <button type="button" class="buy" onclick="buytwist()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">10 Oricoins</span></button>
                                 <h5 style="color:green">*In Stock</h5>
                                 <div class="color-select">
 
@@ -109,8 +111,10 @@
                                 <input type="password" id="adpasspillow" placeholder="Admin Password" class="disabled" disabled>
                                 <button type="button" class="buy" onclick="buypillow()" style="background-color:rgba(166, 149, 158, 0.38)" disabled>Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
-                                 <h5 style="color:red">*OUT OF STOCK</h5>
+                                <button onclick="showbanner()" style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">300 Oricoins</span></button>
+                                <h5 style="color:rgb(255, 0, 0)">*Out of Stock!</h5>
                                 <div class="color-select">
+
 
                                     
                                 </div>
@@ -119,11 +123,10 @@
                         
                     </div>
                     
-    </div></div><table>
+    </div></div>
         
             
             
-            </table>
     
     </div>
 
@@ -133,12 +136,12 @@
 
 <script type="text/javascript" src="mobile.js"></script>
 <script>
-//redeem page
 //declare variables
 var counter = 1;
 var figitq = document.getElementById('figitq');
 var twistq = document.getElementById('twistq');
-var storagevar = document.getElementById("storage");  
+var storagevar = document.getElementById("storage"); 
+//var retailTwist = document.getElementById("retailTwist");
 const storageInput = document.querySelector('.storage');
 const text =  document.querySelector('.text');
 const button = document.querySelector('.button');
@@ -156,6 +159,15 @@ var passval = document.getElementById("adpassstwist").value;
 var passval = document.getElementById("adpasssfigit").value;
 var pillowqvar = document.getElementById("pillowq");
 var qpillow= pillowqvar.value;
+
+function hidebanner(banner){
+    banner.style.display = "none";
+    adminpass.value="";
+    numofcoin.value="";
+}
+function showbanner(banner){
+    banner.style.display = "block";
+}
 
 
 function checkvalfigit(){
@@ -187,8 +199,8 @@ function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpassstwist").value;
-    if(passval=="blueorange" & qtwist > 0 & counter-(qtwist*50)>=0){
-    counter=counter-(qtwist*50);
+    if(passval=="grassisgreen" & qtwist > 0 & counter-(qtwist*20)>=0){
+    counter=counter-(qtwist*20);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
@@ -205,7 +217,7 @@ function buyfigit(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpasssfigit").value;
-    if(passval=="blueorange" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
+    if(passval=="grassisgreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
     counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
@@ -223,8 +235,8 @@ function buyfigit(){
 function buypillow(){
     qpillow = pillowqvar.value;
     passval = document.getElementById("adpasspillow").value;
-    if(passval=="blueorange" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
-    counter=counter-(qpillow*300);
+    if(passval=="grassisgreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
+    counter=counter-(qpillow*550);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
@@ -237,6 +249,9 @@ function buypillow(){
         passval="";
 }
 }
+
+
+
 var figitimg = document.getElementById('figitimg');
 
         setTimeout(() => {figitimg.style.opacity = "25%";}, 1);
