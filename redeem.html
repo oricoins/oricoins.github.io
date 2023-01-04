@@ -187,7 +187,7 @@ function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpassstwist").value;
-    if(passval=="grassisgreen" & qtwist > 0 & counter-(qtwist*20)>=0){
+    if(passval=="bluehat" & qtwist > 0 & counter-(qtwist*20)>=0){
     counter=counter-(qtwist*20);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
@@ -205,7 +205,7 @@ function buyfigit(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpasssfigit").value;
-    if(passval=="grassisgreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
+    if(passval=="bluehat" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
     counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
@@ -223,7 +223,7 @@ function buyfigit(){
 function buypillow(){
     qpillow = pillowqvar.value;
     passval = document.getElementById("adpasspillow").value;
-    if(passval=="grassisgreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
+    if(passval=="bluehat" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
     counter=counter-(qpillow*300);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
