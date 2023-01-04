@@ -8,7 +8,52 @@
     <title>Oricoin | Origami Order Limiter</title>
 </head>
 <body>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd5ZtqV0RC6wPNpT0t_xTuMQ_XkqRJrcO_H41qFVwUDEJfEpA/viewform?embedded=true" width="640" height="834" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <header>
+        <a class="logo" href="/"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="redeem.html">Redeem</a></li>
+                <li><a href="#" class="txt">Balance:</a></li>
+                <li><a class="text" id="text" href="#">currentbalance</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#" onclick="showbanner()">Inject coins</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="#">Redeem</a>
+        </div>
+    </div>
+    <div class="container">
+        <input type="text" id="storage" class="storage">
+        <!--<p class="text" id="text">text</p>-->
+        <button class="button" id="claimbutton" onmouseover="buttonhover()">Claim</button>
+        <div class="headcontainer">
+        <h5 class="disc">*Double-tap button to claim</h5>
+        <h5 class="disc">*You can claim around one Oricoin every 10 seconds if you are on the page</h5>
+        <h5 class="disc">*Wait for button to change colors</h5>
+        <h5 class="disc">*Your Oricoins are stored in your cache in your device.</h5>
+        <h5 class="disc">*DO NOT DELETE YOUR CACHE FOR THIS SITE</h5>
+        </div>
+    </div>
+
+    <form class="riddles" id="riddlesbanner" style="display: block;">
+        <button class="riddlesback" id="ridbac" onclick="hidebanner();">x</button>
+        <h1 class="riddlehead">Force inject Oricoins</h1>
+        <p></p>
+        <p></p>
+        <input type="number" class="coinnum" id="numofcoins" placeholder="Number of coins">
+        <p></p>
+        <p></p>
+        <input type="password" class="coinnum" id="adminpass" placeholder="Admin Password">
+        <p></p>
+        <p></p>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forceaddcoin()">Submit</button>
+
+
+    </form>
 
 </body>
 </html>
@@ -16,3 +61,115 @@
 
 <script type="text/javascript" src="mobile.js"></script>
 <script>
+
+//declare variables
+var counter = 50;
+var claimbutton = document.getElementById('claimbutton')
+var adminpass = document.getElementById('adminpass');
+var numofcoin = document.getElementById('numofcoins');
+var forcecoin = document.getElementById('forcecoin');
+var storagevar = document.getElementById("storage");  
+var bannervar = document.getElementById("riddlesbanner"); 
+bannervar.style.display = "none"; 
+const storageInput = document.querySelector('.storage');
+const text =  document.querySelector('.text');
+const button = document.querySelector('.button');
+const addcoinsub = document.querySelector('.addcoinsub');
+const storedInput = localStorage.getItem('currentcoins');
+const lastdate = localStorage.getItem('lastdate');
+//check if something is in local storage and then set the text value to that
+
+if(storageInput){
+    text.textContent = storedInput;
+    var counter = storedInput;
+}
+//other
+storagevar.style.display = "none";
+function buttonhover(){
+    claimbutton.style.transition="10s";
+    claimbutton.style.background= "linear-gradient(#0083bb42, #00ffbf74)";
+    claimbutton.style.border="transparent";
+    claimbutton.style.fontSize= "100px";
+    claimbutton.style.color= "green";
+    
+    //claimbutton.style.animation= "color-change 2s infinite";
+    setTimeout(() => {  claimbutton.style.animation= "color-change 2s infinite"; }, 10000);
+}
+function hidebanner(){
+    bannervar.style.display = "none";
+    adminpass.value="";
+    numofcoin.value="";
+}
+function showbanner(){
+    bannervar.style.display = "block";
+}
+
+  function forceaddcoin(){
+    if (adminpass.value=="blueorange"){
+    for (let i = 0; i < numofcoin.value; i++){
+    text.textContent = counter;
+    counter++;
+    
+    
+    
+    }
+    localStorage.setItem('currentcoins', text.textContent);
+    adminpass.value="";
+    hidebanner();
+    window.location.reload();
+}
+else{
+    alert("Error!")
+}
+}
+
+//makes the text say whatever is in the input
+storageInput.addEventListener('input', letter => {  
+    //where it should be storagevar.value = counter; 
+    console.log(letter.target.value)
+    //text.textContent = counter;
+})
+//creates function to save text value to local storage
+var currentdate=Date.now()
+var newdate = currentdate-lastdate;
+var newdatetwelvehr=newdate/10000;
+var clickcounter=0;
+const saveToLocalStorage = () => {
+    text.textContent = counter;
+    
+    //var newdatetwelvehr=newdate/43200000;
+    
+
+    if(lastdate){
+        currentdate=Date.now()
+        //alert(currentdate)
+        newdate = currentdate-lastdate;
+        newdatetwelvehr=newdate/10000;
+        //alert(lastdate)
+        //alert(newdate);
+        //alert(newdatetwelvehr);
+        if(newdatetwelvehr>1){
+            counter++;
+            counter++;
+            clickcounter++;
+            newdatetwelvehr=0;
+            newdate=0;
+            localStorage.setItem('lastdate', Date.now());
+            currentdate=Date.now();
+            //alert(currentdate)
+            newdate = currentdate-lastdate;
+            newdatetwelvehr=newdate/10000;
+            if(clickcounter==2){
+                window.location.reload();
+            }
+        }
+    }else{
+        localStorage.setItem('lastdate', Date.now());
+    }
+    
+    localStorage.setItem('currentcoins', text.textContent);
+}
+//checks if button is pressed and executes the function to save to local storage
+button.addEventListener('click', saveToLocalStorage)
+
+</script>
