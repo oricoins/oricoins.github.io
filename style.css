@@ -200,6 +200,9 @@
     margin: auto;
 
 }
+.disabled{
+  background-color:rgba(166, 149, 158, 0.38)
+}
 .disc{
     font-family: "Montserrat", sans-serif;
 }
