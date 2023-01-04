@@ -43,12 +43,12 @@
                                 <p>Paper toys</p>
                                 <h2>Paper Figit Cube</h2>
                                 <h6>Color: <span style="color:rgb(0, 0, 0);margin-bottom: 0px;">BLACK &amp; <span style="color:wheat">WHITE</span></span></h6>
-                                <h1>300 <span>Oricoins</span></h1>
-                                <input type="number" id="figitq" class="disabled" placeholder="Quantity" disabled>
-                                <input type="password" id="adpasssfigit" class ="disabled" placeholder="Admin Password" disabled>
-                                <button type="button" class="buy" onclick="buyfigit()" style="background-color:rgba(166, 149, 158, 0.38)" disabled>Buy Now</button>
+                                <h1>450 <span>Oricoins</span></h1>
+                                <input type="number" id="figitq" class="disabled" placeholder="Quantity" >
+                                <input type="password" id="adpasssfigit" class ="disabled" placeholder="Admin Password" >
+                                <button type="button" class="buy" onclick="buyfigit()" >Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
-                                <h5 style="color:red">*OUT OF STOCK</h5>
+                                <h5 style="color:red">*1 left in stock, order soon!</h5>
                                 <div class="color-select">
                                 </div>
                             </div>
@@ -204,8 +204,8 @@ function buyfigit(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpasssfigit").value;
-    if(passval=="grassisgreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*300)>=0){
-    counter=counter-(qfigit*300);
+    if(passval=="grassisgreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
+    counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
