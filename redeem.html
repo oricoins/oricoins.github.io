@@ -71,7 +71,7 @@
                                 <p>Paper toys</p>
                                 <h2>Twist Cube</h2>
                                 <h6>Color: <span style="color:rgb(193, 193, 26);margin-bottom: 0px;">YELLOW</span></h6>
-                                <h1>20 <span>Oricoins</span></h1>
+                                <h1>50 <span>Oricoins</span></h1>
                                 
                                 
                                 <input type="number" id="twistq" placeholder="Quantity">
@@ -187,8 +187,8 @@ function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpassstwist").value;
-    if(passval=="greenred" & qtwist > 0 & counter-(qtwist*20)>=0){
-    counter=counter-(qtwist*20);
+    if(passval=="greenred" & qtwist > 0 & counter-(qtwist*50)>=0){
+    counter=counter-(qtwist*50);
     text.textContent = counter;
     localStorage.setItem('currentcoins', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
