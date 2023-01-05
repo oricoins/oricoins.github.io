@@ -129,6 +129,21 @@
             
     
     </div>
+    <form class="riddles" id="unbanbanner" style="display: block;height: 275px; z-index: 1000;">
+        <h1 class="riddlehead">Unban Account</h1>
+        <p></p>
+        <p></p>
+        <h2 style="padding-top: 10px;">Unbanning your account shows that you agree to the following:</h2>
+        <p></p>
+        <p></p>
+        <h4 style="padding-top: 10px;">I will stop using the admin password.</h4>
+        <h4 style="padding-top: 10px;">I understand that all my Oricoins will be deleted.</h4>
+        <p></p>
+        <p></p>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="unbanaccount()">Unban Account</button>
+
+
+    </form>
 
 
 
@@ -137,6 +152,9 @@
 <script type="text/javascript" src="mobile.js"></script>
 <script>
 //declare variables
+var unbanbanner = document.getElementById("unbanbanner");
+var banbypass = document.getElementById("banbypass");
+var isbanned = localStorage.getItem('banned');
 var counter = 1;
 var figitq = document.getElementById('figitq');
 var twistq = document.getElementById('twistq');
@@ -152,6 +170,8 @@ if(storageInput){
     var counter = storedInput;
 }
 //other
+unbanbanner.style.display="none";
+banbypass.disabled = true;
 storagevar.style.display = "none";
 var qfigit = figitq.value;
 var qtwist= twistq.value;
@@ -251,6 +271,27 @@ function buypillow(){
 }
 
 
+function unban(){
+    if (banbypass.value=="3487fg0yvbpqiwupj93jp93uhpr48iuvhnworicoinunban"){
+        banbypass.value="";
+        unbanbanner.style.display="block";
+    }
+}
+function unbanaccount(){
+    
+        isbanned = false;
+        localStorage.setItem('banned', isbanned);
+
+        window.location.reload();
+        text.textContent = 0;
+        localStorage.setItem('currentcoinsval', text.textContent);
+        if(isbanned=="true"){
+            banbox.style.display="none";
+            unbanbanner.style.display="none";
+        }
+        
+}  
+banbypass.addEventListener('input', unban);
 
 var figitimg = document.getElementById('figitimg');
 
