@@ -10,7 +10,7 @@
         <a class="logo" href="/"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
         <nav>
             <ul class="nav__links">
-                
+                <a class="adminTxt" id="admintxt">ADMIN ACCOUNT</a>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#"></a></li>
             </ul>
@@ -21,6 +21,7 @@
     <div class="overlay">
         <a class="close">×</a>
         <div class="overlay__content">
+            
             <a class="text" id="text" href="#">currentbalance</a>
             <a href="#">Balance: </a>
         </div>
@@ -152,9 +153,13 @@
 <script type="text/javascript" src="mobile.js"></script>
 <script>
 //declare variables
+var admintxt = document.getElementById('admintxt');
+var admintxtinput = document.getElementById('setadmintxt');
+var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
 var isbanned = localStorage.getItem('banned');
+var isadmin = localStorage.getItem('isadmin');
 var counter = 1;
 var figitq = document.getElementById('figitq');
 var twistq = document.getElementById('twistq');
@@ -292,6 +297,20 @@ function unbanaccount(){
         
 }  
 banbypass.addEventListener('input', unban);
+admintxtinput.addEventListener('input',() => { 
+    if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi" & isadmin =="false"){
+        alert("Admin Granted")
+        isadmin = true;
+        localStorage.setItem('isadmin', isadmin);
+        window.location.reload();
+    }
+    if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi1" & isadmin =="true"){
+        alert("Admin Revoked")
+        isadmin = false;
+        localStorage.setItem('isadmin', isadmin);
+        window.location.reload();
+    }
+});
 
 var figitimg = document.getElementById('figitimg');
 
