@@ -156,6 +156,7 @@
 
 //declare variables
 var haxtxt = document.getElementById("haxtxt");
+var sdfasf = "greenskybluegrass";
 var admintxt = document.getElementById('admintxt');
 var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
@@ -252,7 +253,7 @@ function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpassstwist").value;
-    if(passval=="redapplegreen" & qtwist > 0 & counter-(qtwist*50)>=0){
+    if(passval==sdfasf & qtwist > 0 & counter-(qtwist*50)>=0){
     counter=counter-(qtwist*50);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
@@ -270,7 +271,7 @@ function buyfigit(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpasssfigit").value;
-    if(passval=="redapplegreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
+    if(passval==sdfasf & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
     counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
@@ -288,7 +289,7 @@ function buyfigit(){
 function buypillow(){
     qpillow = pillowqvar.value;
     passval = document.getElementById("adpasspillow").value;
-    if(passval=="redapplegreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
+    if(passval==sdfasf & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
     counter=counter-(qpillow*550);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
