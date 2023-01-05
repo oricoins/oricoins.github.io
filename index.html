@@ -104,7 +104,7 @@ const storageInput = document.querySelector('.storage');
 const text =  document.querySelector('.text');
 const button = document.querySelector('.button');
 const addcoinsub = document.querySelector('.addcoinsub');
-const storedInput = localStorage.getItem('currentcoins');
+const storedInput = localStorage.getItem('currentcoinsval');
 const lastdate = localStorage.getItem('lastdate');
 //check if something is in local storage and then set the text value to that
 unbanbanner.style.display="none";
@@ -160,7 +160,7 @@ function showbanner(){
                 text.textContent = counter;
                 counter++;
             }
-    localStorage.setItem('currentcoins', text.textContent);
+    localStorage.setItem('currentcoinsval', text.textContent);
     adminpass.value="";
     hidebanner();
     window.location.reload();
@@ -182,7 +182,7 @@ function unbanaccount(){
 
         window.location.reload();
         text.textContent = 0;
-        localStorage.setItem('currentcoins', text.textContent);
+        localStorage.setItem('currentcoinsval', text.textContent);
         if(isbanned=="true"){
             banbox.style.display="none";
             unbanbanner.style.display="none";
@@ -234,7 +234,7 @@ const saveToLocalStorage = () => {
         localStorage.setItem('lastdate', Date.now());
     }
     
-    localStorage.setItem('currentcoins', text.textContent);
+    localStorage.setItem('currentcoinsval', text.textContent);
 }
 //checks if button is pressed and executes the function to save to local storage
 button.addEventListener('click', saveToLocalStorage)
