@@ -145,7 +145,7 @@ var storagevar = document.getElementById("storage");
 const storageInput = document.querySelector('.storage');
 const text =  document.querySelector('.text');
 const button = document.querySelector('.button');
-const storedInput = localStorage.getItem('currentcoins');
+const storedInput = localStorage.getItem('currentcoinsval');
 //check if something is in local storage and then set the text value to that
 if(storageInput){
     text.textContent = storedInput;
@@ -199,10 +199,10 @@ function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpassstwist").value;
-    if(passval=="grassisgreen" & qtwist > 0 & counter-(qtwist*20)>=0){
+    if(passval=="redapplegreen" & qtwist > 0 & counter-(qtwist*20)>=0){
     counter=counter-(qtwist*20);
     text.textContent = counter;
-    localStorage.setItem('currentcoins', text.textContent)
+    localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
     window.location.reload();
     //document.getElementById("adpassstwist").value = "";
@@ -217,10 +217,10 @@ function buyfigit(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     passval = document.getElementById("adpasssfigit").value;
-    if(passval=="grassisgreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
+    if(passval=="redapplegreen" & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
     counter=counter-(qfigit*450);
     text.textContent = counter;
-    localStorage.setItem('currentcoins', text.textContent)
+    localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
     passval="";
     window.location.reload();
@@ -235,10 +235,10 @@ function buyfigit(){
 function buypillow(){
     qpillow = pillowqvar.value;
     passval = document.getElementById("adpasspillow").value;
-    if(passval=="grassisgreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
+    if(passval=="redapplegreen" & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
     counter=counter-(qpillow*550);
     text.textContent = counter;
-    localStorage.setItem('currentcoins', text.textContent)
+    localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
     passval="";
     window.location.reload();
@@ -269,7 +269,7 @@ const saveToLocalStorage = () => {
     text.textContent = counter;
     counter++;
     
-    localStorage.setItem('currentcoins', text.textContent)
+    localStorage.setItem('currentcoinsval', text.textContent)
 }
 //checks if button is pressed and executes the function to save to local storage
 button.addEventListener('click', saveToLocalStorage)
