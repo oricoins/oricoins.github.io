@@ -121,6 +121,9 @@ if(isbanned=="true"){
 if(isadmin=="true"){
     admintxt.style.display="block";
 }
+if(isadmin!="true" & isadmin!="false"){
+    isadmin = false;
+    localStorage.setItem('isadmin', isadmin);}
 
 
 if(storageInput){
@@ -261,4 +264,3 @@ const saveToLocalStorage = () => {
 button.addEventListener('click', saveToLocalStorage)
 
 </script>
- 
