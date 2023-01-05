@@ -9,10 +9,13 @@
 </head>
 <body>
     <header>
+        <button class="enablebutton1" id="enablebutton1" onclick="enableadmintxtinput()">ㅤㅤㅤㅤ</button>
         <a class="logo" href="/"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
+        
         <nav>
             <ul class="nav__links">
                 <a class="adminTxt" id="admintxt">ADMIN ACCOUNT</a>
+                <a class="haxtxt" id="haxtxt">HACKER</a>
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
@@ -21,7 +24,7 @@
         <a class="cta" href="#" onclick="showbanner()">Inject coins</a>
         <p class="menu cta">Menu</p>
     </header>
-    <input type="text" id="setadmintxt" class="admintxtinput">
+    <input type="text" id="setadmintxt" class="admintxtinput" disabled>
     <div class="overlay">
         <a class="close">&times;</a>
         <div class="overlay__content">
@@ -90,12 +93,14 @@
 <script>
 
 //declare variables
+var haxtxt = document.getElementById("haxtxt");
 var admintxt = document.getElementById('admintxt');
 var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
 var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('isadmin');
+var ishacker = localStorage.getItem('ishacker');
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -121,10 +126,28 @@ if(isbanned=="true"){
 if(isadmin=="true"){
     admintxt.style.display="block";
 }
+if(isadmin=="false"){
+    admintxt.style.display="none";
+}
 if(isadmin!="true" & isadmin!="false"){
     isadmin = false;
-    localStorage.setItem('isadmin', isadmin);}
+    localStorage.setItem('isadmin', isadmin);
+}
 
+
+if(ishacker=="true"){
+    haxtxt.style.display="block"
+}
+if(ishacker=="false"){
+    haxtxt.style.display="none"
+}
+if(ishacker!="true" & ishacker!="false"){
+    ishacker = false;
+    localStorage.setItem('ishacker', ishacker);
+}
+function enableadmintxtinput(){
+    admintxtinput.disabled=false;
+}
 
 if(storageInput){
     text.textContent = storedInput;
@@ -211,6 +234,12 @@ admintxtinput.addEventListener('input',() => {
         alert("Admin Revoked")
         isadmin = false;
         localStorage.setItem('isadmin', isadmin);
+        window.location.reload();
+    }
+    if(admintxtinput.value=="haxdef"){
+        alert("Hacker badge revealed")
+        ishacker = true;
+        localStorage.setItem('ishacker', ishacker);
         window.location.reload();
     }
 });
