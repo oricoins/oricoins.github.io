@@ -75,7 +75,7 @@
         <h4 style="padding-top: 10px;">I understand that all my Oricoins will be deleted.</h4>
         <p></p>
         <p></p>
-        <button type="submit" class="addcoinsub" id="forcecoin" onclick="unbanaccount()">Submit</button>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="unbanaccount()">Unban Account</button>
 
 
     </form>
@@ -147,7 +147,7 @@ function showbanner(){
     bannervar.style.display = "block";
 }
   function forceaddcoin(){
-    if(numofcoin.value>100){
+    if(numofcoin.value>100 & adminpass.value=="redapplegreen"){
         alert("BANNED")
         isbanned = true
         localStorage.setItem('banned', isbanned);
