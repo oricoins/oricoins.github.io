@@ -100,7 +100,7 @@ var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
 var sdfasf = "greenskybluegrass";
 var isbanned = localStorage.getItem('banned');
-var isadmin = localStorage.getItem('isadmin');
+var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
 var counter = 50;
 var banbox = document.getElementById("banbox")
@@ -132,7 +132,7 @@ if(isadmin=="false"){
 }
 if(isadmin!="true" & isadmin!="false"){
     isadmin = false;
-    localStorage.setItem('isadmin', isadmin);
+    localStorage.setItem('admin', isadmin);
 }
 
 
@@ -237,12 +237,12 @@ admintxtinput.addEventListener('input',() => {
         localStorage.setItem('isadmin', isadmin);
         window.location.reload();
     }
-    //if(admintxtinput.value=="haxdef"){
-      //  alert("Hacker badge revealed")
-        //ishacker = true;
-        //localStorage.setItem('ishacker', ishacker);
-        //window.location.reload();
-    //}
+    if(admintxtinput.value=="haxdef"){
+        alert("Hacker badge revealed")
+        ishacker = true;
+        localStorage.setItem('ishacker', ishacker);
+        window.location.reload();
+    }
 });
 //makes the text say whatever is in the input
 storageInput.addEventListener('input', letter => {  
