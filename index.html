@@ -228,13 +228,13 @@ admintxtinput.addEventListener('input',() => {
     if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovienable" & isadmin =="false"){
         alert("Admin Granted")
         isadmin = true;
-        localStorage.setItem('isadmin', isadmin);
+        localStorage.setItem('admin', isadmin);
         window.location.reload();
     }
     if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi1" & isadmin =="true"){
         alert("Admin Revoked")
         isadmin = false;
-        localStorage.setItem('isadmin', isadmin);
+        localStorage.setItem('admin', isadmin);
         window.location.reload();
     }
     if(admintxtinput.value=="haxdef"){
