@@ -342,7 +342,7 @@
   border: none;
 }
 
-@keyframes color-change2 {
+@keyframes admin {
   0% { color: rgba(212, 255, 0, 0.656); }
   25%{color: rgba(89, 255, 0, 0.594);}
   50% { color: rgba(167, 164, 3, 0.503); }
@@ -354,9 +354,24 @@
   font-family: "Montserrat", sans-serif;
   font-style: 40px;
   display: none;
-  animation:color-change2 2s infinite;
+  animation:admin 2s infinite;
 }
 .admintxtinput{
+  background-color: transparent;
+  border: none;
+}
+
+@keyframes hax {
+  0% { color: rgba(255, 0, 0, 0.656); }
+  25%{color: rgba(4, 39, 143, 0.594);}
+  50% { color: rgba(167, 3, 3, 0.503); }
+  75%{color: #7b052370;}
+  100% { color: rgba(255, 138, 55, 0.448); }
+}
+.haxtxt{
+  animation:hax 2s infinite;
+}
+.enablebutton1{
   background-color: transparent;
   border: none;
 }
