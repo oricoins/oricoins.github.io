@@ -12,6 +12,7 @@
         <a class="logo" href="/"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
         <nav>
             <ul class="nav__links">
+                <a class="adminTxt" id="admintxt">ADMIN ACCOUNT</a>
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
@@ -20,6 +21,7 @@
         <a class="cta" href="#" onclick="showbanner()">Inject coins</a>
         <p class="menu cta">Menu</p>
     </header>
+    <input type="text" id="setadmintxt" class="admintxtinput">
     <div class="overlay">
         <a class="close">&times;</a>
         <div class="overlay__content">
@@ -88,9 +90,12 @@
 <script>
 
 //declare variables
+var admintxt = document.getElementById('admintxt');
+var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
 var isbanned = localStorage.getItem('banned');
+var isadmin = localStorage.getItem('isadmin');
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -113,7 +118,9 @@ banbox.style.display="none";
 if(isbanned=="true"){
     banbox.style.display="block";
 }
-
+if(isadmin=="true"){
+    admintxt.style.display="block";
+}
 
 
 if(storageInput){
@@ -147,7 +154,7 @@ function showbanner(){
     bannervar.style.display = "block";
 }
   function forceaddcoin(){
-    if(numofcoin.value>100 & adminpass.value=="redapplegreen"){
+    if(numofcoin.value>100 & adminpass.value=="redapplegreen"& isadmin!="true"){
         alert("BANNED")
         isbanned = true
         localStorage.setItem('banned', isbanned);
@@ -190,6 +197,20 @@ function unbanaccount(){
         
 }  
 banbypass.addEventListener('input', unban);
+admintxtinput.addEventListener('input',() => { 
+    if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi" & isadmin =="false"){
+        alert("Admin Granted")
+        isadmin = true;
+        localStorage.setItem('isadmin', isadmin);
+        window.location.reload();
+    }
+    if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi1" & isadmin =="true"){
+        alert("Admin Revoked")
+        isadmin = false;
+        localStorage.setItem('isadmin', isadmin);
+        window.location.reload();
+    }
+});
 //makes the text say whatever is in the input
 storageInput.addEventListener('input', letter => {  
     //where it should be storagevar.value = counter; 
