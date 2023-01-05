@@ -54,6 +54,31 @@
 
 
     </form>
+    <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187);">
+        <button onclick="enableunban()">ㅤㅤㅤㅤ</button>
+        <h3>ACCOUNT BANNED</h3>
+        <center>
+            <input id="banbypass">
+            <h5>This might have been caused because of using the admin password.</h5>
+            <h5>Unban your account to continue.</h5>
+        </center>
+
+    </div>
+    <form class="riddles" id="unbanbanner" style="display: block;height: 275px; z-index: 1000;">
+        <h1 class="riddlehead">Unban Account</h1>
+        <p></p>
+        <p></p>
+        <h2 style="padding-top: 10px;">Unbanning your account shows that you agree to the following:</h2>
+        <p></p>
+        <p></p>
+        <h4 style="padding-top: 10px;">I will stop using the admin password.</h4>
+        <h4 style="padding-top: 10px;">I understand that all my Oricoins will be deleted.</h4>
+        <p></p>
+        <p></p>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="unbanaccount()">Submit</button>
+
+
+    </form>
 
 </body>
 </html>
@@ -63,7 +88,11 @@
 <script>
 
 //declare variables
+var unbanbanner = document.getElementById("unbanbanner");
+var banbypass = document.getElementById("banbypass");
+var isbanned = localStorage.getItem('banned');
 var counter = 50;
+var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
 var adminpass = document.getElementById('adminpass');
 var numofcoin = document.getElementById('numofcoins');
@@ -78,11 +107,20 @@ const addcoinsub = document.querySelector('.addcoinsub');
 const storedInput = localStorage.getItem('currentcoins');
 const lastdate = localStorage.getItem('lastdate');
 //check if something is in local storage and then set the text value to that
+unbanbanner.style.display="none";
+banbypass.disabled = true;
+banbox.style.display="none";
+if(isbanned=="true"){
+    banbox.style.display="block";
+}
+
+
 
 if(storageInput){
     text.textContent = storedInput;
     var counter = storedInput;
 }
+
 //other
 storagevar.style.display = "none";
 function buttonhover(){
@@ -95,6 +133,11 @@ function buttonhover(){
     //claimbutton.style.animation= "color-change 2s infinite";
     setTimeout(() => {  claimbutton.style.animation= "color-change 2s infinite"; }, 10000);
 }
+
+function enableunban(){
+    banbypass.disabled = false;
+}
+
 function hidebanner(){
     bannervar.style.display = "none";
     adminpass.value="";
@@ -103,26 +146,50 @@ function hidebanner(){
 function showbanner(){
     bannervar.style.display = "block";
 }
-
   function forceaddcoin(){
-    if (adminpass.value=="blueorange"){
-    for (let i = 0; i < numofcoin.value; i++){
-    text.textContent = counter;
-    counter++;
-    
-    
-    
-    }
+    if(numofcoin.value>100){
+        alert("BANNED")
+        isbanned = true
+        localStorage.setItem('banned', isbanned);
+        window.location.reload();
+        adminpass.value="";
+        hidebanner();
+        }else{
+            if (adminpass.value=="redapplegreen"){
+                for (let i = 0; i < numofcoin.value; i++){
+                text.textContent = counter;
+                counter++;
+            }
     localStorage.setItem('currentcoins', text.textContent);
     adminpass.value="";
     hidebanner();
     window.location.reload();
+    }
+    else{
+        alert("Error!")
+    }}
 }
-else{
-    alert("Error!")
+function unban(){
+    if (banbypass.value=="3487fg0yvbpqiwupj93jp93uhpr48iuvhnworicoinunban"){
+        banbypass.value="";
+        unbanbanner.style.display="block";
+    }
 }
-}
+function unbanaccount(){
+    
+        isbanned = false;
+        localStorage.setItem('banned', isbanned);
 
+        window.location.reload();
+        text.textContent = 0;
+        localStorage.setItem('currentcoins', text.textContent);
+        if(isbanned=="true"){
+            banbox.style.display="none";
+            unbanbanner.style.display="none";
+        }
+        
+}  
+banbypass.addEventListener('input', unban);
 //makes the text say whatever is in the input
 storageInput.addEventListener('input', letter => {  
     //where it should be storagevar.value = counter; 
