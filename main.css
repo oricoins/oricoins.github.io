@@ -294,4 +294,50 @@
       display: initial;
     }
   }
-  
+
+.banbox{
+  z-index: 500;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+.banbox h3{
+  font-style: 40px;
+  font-weight: 400px;
+  color: #333;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+.banbox input{
+  font-style: 40px;
+  font-weight: 400px;
+  color: #333;
+  margin-bottom: 5px;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  width: 500px;
+  transition: 1s;
+  border: 0px;
+}
+
+.banbox input:hover{
+  background: linear-gradient(to right, #014751, #3e4601);
+  color: whitesmoke;
+  transition: 1s;
+}
+.banbox button{
+  background-color: transparent;
+  border: none;
+}
