@@ -6,6 +6,21 @@
   body{
     background-color: #000000;
   }
+
+  *.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+ }
   header {
     display: flex;
     justify-content: space-between;
@@ -374,4 +389,15 @@
 .enablebutton1{
   background-color: transparent;
   border: none;
+}
+
+@keyframes spoiled {
+  0% { color: rgb(242, 255, 0); }
+  25%{color: rgb(4, 143, 36);}
+  50% { color: rgb(0, 255, 51); }
+  75%{color: #f9fe00b9;}
+  100% { color: rgba(200, 255, 0, 0.841); }
+}
+.spoiledtxt{
+  animation:spoiled 2s infinite;
 }
