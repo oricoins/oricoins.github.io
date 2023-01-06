@@ -9,19 +9,21 @@
 </head>
 <body>
     <header>
-        <button class="enablebutton1" id="enablebutton1" onclick="enableadmintxtinput()">ㅤㅤㅤㅤ</button>
-        <a class="logo" href="https://oricoins5.github.io"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
+       
+        <a class="logo" onclick="logoclick()"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
         
         <nav>
             <ul class="nav__links">
                 <a class="adminTxt" id="admintxt">ADMIN ACCOUNT</a>
                 <a class="haxtxt" id="haxtxt">HACKER</a>
+                <a class="spoiledtxt" id="richtxt">RICH SPENDER</a>
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
             </ul>
         </nav>
         <a class="cta" href="#" onclick="showbanner()">Inject coins</a>
+        <button unselectable="on" class="unselectable enablebutton1" id="enablebutton1" onclick="enableadmintxtinput()">ㅤㅤㅤㅤ</button>
         <p class="menu cta">Menu</p>
     </header>
     <input type="text" id="setadmintxt" class="admintxtinput" disabled>
@@ -60,13 +62,16 @@
 
     </form>
     <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187);">
-        <button onclick="enableunban()">ㅤㅤㅤㅤ</button>
+        <button onclick="topleftclick()" id="btn322" unselectable="on" class="unselectable">ㅤㅤㅤㅤ</button>
+        <button onclick="toprightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right;">ㅤㅤㅤㅤ</button>
         <h3>ACCOUNT BANNED</h3>
         <center>
             <input id="banbypass">
             <h5>This might have been caused because of using the admin password.</h5>
             <h5>Unban your account to continue.</h5>
         </center>
+        <button onclick="bottomleftclick()" id="btn3221" unselectable="on" class="unselectable" style="position: absolute; bottom: 0px; left: 0px;">ㅤㅤㅤㅤ</button>
+        <button onclick="bottomrightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right; position: absolute; bottom: 0px; right: 0px;">ㅤㅤㅤㅤ</button>
 
     </div>
     <form class="riddles" id="unbanbanner" style="display: block;height: 275px; z-index: 1000;">
@@ -93,6 +98,10 @@
 <script>
 
 //declare variables
+var counterban=0;
+var counter2=0;
+var richtxt = document.getElementById("richtxt");
+var btn3221 = document.getElementById("btn3221");
 var haxtxt = document.getElementById("haxtxt");
 var admintxt = document.getElementById('admintxt');
 var admintxtinput = document.getElementById('setadmintxt');
@@ -102,6 +111,7 @@ var sdfasf = "greenskybluegrass";
 var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
+var discount1 = localStorage.getItem('discount1');
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -117,6 +127,23 @@ const button = document.querySelector('.button');
 const addcoinsub = document.querySelector('.addcoinsub');
 const storedInput = localStorage.getItem('currentcoinsval');
 const lastdate = localStorage.getItem('lastdate');
+
+function makeUnselectable(node) {
+    if (node.nodeType == 1) {
+        node.setAttribute("unselectable", "on");
+    }
+    var child = node.firstChild;
+    while (child) {
+        makeUnselectable(child);
+        child = child.nextSibling;
+    }
+}
+
+makeUnselectable(document.getElementById("enablebutton1"));
+makeUnselectable(document.getElementById("btn322"));
+
+
+
 //check if something is in local storage and then set the text value to that
 unbanbanner.style.display="none";
 banbypass.disabled = true;
@@ -136,18 +163,39 @@ if(isadmin!="true" & isadmin!="false"){
 }
 
 
+
+
+if(discount1=="true"){
+    richtxt.style.display="block";
+}
+if(discount1=="false"){
+    richtxt.style.display="none";
+}
+if(discount1!="true" & discount1!="false"){
+    discount1 = false;
+    localStorage.setItem('discount1', discount1);
+}
+
+
 if(ishacker=="true"){
-    haxtxt.style.display="block"
+    haxtxt.style.display="block";
 }
 if(ishacker=="false"){
-    haxtxt.style.display="none"
+    haxtxt.style.display="none";
 }
 if(ishacker!="true" & ishacker!="false"){
     ishacker = false;
     localStorage.setItem('ishacker', ishacker);
 }
+function logoclick(){
+    if (counter2==0){
+        counter2=1;
+    }
+}
 function enableadmintxtinput(){
+
     admintxtinput.disabled=false;
+
 }
 
 if(storageInput){
@@ -169,7 +217,10 @@ function buttonhover(){
 }
 
 function enableunban(){
-    banbypass.disabled = false;
+    
+    if (counterban=="5"){
+        banbypass.disabled = false;
+    }
 }
 
 function hidebanner(){
@@ -190,6 +241,7 @@ function showbanner(){
         hidebanner();
         }else{
             if (adminpass.value==sdfasf){
+                admintxtinput.value = "";
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
@@ -203,6 +255,56 @@ function showbanner(){
         alert("Error!")
     }}
 }
+
+
+function bottomrightclick(){
+    if (counterban==0){
+        counterban=1;
+        //alert(counterban);
+    }
+    else{
+        counterban=0;
+       //alert(counterban);
+    }
+}
+function topleftclick(){
+    if (counterban==1){
+        counterban=2;
+       //alert(counterban);
+    }
+    else{
+        counterban=0;
+       //alert(counterban);
+    }
+}
+function bottomleftclick(){
+    if (counterban==2) {
+        counterban=3;
+        //alert(counterban);
+    } else if (counterban==4) {
+        counterban=5;
+        //alert("done");
+    } else {
+        counterban=0;
+        //alert(counterban);
+}
+}
+
+
+function toprightclick(){
+    if (counterban==3){
+        counterban=4;
+        //alert(counterban);
+    }
+    else{
+        counterban=0;
+        //alert(counterban)
+    }
+}
+
+btn3221.addEventListener("click", enableunban);
+
+
 function unban(){
     if (banbypass.value=="3487fg0yvbpqiwupj93jp93uhpr48iuvhnworicoinunban"){
         banbypass.value="";
