@@ -255,6 +255,11 @@ body{
   justify-content: center;
   margin: auto;
 }
+
+.container2{
+  overflow-y: auto;
+  width: 100%;
+}
 .product{
   width: 400px;
   height: 550px;
@@ -360,6 +365,9 @@ body{
 }
 .product-top3{
   background: linear-gradient(#70fdc5, #d6e13b);
+}
+.product-top4{
+  background: linear-gradient(to right, #c002d1, #0e24c9);
 }
 
 #figitimg{
@@ -476,4 +484,9 @@ body{
   }
   .haxtxt{
     animation:hax 2s infinite;
+  }
+
+  .discountredeemprice{
+    text-decoration: line-through;
+    text-decoration-color: red;
   }
