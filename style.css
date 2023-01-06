@@ -257,12 +257,14 @@ body{
 }
 
 .container2{
+  margin-top:20px;
   overflow-y: auto;
   width: 100%;
 }
 .product{
+  
   width: 400px;
-  height: 550px;
+  height: 725px;
   perspective: 1000px;
 }
 
