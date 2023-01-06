@@ -362,14 +362,17 @@ body{
   background: linear-gradient(#c370fd, #3be1b8);
 
 }
-.product-top2{
-  background: linear-gradient(#c370fd, #3be1b8);
-}
 .product-top3{
   background: linear-gradient(#70fdc5, #d6e13b);
 }
 .product-top4{
   background: linear-gradient(to right, #c002d1, #0e24c9);
+}
+.product-top5{
+  background: black;
+}
+.product-top6{
+  background: black;
 }
 
 #figitimg{
@@ -492,3 +495,7 @@ body{
     text-decoration: line-through;
     text-decoration-color: red;
   }
+
+#figitimg:hover{
+  opacity: 100%;
+}
