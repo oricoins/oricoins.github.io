@@ -11,7 +11,7 @@
         <nav>
             <ul class="nav__links">
                 <li><a href="#" class="txt">Balance:</a></li>
-                <li><a class="text" id="text" href="#"></a></li>
+                <li><a class="text" id="text" href="#">0</a></li>
             </ul>
         </nav>
         <a class="cta" href="index.html">Home</a>
@@ -25,14 +25,16 @@
             <a href="#">Balance: </a>
         </div>
     </div>
-    <div class="container">
+    <div class="container container2">
         <input type="text" id="storage" class="storage" style="display: none;">
         <!--<p class="text" id="text">text</p>--->
         <div class="container">
                 <div class="product">
                     
                     <div class="product-inner" id="productBox">
-                        <div class="product-front">
+                        <div class="product-front" style="
+    left: 210px;
+">
                             <div class="product-top">
                                 <h1>Figit</h1>
                                 <div class="figitimgdiv" onmouseover="changeocapticty()">
@@ -43,13 +45,13 @@
                                 <p>Paper toys</p>
                                 <h2>Paper Figit Cube</h2>
                                 <h6>Color: <span style="color:rgb(0, 0, 0);margin-bottom: 0px;">BLACK &amp; <span style="color:wheat">WHITE</span></span></h6>
-                                <h1>450 <span>Oricoins</span></h1>
-                                <input type="number" id="figitq" placeholder="Quantity" class="disabled" disabled>
-                                <input type="password" id="adpasssfigit"  placeholder="Admin Password" class="disabled" disabled>
-                                <button type="button" class="buy" onclick="buyfigit()" style="background-color:rgba(166, 149, 158, 0.38)" disabled>Buy Now</button>
+                                <h1><span style="color: black;" id="price">450 </span><span id="richspecific" style="color: red; margin-left:5px; font-size: 15px;">-30%</span><span id="richspecific1" style="color: rgb(0, 0, 0); margin-left:5px; margin-right:5px;">315</span><span>Oricoins</span></h1>
+                                <input type="number" id="figitq" placeholder="Quantity" class="disabled" disabled="">
+                                <input type="password" id="adpasssfigit" placeholder="Admin Password" class="disabled" disabled="">
+                                <button type="button" class="buy" onclick="buyfigit()" style="background-color:rgba(166, 149, 158, 0.38)" disabled="">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">250 Oricoins</span></button>
-                                <h5 style="color:red">*One left in stock, Order Soon!</h5>
+                                <h5 style="color:red">*Out of Stock!</h5>
                                 <div class="color-select">
                                 </div>
                             </div>
@@ -60,7 +62,9 @@
     <div class="container" style="margin-left: 10px;">
                 <div class="product">
                     
-                    <div class="product-inner" id="productBox">
+                    <div class="product-inner" id="productBox" style="
+    left: 210px;
+">
                         <div class="product-front">
                             <div class="product-top product-top2">
                                 <h1>Twist</h1>
@@ -89,11 +93,15 @@
                         </div>
                     </div>
                     
-    </div></div><div class="container" style="margin-left: 10px;">
+    </div></div>
+
+    <div class="container" style="margin-left: 10px;">
                 <div class="product">
                     
                     <div class="product-inner" id="productBox">
-                        <div class="product-front">
+                        <div class="product-front" style="
+    left: 210px;
+">
                             <div class="product-top product-top3">
                                 <h1>Pillow</h1>
                                 <div class="figitimgdiv" onmouseover="changeocapticty()">
@@ -104,12 +112,12 @@
                                 <p>Paper Pillow</p>
                                 <h2>Pillow of Twist Cubes</h2>
                                 <h6>Color: <span style="color:rgb(214, 214, 184);margin-bottom: 0px;">WHITE</span></h6>
-                                <h1>550 <span>Oricoins</span></h1>
+                                <h1><span style="color: black;" id="price1">550 </span><span id="richspecific2" style="color: red; margin-left:5px; font-size: 15px;">-30%</span><span id="richspecific3" style="color: rgb(0, 0, 0); margin-left:5px; margin-right:5px;">385</span><span>Oricoins</span></h1>
                                 
                                 
-                                <input type="number" id="pillowq" placeholder="Quantity" class="disabled" disabled>
-                                <input type="password" id="adpasspillow" placeholder="Admin Password" class="disabled" disabled>
-                                <button type="button" class="buy" onclick="buypillow()" style="background-color:rgba(166, 149, 158, 0.38)" disabled>Buy Now</button>
+                                <input type="number" id="pillowq" placeholder="Quantity" class="disabled" disabled="">
+                                <input type="password" id="adpasspillow" placeholder="Admin Password" class="disabled" disabled="">
+                                <button type="button" class="buy" onclick="buypillow()" style="background-color:rgba(166, 149, 158, 0.38)" disabled="">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button onclick="showbanner()" style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">300 Oricoins</span></button>
                                 <h5 style="color:rgb(255, 0, 0)">*Out of Stock!</h5>
@@ -124,12 +132,48 @@
                     </div>
                     
     </div></div>
+    <div class="container" style="margin-left: 10px;">
+        <div class="product">
+            
+            <div class="product-inner" id="productBox">
+                <div class="product-front" style="
+left: 210px;
+">
+                    <div class="product-top product-top4">
+                        <h1>Rich</h1>
+                        <div class="figitimgdiv" onmouseover="changeocapticty()">
+                        <img src="images/oricard.png" id="figitimg" class="figitimg">
+                        </div>
+                    </div>
+                    <div class="product-bottom">
+                        <p>Badge</p>
+                        <h2>Rich Person Badge</h2>
+                        
+                        <p>Get 30% off on all purchases over 100 Oricoins</p>
+                        <p>And also get a small badge on the homepage.</p>
+                        <h1>3,000 <span>Oricoins</span></h1>
+                        
+                        
+                        <button type="button" class="buy" onclick="buyrichbadge()" id="buydiscount1badge">Buy Now</button>
+                        <h6>*Oricoins are immedietly deducted.</h6>
+                        <h5 style="color:rgb(158, 158, 5)">*Virtuial Purchase</h5>
+                        <div class="color-select">
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div></div>
         
             
             
     
     </div>
-    <form class="riddles" id="unbanbanner" style="display: block;height: 275px; z-index: 1000;">
+    <form class="riddles" id="unbanbanner" style="display: none; height: 275px; z-index: 1000;">
         <h1 class="riddlehead">Unban Account</h1>
         <p></p>
         <p></p>
@@ -155,6 +199,13 @@
 
 
 //declare variables
+var richspecific = document.getElementById("richspecific");
+var richspecific1 = document.getElementById("richspecific1");
+var richspecific2 = document.getElementById("richspecific2");
+var richspecific3 = document.getElementById("richspecific3");
+var pricetxt = document.getElementById("price");
+var pricetxt1 = document.getElementById("price1");
+var buydiscount1badge = document.getElementById("buydiscount1badge");
 var haxtxt = document.getElementById("haxtxt");
 var sdfasf = "greenskybluegrass";
 var admintxt = document.getElementById('admintxt');
@@ -164,6 +215,7 @@ var banbypass = document.getElementById("banbypass");
 var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('isadmin');
 var ishacker = localStorage.getItem('ishacker');
+var discount1 = localStorage.getItem('discount1');
 var counter = 1;
 var figitq = document.getElementById('figitq');
 var twistq = document.getElementById('twistq');
@@ -180,14 +232,40 @@ if(storageInput){
 }
 //other
 unbanbanner.style.display="none";
-banbypass.disabled = true;
 storagevar.style.display = "none";
+richspecific.style.display="none";
+richspecific1.style.display="none";
+richspecific2.style.display="none";
+richspecific3.style.display="none";
 var qfigit = figitq.value;
 var qtwist= twistq.value;
 var passval = document.getElementById("adpassstwist").value;
 var passval = document.getElementById("adpasssfigit").value;
 var pillowqvar = document.getElementById("pillowq");
 var qpillow= pillowqvar.value;
+
+
+if(discount1=="true"){
+    //buydiscount1badge.value="Owned";
+    buydiscount1badge.style.backgroundColor="rgba(166, 149, 158, 0.38)"
+    buydiscount1badge.disabled = true;
+    pricetxt.classList.add("discountredeemprice");
+    pricetxt1.classList.add("discountredeemprice");
+    richspecific.style.display="block";
+    richspecific1.style.display="block";
+    richspecific2.style.display="block";
+    richspecific3.style.display="block";
+}
+if(discount1=="false"){
+    
+}
+if(discount1!="true" & discount1!="false"){
+    discount1 = false;
+    localStorage.setItem('discount1', discount1);
+}
+
+
+
 
 if(isadmin=="true"){
     admintxt.style.display="block"
@@ -266,12 +344,20 @@ function buytwist(){
         window.location.reload();
 }
 }
-
+var price=0;
+var qprice=0;
 function buyfigit(){
+    price=450
+    qprice=450*qfigit;
+    
     qfigit = figitq.value;
     qtwist= twistq.value;
+    if(discount1=="true"){
+        price=315;
+        qprice=price*qfigit;
+    }
     passval = document.getElementById("adpasssfigit").value;
-    if(passval==sdfasf & qfigit > 0 & qfigit < 2 & counter-(qfigit*450)>=0){
+    if(passval==sdfasf & qfigit > 0 & qfigit < 2 & counter-qprice>=0){
     counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
@@ -287,9 +373,17 @@ function buyfigit(){
 }
 
 function buypillow(){
+    price=550
+    qprice=550*qpillow;
+
+    if(discount1=="true"){
+        price=385;
+        qprice=price*qpillow;
+    }
+
     qpillow = pillowqvar.value;
     passval = document.getElementById("adpasspillow").value;
-    if(passval==sdfasf & qpillow > 0 & qpillow < 2 & counter-(qpillow*550)>=0){
+    if(passval==sdfasf & qpillow > 0 & qpillow < 2 & counter-qprice>=0){
     counter=counter-(qpillow*550);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
@@ -301,6 +395,22 @@ function buypillow(){
     }else{
         alert("Error!")
         passval="";
+}
+}
+
+function buyrichbadge(){
+    if(counter-3000>=0){
+    counter=counter-3000;
+    text.textContent = counter;
+    localStorage.setItem('currentcoinsval', text.textContent)
+    discount1=true;
+    localStorage.setItem('discount1', discount1)
+    alert("Item should be instantly avaliable, contact admin for further assistance.")
+    window.location.reload();
+    //document.getElementById("adpassstwist").value = "";
+    //twistq.value="1";
+    }else{
+        alert("Error!")
 }
 }
 
@@ -368,4 +478,5 @@ const saveToLocalStorage = () => {
 }
 //checks if button is pressed and executes the function to save to local storage
 button.addEventListener('click', saveToLocalStorage)
-</script></body></html>
+</script>
+</body></html>
