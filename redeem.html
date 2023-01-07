@@ -232,7 +232,7 @@ left: 650px;
                         
                         <p>Get 30% off on all purchases over 100 Oricoins</p>
                         <p>And also get a small badge on the homepage.</p>
-                        <h1>3,000 <span>Oricoins</span></h1>
+                        <h1>1,000 <span>Oricoins</span></h1>
                         
                         
                         <button type="button" class="buy" onclick="buyrichbadge()" id="buydiscount1badge" disabled="" style="background-color: rgba(166, 149, 158, 0.38);">Buy Now</button>
@@ -486,8 +486,8 @@ function buypillow(){
 }
 
 function buyrichbadge(){
-    if(counter-3000>=0){
-    counter=counter-3000;
+    if(counter-1000>=0){
+    counter=counter-1000;
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     discount1=true;
