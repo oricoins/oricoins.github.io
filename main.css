@@ -216,7 +216,7 @@
   top: 300px;
   text-align: center;
   display: inline-block;
-  position: fixed;
+
   left: 450px;
   transition: 15s;
 }
@@ -400,4 +400,48 @@
 }
 .spoiledtxt{
   animation:spoiled 2s infinite;
+}
+
+.updatelog{
+  cursor: pointer;
+  transition: 1s;
+}
+.updatelog:hover{
+  color: #008394;
+  transition: 1s;
+}
+.updatebanner{
+  z-index: 20;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 700px;
+  height: 5000px;
+  margin: auto;
+  background-color: #fafafa;
+  border-radius: 30px;
+  opacity: 100%;
+  border-bottom: 20px;
+  
+  
+}
+
+.updatebanner h4{
+  margin-left: 10px;
+}
+.claimfreecoin{
+    display: flex;
+    margin:0 auto;
+    align-items:center;
+    border-radius: 20px;
+    display: block;
+    padding-top: 1px;
+    text-align: center;
+    line-height: 1em;
+}
+.newitems{
+  float: right;
 }
