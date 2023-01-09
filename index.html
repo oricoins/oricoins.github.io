@@ -131,6 +131,7 @@
 <script>
 
 //declare variables
+var updatelogtxt = document.getElementById("updatelog");
 var updatesbanner = document.getElementById("updates");
 var counterban=0;
 var counter2=0;
@@ -202,11 +203,13 @@ if(updatefreecoin=="false"){
     updatefreecointxt.disabled=false;
     updatefreecointxt.style.backgroundColor="#008394"
     updatefreecointxt.style.color="rgb(255, 255, 255)"
+    updatelogtxt.textContent="Updates(1)";
 }
 if(updatefreecoin=="true"){
     updatefreecointxt.disabled=true;
     updatefreecointxt.style.backgroundColor="rgba(166, 149, 158, 0.38";
     updatefreecointxt.style.color="#008394";
+    updatelogtxt.textContent="Updates";
 }
 if(updatefreecoin!="true" & updatefreecoin!="false"){
     updatefreecoin = false;
