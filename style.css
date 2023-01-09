@@ -4,6 +4,8 @@
     padding: 0;
   }
   
+
+
   header {
     display: flex;
     justify-content: space-between;
@@ -201,7 +203,7 @@
 
 }
 .disabled{
-  background-color:rgba(166, 149, 158, 0.38)
+  background-color:rgba(166, 149, 158, 0.38);
 }
 .disc{
     font-family: "Montserrat", sans-serif;
