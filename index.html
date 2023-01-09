@@ -14,10 +14,10 @@
         
         <nav>
             <ul class="nav__links">
+                <a class="adminTxt" id="admintxt" style="margin-left:10px">ADMIN ACCOUNT</a>
+                <a class="haxtxt" id="haxtxt" style="margin-left:10px">TOP G HACKER</a>
+                <a class="spoiledtxt" id="richtxt"style="margin-left:10px">RICH SPENDER</a>
                 <a class="updatelog" id="updatelog" onclick="updatesbanner.style.display='block';">Updates</a>
-                <a class="adminTxt" id="admintxt">ADMIN ACCOUNT</a>
-                <a class="haxtxt" id="haxtxt">TOP G HACKER</a>
-                <a class="spoiledtxt" id="richtxt">RICH SPENDER</a>
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
@@ -58,7 +58,8 @@
         <input type="password" class="coinnum" id="adminpass" placeholder="Admin Password">
         <p></p>
         <p></p>
-        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forceaddcoin()">Submit</button>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forceaddcoin()" style="width: 100px;">Add coins</button>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forcedeletecoin()" style="width: 150px;">Remove coins</button>
 
 
     </form>
@@ -101,6 +102,7 @@
         <h4>- Two new items to purchase</h4>
         <h4>- SmartBan system</h4>
         <h4>- Better Security</h4>
+        <h4>- Remove coin feature</h4>
         <h4>- Take a screenshot of your whole screen</h4>
         <h4 style="margin-left: 50px;"> in case the website shuts down</h4>
         <h4 style="margin-left: 50px;"> it will be proof of having oricoins and badges</h4>
@@ -320,7 +322,37 @@ function showbanner(){
     window.location.reload();
     
 }
-
+function forcedeletecoin(){
+    if (admintxtinput.value !="delcoin" & adminpass.value==sdfasf & isadmin!="true") {
+                alert("BANNED")
+                isbanned = true
+                localStorage.setItem('banned', isbanned);
+                window.location.reload();
+                adminpass.value="";
+                hidebanner();
+            } else if (isadmin=="true" & adminpass.value==sdfasf+1) {
+            if (adminpass.value==sdfasf+1){
+                admintxtinput.value = "";
+                for (let i = 0; i < numofcoin.value; i++){
+                    counter--;
+                    text.textContent = counter;
+                
+            }}
+        } else if(adminpass.value==sdfasf & admintxtinput.value =="delcoin"& isadmin!="true"){
+                admintxtinput.value = "";
+                for (let i = 0; i < numofcoin.value; i++){
+                text.textContent = counter;
+                counter--;
+            
+        }}
+    else{
+        alert("Error!")
+    }
+    localStorage.setItem('currentcoinsval', text.textContent);
+    adminpass.value="";
+    hidebanner();
+    window.location.reload();
+}
 
 function bottomrightclick(){
     if (counterban==0){
