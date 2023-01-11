@@ -103,6 +103,7 @@
         <h4>- SmartBan system</h4>
         <h4>- Better Security</h4>
         <h4>- Remove coin feature</h4>
+        <h4>- Introducing Passwordless Purchases</h4>
         <h4>- Take a screenshot of your whole screen</h4>
         <h4 style="margin-left: 50px;"> in case the website shuts down</h4>
         <h4 style="margin-left: 50px;"> it will be proof of having oricoins and badges</h4>
@@ -159,12 +160,13 @@ var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
 var sdfasf = "greenskybluegrass";
+var usernamename = localStorage.getItem('usrname');
 var usedaddcoin = localStorage.getItem('addcoinused');
 var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
 var discount1 = localStorage.getItem('discount1');
-var updatefreecoin = localStorage.getItem('freeclaimed');
+var updatefreecoin = localStorage.getItem('freeclaimed1');
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -229,7 +231,7 @@ if(updatefreecoin=="true"){
 }
 if(updatefreecoin!="true" & updatefreecoin!="false"){
     updatefreecoin = false;
-    localStorage.setItem('freeclaimed', updatefreecoin);
+    localStorage.setItem('freeclaimed1', updatefreecoin);
 }
 
 
@@ -264,6 +266,32 @@ if(ishacker!="true" & ishacker!="false"){
     ishacker = false;
     localStorage.setItem('ishacker', ishacker);
 }
+
+//get name
+if(usernamename){
+    //haxtxt.style.display="block";
+    console.log("name works")
+}
+if(usernamename==""){
+    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
+    localStorage.setItem('usrname', usernamename);
+}
+if(usernamename=="true" || usernamename=="false"){
+    console.log(name);
+    usernamename = "";
+    localStorage.setItem('usrname', usernamename);
+}
+if(usernamename==null){
+    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
+    localStorage.setItem('usrname', usernamename);
+}
+
+
+
+
+
+
+
 function logoclick(){
     if (counter2==0){
         counter2=1;
@@ -282,7 +310,7 @@ function claimupdatereward(){
 }
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent);
-    localStorage.setItem('freeclaimed', updatefreecoin);
+    localStorage.setItem('freeclaimed1', updatefreecoin);
     window.location.reload();
 
 }
