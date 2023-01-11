@@ -122,16 +122,21 @@
 
 
     </div>
-    
-    
-     <div class="updatebanner" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;">
-        <h3 style="text-align:center;">Sorry, the page is blocked. All of your progress has been saved, when the page gets unblocked, you can continue to use it. Check back here every now and then.</h3>
-         <h5 style="text-align:center;margin-top:50px">Apparently this site is a "game" and is "exchanging currencys", so, the site is currently blocked.<p></p>I am hoping that it is appreved and we can use it again. :)</h5>
+
+
+    <div class="updatebanner" id="blockedbanner" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px;">
+        <h3 style="text-align:center;">Sorry, you can't use Oricoins right now</h3>
+         <h5 style="text-align:center;margin-top:50px;">Oricoins can be used on:</h5><p></p>
+         <h5 style="text-align:center;margin-top:50px; font-size: 10px;">Sun: All day</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Mon: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Tues: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Wed: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Sat: All day</h5><p></p>
 
 
     </div>
-    
-    
     
 </body>
 </html>
@@ -154,6 +159,7 @@ var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
 var sdfasf = "greenskybluegrass";
+var usedaddcoin = localStorage.getItem('addcoinused');
 var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
@@ -217,13 +223,22 @@ if(updatefreecoin=="false"){
 }
 if(updatefreecoin=="true"){
     updatefreecointxt.disabled=true;
-    updatefreecointxt.style.backgroundColor="rgba(166, 149, 158, 0.38";
+    updatefreecointxt.style.backgroundColor="rgba(166, 149, 158, 0.38)";
     updatefreecointxt.style.color="#008394";
     updatelogtxt.textContent="Updates";
 }
 if(updatefreecoin!="true" & updatefreecoin!="false"){
     updatefreecoin = false;
     localStorage.setItem('freeclaimed', updatefreecoin);
+}
+
+
+if(usedaddcoin=="true"){
+    document.body.style.background="#282a28";
+}
+if(usedaddcoin!="true" & usedaddcoin!="false"){
+    usedaddcoin = false;
+    localStorage.setItem('addcoinused', usedaddcoin);
 }
 
 
@@ -318,12 +333,18 @@ function showbanner(){
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
+                usedaddcoin = true;
+                localStorage.setItem('addcoinused', usedaddcoin);
+                
             }}
         } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true"){
                 admintxtinput.value = "";
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
+                usedaddcoin = true;
+                localStorage.setItem('addcoinused', usedaddcoin);
+                
             
         }}
     else{
@@ -504,5 +525,27 @@ const saveToLocalStorage = () => {
 }
 //checks if button is pressed and executes the function to save to local storage
 button.addEventListener('click', saveToLocalStorage)
+
+
+
+
+//get the current day
+var blockedbanner = document.getElementById("blockedbanner");
+const day = ["sunday","monday","tuesday","wedensday","thursday","friday","saturday"];
+
+const d = new Date();
+let currentday = day[d.getDay()];
+let currenthour = d.getHours();
+if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
+    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14 || currenthour==15 || currenthour==16){
+        blockedbanner.style.display="block";
+    }else{
+        blockedbanner.style.display="none";
+    }
+}else{
+    blockedbanner.style.display="block";
+}
+
+
 
 </script>
