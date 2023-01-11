@@ -47,9 +47,8 @@
                                 <h6>Color: <span style="color:rgb(0, 0, 0);margin-bottom: 0px;">BLACK &amp; <span style="color:wheat">WHITE</span></span></h6>
                                 <h1 id="figitrich" style="display: none;"><span style="color: black;" id="price">450 </span><span style="vertical-align: super; color: red; margin-left:5px; font-size: 11px;">-30%</span><span style="color: rgb(0, 0, 0); margin-left:5px; margin-right:5px;">315</span><span>Oricoins</span></h1>
                                 <h1 id="figitbanner" style="display: block;"><span style="color: black;" id="price">450 </span><span>Oricoins</span></h1>
-                                <input type="number" id="figitq" placeholder="Quantity" class="disabled" disabled="">
-                                <input type="password" id="adpasssfigit" placeholder="Admin Password" class="disabled" disabled="">
-                                <button type="button" class="buy" onclick="buyfigit()" style="background-color:rgba(166, 149, 158, 0.38)" disabled="">Buy Now</button>
+                                <input type="number" id="figitq" placeholder="Quantity">
+                                <button type="button" class="buy" onclick="buyfigit()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">250 Oricoins</span></button>
                                 <h5 style="color:red">*2 left in stock, order soon!</h5>
@@ -79,7 +78,6 @@
                                 
                                 
                                 <input type="number" id="twistq" placeholder="Quantity">
-                                <input type="password" id="adpassstwist" placeholder="Admin Password">
                                 <button type="button" class="buy" onclick="buytwist()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">10 Oricoins</span></button>
@@ -114,7 +112,7 @@
                                 
                                 
                                 <input type="number" id="pillowq" placeholder="Quantity" class="disabled" disabled="">
-                                <input type="password" id="adpasspillow" placeholder="Admin Password" class="disabled" disabled="">
+                                
                                 <button type="button" class="buy" onclick="buypillow()" style="background-color:rgba(166, 149, 158, 0.38)" disabled="">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button onclick="showbanner()" style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">300 Oricoins</span></button>
@@ -191,7 +189,7 @@
                                 <h6>Color: <span style="color:rgb(193, 193, 26);margin-bottom: 0px;">YELLOW</span></h6>
                                 <h1 id="popbanner" style="display: block;"><span style="color: black;" id="price">25 </span><span>Oricoins</span></h1>
                                 <input type="number" id="popq" placeholder="Quantity">
-                                <input type="password" id="adpasspop" placeholder="Admin Password">
+                                
                                 <button type="button" class="buy" onclick="buypop()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">10 Oricoins</span></button>
@@ -222,7 +220,7 @@
                                 <h1 id="pullbanner" style="display: block;"><span style="color: black;" id="price">150 </span><span>Oricoins</span></h1>
                                 
                                 <input type="number" id="pullq" placeholder="Quantity">
-                                <input type="password" id="addpasspull" placeholder="Admin Password">
+                                
                                 <button type="button" class="buy" onclick="buypull()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">50 Oricoins</span></button>
@@ -342,6 +340,7 @@
 
 
 <script type="text/javascript" src="mobile.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
 <script>
 if(document.querySelector('.storage')){
     document.getElementById("text").textContent=localStorage.getItem('currentcoinsval');
@@ -354,8 +353,6 @@ var bannerblock = document.getElementById("bannerblock");
 var pillowqvar = document.getElementById("pillowq");
 var qpop = document.getElementById("popq");
 var qpull = document.getElementById("pullq");
-var addpasspull = document.getElementById("addpasspull");
-var addpasspop = document.getElementById("addpasspop");
 
 var pullbanner = document.getElementById("pullbanner");
 var pullrich = document.getElementById("pullrich");
@@ -373,6 +370,7 @@ var pricetxt2 = document.getElementById("price2");
 var buydiscount1badge = document.getElementById("buydiscount1badge");
 var haxtxt = document.getElementById("haxtxt");
 var sdfasf = "greenskybluegrass";
+var usernamename = localStorage.getItem('usrname');
 var admintxt = document.getElementById('admintxt');
 var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
@@ -408,12 +406,78 @@ if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"||
     bannerblock.style.display="block";
 }
 
+//get name
+if(usernamename=="true" || usernamename=="false"){
+    console.log(name);
+    usernamename = "";
+    localStorage.setItem('usrname', usernamename);
+}
+if(usernamename==null || usernamename==""){
+    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
+    localStorage.setItem('usrname', usernamename);
+}
+
+//firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCkyYCoGxBZ7qRjqQUAI_QK1CK1UjZ3C1s",
+    authDomain: "oricoinorders.firebaseapp.com",
+    databaseURL: "https://oricoinorders-default-rtdb.firebaseio.com",
+    projectId: "oricoinorders",
+    storageBucket: "oricoinorders.appspot.com",
+    messagingSenderId: "163444654010",
+    appId: "1:163444654010:web:75c93a2617543ae0702783",
+    measurementId: "G-Y0YBKFCB71"
+  };
+
+  //const app = initializeApp(firebaseConfig);
+  //const analytics = getAnalytics(app);
+  firebase.initializeApp(firebaseConfig);
+
+
+  var oricoinordersDB = firebase.database().ref('OricoinOrders')
+
+function submitForm(quantityvar, itemvar, usernamename){
+    //alert(quantityvar);
+    //alert(itemvar);
+    var orderquantity = quantityvar;
+    var orderitem = itemvar;
+    var ordername = usernamename;
+
+    console.log(orderquantity, orderitem, ordername)
+
+    saveOrders(orderquantity, orderitem, ordername);
+}
+
+
+const saveOrders = (orderquantity, orderitem, ordername) =>{
+    var newContactForm = oricoinordersDB.push();
+
+    newContactForm.set({
+        name : ordername,
+        order : orderitem,
+        quantity : orderquantity,
+    })
+}
+
+//const getElementVal = (id) =>{
+  //  return document.getElementById(id).value;
+//}
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 function checkvalfigit(){
-    if(figitq.value != 1){
+    if(figitq.value < 1 || figitq.value > 2){
         figitq.style.color="red";
     }else{
         figitq.style.color="#008384"
@@ -470,8 +534,7 @@ pullbanner.style.display="block";
 figitbanner.style.display="block";
 var qfigit = figitq.value;
 var qtwist= twistq.value;
-var passval = document.getElementById("adpassstwist").value;
-var passval = document.getElementById("adpasssfigit").value;
+
 var pillowqvar = document.getElementById("pillowq");
 var qpillow= pillowqvar.value;
 
@@ -532,13 +595,13 @@ function showbanner(banner){
 function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
-    passval = document.getElementById("adpassstwist").value;
-    if(passval==sdfasf & qtwist > 0 & counter-(qtwist*50)>=0){
+    if(qtwist > 0 & counter-(qtwist*50)>=0){
+    submitForm(qtwist, "twist cube", usernamename);
     counter=counter-(qtwist*50);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
-    window.location.reload();
+    //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
@@ -558,19 +621,17 @@ function buyfigit(){
         price=315;
         qprice=price*qfigit;
     }
-    passval = document.getElementById("adpasssfigit").value;
-    if(passval==sdfasf & qfigit > 0 & qfigit < 2 & counter-qprice>=0){
+    if(qfigit > 0 & qfigit < 3 & counter-qprice>=0){
+    submitForm(qfigit, "figit cube", usernamename);
     counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
-    passval="";
-    window.location.reload();
+    //window.location.reload();
     //document.getElementById("adpasspillow").value = "";
     //twistq.value="1";
     }else{
         alert("Error!")
-        passval="";
 }
 }
 
@@ -584,19 +645,18 @@ function buypillow(){
     }
 
     qpillow = pillowqvar.value;
-    passval = document.getElementById("adpasspillow").value;
-    if(passval==sdfasf & qpillow > 0 & qpillow < 2 & counter-qprice>=0){
+    if(qpillow > 0 & qpillow < 2 & counter-qprice>=0){
+    submitForm(qpillow, "pillow of twist cubes", usernamename);
     counter=counter-(qpillow*550);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
-    passval="";
-    window.location.reload();
+    //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
         alert("Error!")
-        passval="";
+
 }
 }
 
@@ -608,7 +668,7 @@ function buyrichbadge(){
     discount1=true;
     localStorage.setItem('discount1', discount1)
     alert("Item should be instantly avaliable, contact admin for further assistance.")
-    window.location.reload();
+    //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
@@ -618,7 +678,6 @@ function buyrichbadge(){
 
 function buypull(){
     qpull = document.getElementById("pullq").value;
-    passval = document.getElementById("addpasspull").value;
     price=150;
     qprice=price*qpull;
     
@@ -628,12 +687,13 @@ function buypull(){
     }
 
     
-    if(passval==sdfasf & qpull > 0 & counter-(qprice)>=0){
+    if(qpull > 0 & counter-(qprice)>=0){
+        submitForm(qpull, "pull it", usernamename);
     counter=counter-(qprice);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
-    window.location.reload();
+    //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
@@ -644,13 +704,14 @@ function buypull(){
 
 function buypop(){
     qpop = document.getElementById("popq").value;
-    passval = document.getElementById("adpasspop").value;
-    if(passval==sdfasf & qpop > 0 & counter-(qpop*25)>=0){
+
+    if(qpop > 0 & counter-(qpop*25)>=0){
+    submitForm(qpop, "pop it", usernamename);
     counter=counter-(qpop*25);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     alert("Transaction completed. Expect order to arrive within a week.")
-    window.location.reload();
+    //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
