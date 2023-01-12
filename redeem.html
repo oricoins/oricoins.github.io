@@ -51,7 +51,7 @@
                                 <button type="button" class="buy" onclick="buyfigit()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">250 Oricoins</span></button>
-                                <h5 style="color:red">*2 left in stock, order soon!</h5>
+                                <h5 style="color:red">*1 left in stock, order soon!</h5>
                                 <div class="color-select">
                                 </div>
                             </div>
@@ -477,7 +477,7 @@ const saveOrders = (orderquantity, orderitem, ordername) =>{
 
 
 function checkvalfigit(){
-    if(figitq.value < 1 || figitq.value > 2){
+    if(figitq.value < 1 || figitq.value > 1){
         figitq.style.color="red";
     }else{
         figitq.style.color="#008384"
@@ -621,7 +621,7 @@ function buyfigit(){
         price=315;
         qprice=price*qfigit;
     }
-    if(qfigit > 0 & qfigit < 3 & counter-qprice>=0){
+    if(qfigit > 0 & qfigit < 2 & counter-qprice>=0){
     submitForm(qfigit, "figit cube", usernamename);
     counter=counter-(qfigit*450);
     text.textContent = counter;
