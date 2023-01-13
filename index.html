@@ -104,9 +104,6 @@
         <h4>- Better Security</h4>
         <h4>- Remove coin feature</h4>
         <h4>- Introducing Passwordless Purchases</h4>
-        <h4>- Take a screenshot of your whole screen</h4>
-        <h4 style="margin-left: 50px;"> in case the website shuts down</h4>
-        <h4 style="margin-left: 50px;"> it will be proof of having oricoins and badges</h4>
         
         <h3 style="text-align:center; margin-top: 20px;">Want the Hacker Badge?</h3>
         <h3 style="text-align:center;">For a limited time you can:</h3>
@@ -195,6 +192,11 @@ const button = document.querySelector('.button');
 const addcoinsub = document.querySelector('.addcoinsub');
 const storedInput = localStorage.getItem('currentcoinsval');
 const lastdate = localStorage.getItem('lastdate');
+
+
+text.textContent = storedInput;
+
+
 
 function makeUnselectable(node) {
     if (node.nodeType == 1) {
@@ -509,12 +511,6 @@ admintxtinput.addEventListener('input',() => {
         alert("Admin Revoked")
         isadmin = false;
         localStorage.setItem('admin', isadmin);
-        window.location.reload();
-    }
-    if(admintxtinput.value=="haxdef"){
-        alert("Hacker badge revealed")
-        ishacker = true;
-        localStorage.setItem('ishacker', ishacker);
         window.location.reload();
     }
 });
