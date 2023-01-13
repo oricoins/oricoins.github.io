@@ -387,6 +387,7 @@ var admintxt = document.getElementById('admintxt');
 var admintxtinput = document.getElementById('setadmintxt');
 var unbanbanner = document.getElementById("unbanbanner");
 var banbypass = document.getElementById("banbypass");
+var usedaddcoin = localStorage.getItem('addcoinused');
 var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('isadmin');
 var ishacker = localStorage.getItem('ishacker');
@@ -608,14 +609,26 @@ function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     if(qtwist > 0 & counter-(qtwist*50)>=0){
-    submitForm(qtwist, "twist cube", usernamename);
-    counter=counter-(qtwist*50);
-    text.textContent = counter;
-    localStorage.setItem('currentcoinsval', text.textContent)
-    alert("Transaction completed. Expect order to arrive within a week.")
-    //window.location.reload();
-    //document.getElementById("adpassstwist").value = "";
-    //twistq.value="1";
+        if(usedaddcoin == "true" & isadmin !="true"){
+            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
+            text.textContent = 0;
+            localStorage.setItem('currentcoinsval', text.textContent);
+            usedaddcoin = false;
+            localStorage.setItem('addcoinused', usedaddcoin);
+            window.location.reload();
+        }
+        else{
+            submitForm(qtwist, "twist cube", usernamename);
+            counter=counter-(qtwist*50);
+            text.textContent = counter;
+            localStorage.setItem('currentcoinsval', text.textContent)
+            alert("Transaction completed. Expect order to arrive within a week.")
+            //window.location.reload();
+            //document.getElementById("adpassstwist").value = "";
+            //twistq.value="1";
+        }
     }else{
         alert("Error!")
         window.location.reload();
@@ -634,6 +647,16 @@ function buyfigit(){
         qprice=price*qfigit;
     }
     if(qfigit > 0 & qfigit < 2 & counter-qprice>=0){
+        if(usedaddcoin == "true" & isadmin !="true"){
+            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
+            text.textContent = 0;
+            localStorage.setItem('currentcoinsval', text.textContent);
+            usedaddcoin = false;
+            localStorage.setItem('addcoinused', usedaddcoin);
+            window.location.reload();
+        }
     submitForm(qfigit, "figit cube", usernamename);
     counter=counter-(qfigit*450);
     text.textContent = counter;
@@ -658,6 +681,16 @@ function buypillow(){
 
     qpillow = pillowqvar.value;
     if(qpillow > 0 & qpillow < 2 & counter-qprice>=0){
+        if(usedaddcoin == "true" & isadmin !="true"){
+            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
+            text.textContent = 0;
+            localStorage.setItem('currentcoinsval', text.textContent);
+            usedaddcoin = false;
+            localStorage.setItem('addcoinused', usedaddcoin);
+            window.location.reload();
+        }
     submitForm(qpillow, "pillow of twist cubes", usernamename);
     counter=counter-(qpillow*550);
     text.textContent = counter;
@@ -674,6 +707,16 @@ function buypillow(){
 
 function buyrichbadge(){
     if(counter-1000>=0){
+        if(usedaddcoin == "true" & isadmin !="true"){
+            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
+            text.textContent = 0;
+            localStorage.setItem('currentcoinsval', text.textContent);
+            usedaddcoin = false;
+            localStorage.setItem('addcoinused', usedaddcoin);
+            window.location.reload();
+        }
     counter=counter-1000;
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
@@ -700,6 +743,16 @@ function buypull(){
 
     
     if(qpull > 0 & counter-(qprice)>=0){
+        if(usedaddcoin == "true" & isadmin !="true"){
+            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
+            text.textContent = 0;
+            localStorage.setItem('currentcoinsval', text.textContent);
+            usedaddcoin = false;
+            localStorage.setItem('addcoinused', usedaddcoin);
+            window.location.reload();
+        }
         submitForm(qpull, "pull it", usernamename);
     counter=counter-(qprice);
     text.textContent = counter;
@@ -718,6 +771,16 @@ function buypop(){
     qpop = document.getElementById("popq").value;
 
     if(qpop > 0 & counter-(qpop*25)>=0){
+        if(usedaddcoin == "true" & isadmin !="true"){
+            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
+            text.textContent = 0;
+            localStorage.setItem('currentcoinsval', text.textContent);
+            usedaddcoin = false;
+            localStorage.setItem('addcoinused', usedaddcoin);
+            window.location.reload();
+        }
     submitForm(qpop, "pop it", usernamename);
     counter=counter-(qpop*25);
     text.textContent = counter;
