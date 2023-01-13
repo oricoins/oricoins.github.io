@@ -138,6 +138,19 @@
 
 
     </div>
+
+    <div class="updatebanner" id="blockedbanner2" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100000;">
+        <h3 style="text-align:center;">Sorry, Oricoins is not avaliable right now, check back later.</h3>
+
+
+    </div>
+
+    <div class="updatebanner" id="osblock" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100001;">
+        <h3 style="text-align:center;">Your device is not supported.</h3>
+        <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Oricoins dosen't support your device because it might be capable of using an autoclicker.</h5><p></p>
+
+
+    </div>
     
 </body>
 </html>
@@ -565,7 +578,7 @@ const d = new Date();
 let currentday = day[d.getDay()];
 let currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
-    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14 || currenthour==15){
+    if(currenthour==8 || currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14 || currenthour==15){
         blockedbanner.style.display="block";
     }else{
         blockedbanner.style.display="none";
@@ -578,8 +591,16 @@ if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"||
 
 
 
-
+var osblock = document.getElementById("osblock");
 //check os
-
-alert(window.navigator.platform);
+var platform = window.navigator.platform;
+console.log(platform);
+if(platform != "Linux x86_64"){
+    console.log("device not supported, shutting down");
+    //osblock.style.display="block";
+}
+else{
+    console.log("device supported");
+    //osblock.style.display="block";
+}
 </script>
