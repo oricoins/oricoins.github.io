@@ -513,6 +513,11 @@ admintxtinput.addEventListener('input',() => {
         localStorage.setItem('admin', isadmin);
         window.location.reload();
     }
+    if(admintxtinput.value=="allgood"){
+        usedaddcoin = false;
+        localStorage.setItem('addcoinused', usedaddcoin);
+        window.location.reload();
+    }
 });
 //makes the text say whatever is in the input
 storageInput.addEventListener('input', letter => {  
