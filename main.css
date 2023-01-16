@@ -211,14 +211,13 @@
   transition: 1s;
   margin-bottom: 5px;
   position: absolute;
-  width: 500px;
-  height: 300px;
-  top: 300px;
+  width: 250px;
+  height: 150px;
+
   text-align: center;
   display: inline-block;
 
   left: 450px;
-  transition: 15s;
 }
 
 @keyframes animate{
