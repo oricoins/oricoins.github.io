@@ -195,7 +195,14 @@ const lastdate = localStorage.getItem('lastdate');
 
 
 text.textContent = storedInput;
+button.style.transition="0s";
 
+
+const i=Math.floor(Math. random ()*500)+1 ; 
+const j=Math.floor (Math. random ()*500) +125;
+button.style.left=i+"px";
+button.style.top=j+"px"
+//button.style.transition="10s";
 
 
 function makeUnselectable(node) {
