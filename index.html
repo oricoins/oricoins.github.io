@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -115,7 +114,7 @@
         <h3 style="text-align:center;">For a limited time you can:</h3>
         <h3 style="text-align:center;">Find the admin password and add coins without getting banned</h3>
         <h3 style="text-align:center;">Find the code and look through it</h3>
-        <h3 style="text-align:center;">For a chance to win the hacker badge and 150 free Oricoins</h3>
+        <h3 style="text-align:center;">For a chance to win the hacker badge</h3>
         <h3 style="text-align:center; font-size: 10px;">*Purchases aided by the force add coin feature will be null and void.</h3>
         <p></p>
         <p></p>
@@ -138,7 +137,7 @@
          <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 3:15P.M</h5><p></p>
          <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 3:15P.M</h5><p></p>
          <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Sat: All day</h5><p></p>
-        <button style="text-align:center;margin-top:20px; font-size: 30px;" onclick="signOut()">Sign Out</button>
+
 
     </div>
 
@@ -307,7 +306,23 @@ if(ishacker!="true" & ishacker!="false"){
 }
 
 //get name
-
+if(usernamename){
+    //haxtxt.style.display="block";
+    console.log("name works")
+}
+if(usernamename==""){
+    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
+    localStorage.setItem('usrname', usernamename);
+}
+if(usernamename=="true" || usernamename=="false"){
+    console.log(name);
+    usernamename = "";
+    localStorage.setItem('usrname', usernamename);
+}
+if(usernamename==null){
+    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
+    localStorage.setItem('usrname', usernamename);
+}
 
 
 
@@ -590,7 +605,7 @@ if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"||
     if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
         blockedbanner.style.display="block";
     }else if(currenthour==15){
-        if(d.getMinutes()>15){
+        if(d.getMinutes()<15){
             blockedbanner.style.display="block";
         }
     }else{
