@@ -1,6 +1,4 @@
 
-var email = document.getElementById('email').value;
-var password = document.getElementById('psw').value;
 var loginbox = document.getElementById('loginbox');
 var hideonstart = document.getElementById('hideonstart');
 var loginbtn = document.getElementById('signinbutton');
