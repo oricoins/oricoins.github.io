@@ -3,6 +3,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+
+    <script src="redeem.js"></script>
     <title>Redeem | Oricoins</title>
 </head>
 <body id="body">
@@ -323,15 +327,15 @@
 
     </form>
 
-    <div class="updatebanner" id="bannerblock" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px; z-index: 10000;">
+    <div class="updatebanner" id="bannerblock" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px; z-index: 10000;">
         <h3 style="text-align:center;">Sorry, you can't use Oricoins right now</h3>
          <h5 style="text-align:center;margin-top:50px;">Oricoins can be used on:</h5><p></p>
          <h5 style="text-align:center;margin-top:50px; font-size: 10px;">Sun: All day</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Mon: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Tues: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Wed: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Mon: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Tues: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Wed: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 3:15P.M</h5><p></p>
          <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Sat: All day</h5><p></p>
 
 
@@ -344,15 +348,11 @@
     </div> -->
 
 
-    <div class="updatebanner" id="osblock" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100001;">
-        <h3 style="text-align:center;">Your device is not supported.</h3>
-        <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Oricoins dosen't support your device because it might be capable of using an autoclicker.</h5><p></p>
 
-
-    </div>
 
 <script type="text/javascript" src="mobile.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+
 <script>
 if(document.querySelector('.storage')){
     document.getElementById("text").textContent=localStorage.getItem('currentcoinsval');
@@ -410,37 +410,21 @@ const d = new Date();
 var currentday = day[d.getDay()];
 var currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
-    if(currenthour==8 || currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14 || currenthour==15){
+    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
         bannerblock.style.display="block";
+    }else if(currenthour==15){
+        if(d.getMinutes()<15){
+            bannerblock.style.display="block";
+        }
     }else{
         bannerblock.style.display="none";
     }
 }else{
-    bannerblock.style.display="block";
+    bannerblock.style.display="none";
 }
 
-//get name
-if(usernamename=="true" || usernamename=="false"){
-    console.log(name);
-    usernamename = "";
-    localStorage.setItem('usrname', usernamename);
-}
-if(usernamename==null || usernamename==""){
-    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
-    localStorage.setItem('usrname', usernamename);
-}
 
 //firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyCkyYCoGxBZ7qRjqQUAI_QK1CK1UjZ3C1s",
-    authDomain: "oricoinorders.firebaseapp.com",
-    databaseURL: "https://oricoinorders-default-rtdb.firebaseio.com",
-    projectId: "oricoinorders",
-    storageBucket: "oricoinorders.appspot.com",
-    messagingSenderId: "163444654010",
-    appId: "1:163444654010:web:75c93a2617543ae0702783",
-    measurementId: "G-Y0YBKFCB71"
-  };
 
   //const app = initializeApp(firebaseConfig);
   //const analytics = getAnalytics(app);
