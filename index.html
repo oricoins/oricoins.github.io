@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    
+    <script src="form.js"></script>
     <title>Oricoin | Origami Order Limiter</title>
 </head>
 <body>
@@ -21,6 +25,7 @@
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
+                <li><a class="text" onclick="signOut()" id="signout" href="#">Sign Out</a></li>
             </ul>
         </nav>
         <a class="cta" href="#" onclick="showbanner()">Inject coins</a>
@@ -126,11 +131,11 @@
         <h3 style="text-align:center;">Sorry, you can't use Oricoins right now</h3>
          <h5 style="text-align:center;margin-top:50px;">Oricoins can be used on:</h5><p></p>
          <h5 style="text-align:center;margin-top:50px; font-size: 10px;">Sun: All day</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Mon: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Tues: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Wed: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 4:00P.M</h5><p></p>
-         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 4:00P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Mon: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Tues: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Wed: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 3:15P.M</h5><p></p>
          <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Sat: All day</h5><p></p>
 
 
@@ -142,10 +147,19 @@
 
     </div> -->
 
-    <div class="updatebanner" id="osblock" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100001;">
-        <h3 style="text-align:center;">Your device is not supported.</h3>
-        <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Oricoins dosen't support your device because it might be capable of using an autoclicker.</h5><p></p>
 
+
+    <div class="updatebanner login" id="loginbanner" style="display: none;height: 100%;width:100%; background-color:rgb(79, 136, 221); border-radius:0px;z-index: 500;">
+
+    <div class="login" id="loginbox">
+        <h3 style="text-align:center; margin-top: 100px;" id="hideonstart" data-tilt>Login/Signup</h3>
+        <input placeholder="Name" id="email"><p></p>
+        <input type="password" placeholder="Password" id="psw"><p></p>
+        <button id="signinbutton" onclick="signIn()">Sign In</button>
+        <button id="signupbutton" onclick="signUp()" style="background:linear-gradient(to right, rgba(0, 0, 255, 0.603), rgba(5, 155, 5, 0.672));">Sign Up</button>
+
+
+    </div>
 
     </div>
     
@@ -154,6 +168,8 @@
 
 
 <script type="text/javascript" src="mobile.js"></script>
+<script type="module" src="main.js"></script>
+<script type="text/javascript" src="vanilla-tilt.js"></script>
 <script>
 
 //declare variables
@@ -586,13 +602,17 @@ const d = new Date();
 let currentday = day[d.getDay()];
 let currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
-    if(currenthour==8 || currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14 || currenthour==15){
+    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
         blockedbanner.style.display="block";
+    }else if(currenthour==15){
+        if(d.getMinutes()>15){
+            blockedbanner.style.display="block";
+        }
     }else{
         blockedbanner.style.display="none";
     }
 }else{
-    blockedbanner.style.display="block";
+    blockedbanner.style.display="none";
 }
 
 
