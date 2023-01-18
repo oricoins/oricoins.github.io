@@ -18,7 +18,7 @@ signinbutton.style.display="none";
 sleep(1000).then(() => {
 loginbox.style.height="500px";
 })
-sleep(2000).then(() => {
+sleep(3000).then(() => {
 hideonstart.style.display="block";
 loginbtn.style.display="block";
 psw.style.display="block";
