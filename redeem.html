@@ -693,8 +693,8 @@ function buyrichbadge(){
     if(counter-1000>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
             alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
-            ishacker = true;
-            localStorage.setItem('ishacker', ishacker);
+            discount1 = true;
+            localStorage.setItem('discount1', discount1);
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
