@@ -59,6 +59,7 @@ function synccoins(){
         hackerBadge : localStorage.getItem('ishacker'),
         addCoinUsed : localStorage.getItem('addcoinused'),
         freeClaimed : localStorage.getItem('freeclaimed1'),
+        banned : localStorage.getItem('banned'),
     })
     console.log("coin val saved");
 
