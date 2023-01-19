@@ -67,15 +67,35 @@
           admin : localStorage.getItem('admin'),
           hackerBadge : localStorage.getItem('ishacker'),
           addCoinUsed : localStorage.getItem('addcoinused'),
-          freeClaimed : localStorage.getItem('freeclaimed1'),
-          banned : localStorage.getItem('banned'),
+          freeClaimed : localStorage.getItem('freeclaimed2'),
+          banned : localStorage.getItem('banned')
       })
       console.log("coin val saved");
-  
+      getsynccoins()
   
   }
 
+  function getsynccoins() {
 
+    var user_ref = database.ref('userSync/' + auth.currentUser.uid)
+      return user_ref.once("value", function(snapshot) {
+      var data = snapshot.val();
+      console.log(data);
+      //alert(data.coins)
+      localStorage.setItem('currentcoinsval', data.coins)
+      localStorage.setItem('discount1', data.discount1Badge)
+      localStorage.setItem('admin', data.admin)
+      localStorage.setItem('ishacker', data.hackerBadge)
+      localStorage.setItem('addcoinused', data.addCoinUsed)
+      localStorage.setItem('freeclaimed2', data.freeClaimed)
+      localStorage.setItem('banned', data.banned)
+    })
+    }
+    window.onbeforeunload = closingCode;
+    function closingCode(){
+       synccoins()
+       getsynccoins()
+    }
 
 
   //active user to homepage

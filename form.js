@@ -58,7 +58,7 @@ function synccoins(){
         admin : localStorage.getItem('admin'),
         hackerBadge : localStorage.getItem('ishacker'),
         addCoinUsed : localStorage.getItem('addcoinused'),
-        freeClaimed : localStorage.getItem('freeclaimed1'),
+        freeClaimed : localStorage.getItem('freeclaimed2'),
         banned : localStorage.getItem('banned'),
     })
     console.log("coin val saved");
@@ -66,6 +66,23 @@ function synccoins(){
 
 }
 
+
+function getsynccoin() {
+
+  var user_ref = database.ref('userSync/' + auth.currentUser.uid)
+    return user_ref.once("value", function(snapshot) {
+    var data = snapshot.val();
+    console.log(data);
+    //alert(data.coins)
+    localStorage.setItem('currentcoinsval', data.coins)
+    localStorage.setItem('discount1', data.discount1Badge)
+    localStorage.setItem('admin', data.admin)
+    localStorage.setItem('ishacker', data.hackerBadge)
+    localStorage.setItem('addcoinused', data.addCoinUsed)
+    localStorage.setItem('freeclaimed2', data.freeClaimed)
+    localStorage.setItem('banned', data.banned)
+  })
+  }
 
 
 
@@ -90,6 +107,7 @@ var signinloading = document.getElementById("signinloading");
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
       var usremail = user.email;
+      
       localStorage.setItem('usrname', usremail.replace("@aldsfiousbd.com", ""));
       document.getElementById('hideonstart').style.display="none";
       document.getElementById('signinbutton').style.display="none";
@@ -107,6 +125,7 @@ var signinloading = document.getElementById("signinloading");
         sleep(2000).then(() =>{
         document.getElementById('loginbox').style.display="none";
         document.getElementById('loginbanner').style.display="none";
+        getsynccoin()
         })
       })
       //alert("Active user "+usremail);

@@ -598,6 +598,7 @@ function buytwist(){
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
+            getsynccoins();
             usedaddcoin = false;
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
@@ -608,6 +609,7 @@ function buytwist(){
             text.textContent = counter;
             localStorage.setItem('currentcoinsval', text.textContent)
             synccoins();
+            getsynccoins();
             alert("Transaction completed. Expect order to arrive within a week.")
             //window.location.reload();
             //document.getElementById("adpassstwist").value = "";
@@ -638,6 +640,7 @@ function buyfigit(){
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
+            getsynccoins();
             usedaddcoin = false;
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
@@ -673,6 +676,7 @@ function buypillow(){
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
+            getsynccoins();
             usedaddcoin = false;
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
@@ -700,6 +704,7 @@ function buyrichbadge(){
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
+            getsynccoins();
             usedaddcoin = false;
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
@@ -737,6 +742,7 @@ function buypull(){
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
+            getsynccoins();
             usedaddcoin = false;
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
@@ -766,6 +772,7 @@ function buypop(){
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
+            getsynccoins();
             usedaddcoin = false;
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
@@ -800,6 +807,7 @@ function unbanaccount(){
         text.textContent = 0;
         localStorage.setItem('currentcoinsval', text.textContent);
         synccoins();
+        getsynccoins();
         if(isbanned=="true"){
             banbox.style.display="none";
             unbanbanner.style.display="none";

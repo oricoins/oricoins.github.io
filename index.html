@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="main.css">
-
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+  <script src="form.js"></script>
 
     
     <title>Oricoin | Origami Order Limiter</title>
@@ -108,7 +111,7 @@
         <h4>- SmartBan system</h4>
         <h4>- Better Security</h4>
         <h4>- Remove coin feature</h4>
-        <h4>- Introducing Passwordless Purchases</h4>
+        <h4>- New account feature! All progress saves to your account.</h4>
         
         <h3 style="text-align:center; margin-top: 20px;">Want the Hacker Badge?</h3>
         <h3 style="text-align:center;">For a limited time you can:</h3>
@@ -163,10 +166,7 @@
     </div>
 
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-  <script src="form.js"></script>
+
 </body>
 </html>
 <script type="text/javascript" src="mobile.js"></script>
@@ -194,7 +194,7 @@ var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
 var discount1 = localStorage.getItem('discount1');
-var updatefreecoin = localStorage.getItem('freeclaimed1');
+var updatefreecoin = localStorage.getItem('freeclaimed2');
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -246,6 +246,8 @@ banbox.style.display="none";
 if(isbanned=="true"){
     banbox.style.display="block";
 }
+
+
 if(isadmin=="true"){
     admintxt.style.display="block";
 }
@@ -271,7 +273,7 @@ if(updatefreecoin=="true"){
 }
 if(updatefreecoin!="true" & updatefreecoin!="false"){
     updatefreecoin = false;
-    localStorage.setItem('freeclaimed1', updatefreecoin);
+    localStorage.setItem('freeclaimed2', updatefreecoin);
 }
 
 
@@ -333,7 +335,7 @@ function claimupdatereward(){
 }
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent);
-    localStorage.setItem('freeclaimed1', updatefreecoin);
+    localStorage.setItem('freeclaimed2', updatefreecoin);
     window.location.reload();
 
 }
@@ -568,6 +570,7 @@ const saveToLocalStorage = () => {
                 window.location.reload();
             }
             synccoins();
+            getsynccoins();
         }
     }else{
         localStorage.setItem('lastdate', Date.now());
@@ -619,4 +622,5 @@ else{
     console.log("device supported");
     //osblock.style.display="block";
 }
+
 </script>
