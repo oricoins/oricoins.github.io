@@ -60,7 +60,7 @@ function synccoins(){
         addCoinUsed : localStorage.getItem('addcoinused'),
         freeClaimed : localStorage.getItem('freeclaimed1'),
     })
-    alert("saved");
+    console.log("coin val saved");
 
 
 }
