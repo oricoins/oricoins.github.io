@@ -567,9 +567,10 @@ const saveToLocalStorage = () => {
             newdatetwelvehr=newdate/10000;
             
             if(clickcounter==2){
+                synccoins();
                 window.location.reload();
             }
-            synccoins();
+            
         }
     }else{
         localStorage.setItem('lastdate', Date.now());
