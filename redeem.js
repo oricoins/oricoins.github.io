@@ -52,6 +52,32 @@
     auth.signOut();
     window.location.reload();
   }
+
+
+  var database = firebase.database();
+  function synccoins(){
+   
+  
+  
+      database.ref('userSync/' + auth.currentUser.uid).set({
+          name : usernamename,
+          uid : auth.currentUser.uid,
+          coins : localStorage.getItem('currentcoinsval'),
+          discount1Badge : localStorage.getItem('discount1'),
+          admin : localStorage.getItem('admin'),
+          hackerBadge : localStorage.getItem('ishacker'),
+          addCoinUsed : localStorage.getItem('addcoinused'),
+          freeClaimed : localStorage.getItem('freeclaimed1'),
+          banned : localStorage.getItem('banned'),
+      })
+      console.log("coin val saved");
+  
+  
+  }
+
+
+
+
   //active user to homepage
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
