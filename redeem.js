@@ -91,11 +91,6 @@
       localStorage.setItem('banned', data.banned)
     })
     }
-    window.onbeforeunload = closingCode;
-    function closingCode(){
-       synccoins()
-       getsynccoins()
-    }
 
 
   //active user to homepage
@@ -106,6 +101,8 @@
       //alert("Active user "+usremail);
       //user is signed in, use email variable to get the user's email
       document.getElementById('loginbanner').style.display="none";
+      synccoins();
+      getsynccoins();
     }else{
         window.location.href="index.html";
     }
