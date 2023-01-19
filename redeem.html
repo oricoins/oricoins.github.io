@@ -3,9 +3,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
     <script src="redeem.js"></script>
     <title>Redeem | Oricoins</title>
 </head>
@@ -443,9 +443,12 @@ if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"||
 //const analytics = getAnalytics(app);
 
 var database = firebase.database();
-
+var randomOrderTicket = Math.floor(Math.random() * 10001);
+var refdata = "";
 function submitForm(quantityvar, itemvar, usernamename){
-    database.ref('orders/' + usernamename).set({
+    randomOrderTicket = Math.floor(Math.random() * 10001);
+    refdata = usernamename + randomOrderTicket
+    database.ref('orders/' + refdata ).set({
         name : usernamename,
         order : itemvar,
         quantity : quantityvar
