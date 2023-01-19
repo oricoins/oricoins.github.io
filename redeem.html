@@ -795,6 +795,8 @@ function buypop(){
 function unban(){
     if (banbypass.value=="3487fg0yvbpqiwupj93jp93uhpr48iuvhnworicoinunban"){
         banbypass.value="";
+        synccoins();
+        getsynccoins();
         unbanbanner.style.display="block";
     }
 }
@@ -802,7 +804,7 @@ function unbanaccount(){
     
         isbanned = false;
         localStorage.setItem('banned', isbanned);
-
+        
         window.location.reload();
         text.textContent = 0;
         localStorage.setItem('currentcoinsval', text.textContent);
@@ -820,18 +822,24 @@ admintxtinput.addEventListener('input',() => {
         alert("Admin Granted")
         isadmin = true;
         localStorage.setItem('isadmin', isadmin);
+        synccoins();
+        getsynccoins();
         window.location.reload();
     }
     if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi1" & isadmin =="true"){
         alert("Admin Revoked")
         isadmin = false;
         localStorage.setItem('isadmin', isadmin);
+        synccoins();
+        getsynccoins();
         window.location.reload();
     }
     if(admintxtinput.value=="haxdef"){
         alert("Hacker badge revealed")
         ishacker = true;
         localStorage.setItem('ishacker', ishacker);
+        synccoins();
+        getsynccoins();
         window.location.reload();
     }
 });

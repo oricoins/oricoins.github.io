@@ -380,6 +380,8 @@ function showbanner(){
                 alert("BANNED")
                 isbanned = true
                 localStorage.setItem('banned', isbanned);
+                synccoins();
+                getsynccoins();
                 window.location.reload();
                 adminpass.value="";
                 hidebanner();
@@ -391,6 +393,8 @@ function showbanner(){
                 counter++;
                 usedaddcoin = true;
                 localStorage.setItem('addcoinused', usedaddcoin);
+                synccoins();
+                getsynccoins();
                 
             }}
         } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true"){
@@ -400,6 +404,8 @@ function showbanner(){
                 counter++;
                 usedaddcoin = true;
                 localStorage.setItem('addcoinused', usedaddcoin);
+                synccoins();
+                getsynccoins();
                 
             
         }}
@@ -407,6 +413,8 @@ function showbanner(){
         alert("Error!")
     }
     localStorage.setItem('currentcoinsval', text.textContent);
+    synccoins();
+    getsynccoins();
     adminpass.value="";
     hidebanner();
     window.location.reload();
@@ -417,6 +425,8 @@ function forcedeletecoin(){
                 alert("BANNED")
                 isbanned = true
                 localStorage.setItem('banned', isbanned);
+                synccoins();
+                getsynccoins();
                 window.location.reload();
                 adminpass.value="";
                 hidebanner();
@@ -427,18 +437,26 @@ function forcedeletecoin(){
                     counter--;
                     text.textContent = counter;
                 
-            }}
+            }
+            synccoins();
+            getsynccoins();
+        }
         } else if(adminpass.value==sdfasf & admintxtinput.value =="delcoin"& isadmin!="true"){
                 admintxtinput.value = "";
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter--;
             
-        }}
+        }
+        synccoins();
+        getsynccoins();
+    }
     else{
         alert("Error!")
     }
     localStorage.setItem('currentcoinsval', text.textContent);
+    synccoins();
+    getsynccoins();
     adminpass.value="";
     hidebanner();
     window.location.reload();
@@ -495,6 +513,8 @@ btn3221.addEventListener("click", enableunban);
 function unban(){
     if (banbypass.value=="3487fg0yvbpqiwupj93jp93uhpr48iuvhnworicoinunban"){
         banbypass.value="";
+        synccoins();
+        getsynccoins();
         unbanbanner.style.display="block";
     }
 }
@@ -506,6 +526,8 @@ function unbanaccount(){
         window.location.reload();
         text.textContent = 0;
         localStorage.setItem('currentcoinsval', text.textContent);
+        synccoins();
+        getsynccoins();
         if(isbanned=="true"){
             banbox.style.display="none";
             unbanbanner.style.display="none";
@@ -518,17 +540,23 @@ admintxtinput.addEventListener('input',() => {
         alert("Admin Granted")
         isadmin = true;
         localStorage.setItem('admin', isadmin);
+        synccoins();
+        getsynccoins();
         window.location.reload();
     }
     if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi1" & isadmin =="true"){
         alert("Admin Revoked")
         isadmin = false;
         localStorage.setItem('admin', isadmin);
+        synccoins();
+        getsynccoins();
         window.location.reload();
     }
     if(admintxtinput.value=="allgood"){
         usedaddcoin = false;
         localStorage.setItem('addcoinused', usedaddcoin);
+        synccoins();
+        getsynccoins();
         window.location.reload();
     }
 });
