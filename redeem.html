@@ -51,11 +51,11 @@
                                 <h6>Color: <span style="color:rgb(0, 0, 0);margin-bottom: 0px;">BLACK &amp; <span style="color:wheat">WHITE</span></span></h6>
                                 <h1 id="figitrich" style="display: none;"><span style="color: black;" id="price">450 </span><span style="vertical-align: super; color: red; margin-left:5px; font-size: 11px;">-30%</span><span style="color: rgb(0, 0, 0); margin-left:5px; margin-right:5px;">315</span><span>Oricoins</span></h1>
                                 <h1 id="figitbanner" style="display: block;"><span style="color: black;" id="price">450 </span><span>Oricoins</span></h1>
-                                <input type="number" id="figitq" placeholder="Quantity" class="disabled" disabled>
-                                <button type="button" class="buy" onclick="buyfigit()" style="background-color:rgba(166, 149, 158, 0.38);" disabled>Buy Now</button>
+                                <input type="number" id="figitq" placeholder="Quantity">
+                                <button type="button" class="buy" onclick="buyfigit()">Buy Now</button>
                                 <h6>*Oricoins are immedietly deducted.</h6>
                                 <button style="padding-top: 5px; padding-bottom: 5px;border: none;">RETAIL VALUE: <span style="color: 005384;">250 Oricoins</span></button>
-                                <h5 style="color:red">*Out of stock</h5>
+                                <h5 style="color:red">*1 left in stock, order soon!</h5>
                                 <div class="color-select">
                                 </div>
                             </div>
@@ -220,7 +220,7 @@
                                 <p>Paper toys</p>
                                 <h2>Paper Pull It</h2>
                                 <h6>Color: <span style="color:rgb(193, 193, 26);margin-bottom: 0px;">YELLOW</span></h6>
-                                <h1 id="pullrich" style="display: none;"><span style="color: black;" id="price2">105 </span><span style="vertical-align: super; color: red; margin-left:5px; font-size: 11px;">-30%</span><span style="color: rgb(0, 0, 0); margin-left:5px; margin-right:5px;">105</span><span>Oricoins</span></h1>
+                                <h1 id="pullrich" style="display: none;"><span style="color: black;" id="price2">150 </span><span style="vertical-align: super; color: red; margin-left:5px; font-size: 11px;">-30%</span><span style="color: rgb(0, 0, 0); margin-left:5px; margin-right:5px;">105</span><span>Oricoins</span></h1>
                                 <h1 id="pullbanner" style="display: block;"><span style="color: black;" id="price">150 </span><span>Oricoins</span></h1>
                                 
                                 <input type="number" id="pullq" placeholder="Quantity">
@@ -437,8 +437,7 @@ if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"||
   measurementId: "G-Y0YBKFCB71"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
+  
   //const firebase = firebase.auth();
 //const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
@@ -693,8 +692,8 @@ function buyrichbadge(){
     if(counter-1000>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
             alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
-            discount1 = true;
-            localStorage.setItem('discount1', discount1);
+            ishacker = true;
+            localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
             localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
