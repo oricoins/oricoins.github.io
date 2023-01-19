@@ -569,6 +569,7 @@ const saveToLocalStorage = () => {
             if(clickcounter==2){
                 window.location.reload();
             }
+            localStorage.setItem('currentcoinsval', text.textContent);
             synccoins();
             getsynccoins();
         }
@@ -576,7 +577,7 @@ const saveToLocalStorage = () => {
         localStorage.setItem('lastdate', Date.now());
     }
     
-    localStorage.setItem('currentcoinsval', text.textContent);
+
     
 }
 //checks if button is pressed and executes the function to save to local storage
