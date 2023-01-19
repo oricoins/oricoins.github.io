@@ -5,6 +5,7 @@ var loginbtn = document.getElementById('signinbutton');
 var psw = document.getElementById('psw');
 var loginusername = document.getElementById('email');
 var signinbutton = document.getElementById('signupbutton');
+var signinloading = document.getElementById("signinloading");
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -15,6 +16,7 @@ psw.style.display="none";
 loginusername.style.display="none";
 loginbtn.style.display="none";
 signinbutton.style.display="none";
+signinloading.style.display="none";
 sleep(1000).then(() => {
 loginbox.style.height="500px";
 })

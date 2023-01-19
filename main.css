@@ -515,3 +515,10 @@
 .login button:hover{
   width: 150px;
 }
+
+.login h2{
+  text-align: center;
+  margin-top: 220px;
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+}

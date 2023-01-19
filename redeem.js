@@ -1,17 +1,9 @@
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyCkyYCoGxBZ7qRjqQUAI_QK1CK1UjZ3C1s",
-  authDomain: "oricoinorders.firebaseapp.com",
-  databaseURL: "https://oricoinorders-default-rtdb.firebaseio.com",
-  projectId: "oricoinorders",
-  storageBucket: "oricoinorders.appspot.com",
-  messagingSenderId: "163444654010",
-  appId: "1:163444654010:web:75c93a2617543ae0702783",
-  measurementId: "G-Y0YBKFCB71"
-  };
+  
   // Initialize Firebase
+  
   firebase.initializeApp(firebaseConfig);
 
   const auth =  firebase.auth();
@@ -61,3 +53,9 @@
         window.location.href="index.html";
     }
   })
+
+
+
+
+
+  

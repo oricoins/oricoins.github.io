@@ -24,7 +24,6 @@
     const promise = auth.createUserWithEmailAndPassword(email.value+"@aldsfiousbd.com",password.value);
     //
     promise.catch(e=>alert(e.message));
-    localStorage.setItem('usrname', email.value);
     alert("SignUp Successfully");
   }
 
@@ -33,30 +32,85 @@
     var email = document.getElementById("email");
     var password  = document.getElementById("psw");
     const promise = auth.signInWithEmailAndPassword(email.value+"@aldsfiousbd.com",password.value);
-    localStorage.setItem('usrname', email.value);
     promise.catch(e=>alert(e.message));
     
   }
 
 
+  //signOut
+
+  function signOut(){
+    
+    auth.signOut();
+    document.getElementById('loginbanner').style.display="block";
+    window.location.reload();
+  }
+ var database = firebase.database();
+function synccoins(){
+ 
+
+
+    database.ref('userSync/' + auth.currentUser.uid).set({
+        name : usernamename,
+        uid : auth.currentUser.uid,
+        coins : localStorage.getItem('currentcoinsval'),
+        discount1Badge : localStorage.getItem('discount1'),
+        admin : localStorage.getItem('admin'),
+        hackerBadge : localStorage.getItem('ishacker'),
+        addCoinUsed : localStorage.getItem('addcoinused'),
+        freeClaimed : localStorage.getItem('freeclaimed1'),
+    })
+    alert("saved");
+
+
+}
+
+
+
+
+
+
+  //vars
   var coins = localStorage.getItem('currentcoinsval');
   var email = document.getElementById("email");
   var user = auth.currentUser;
 
-  //signOut
-
-  function signOut(){
-    auth.signOut();
-    window.location.reload();
-  }
+var loginbox = document.getElementById('loginbox');
+var hideonstart = document.getElementById('hideonstart');
+var loginbtn = document.getElementById('signinbutton');
+var psw = document.getElementById('psw');
+var loginusername = document.getElementById('email');
+var signinbutton = document.getElementById('signupbutton');
+var signinloading = document.getElementById("signinloading");
   //active user to homepage
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
       var usremail = user.email;
       localStorage.setItem('usrname', usremail.replace("@aldsfiousbd.com", ""));
+      document.getElementById('hideonstart').style.display="none";
+      document.getElementById('signinbutton').style.display="none";
+      document.getElementById('psw').style.display="none";
+      document.getElementById('email').style.display="none";
+      
+      document.getElementById('signupbutton').style.display="none";
+      document.getElementById("signinloading").style.display="block";
+      sleep(1500).then(() => {
+        document.getElementById("signinloading").style.display="none";
+        document.getElementById('loginbox').style.boxShadow="none";
+        document.getElementById('loginbox').style.height="1px";
+        document.getElementById('loginbanner').style.height="3px";
+        document.getElementById('loginbanner').style.width="3px";
+        sleep(2000).then(() =>{
+        document.getElementById('loginbox').style.display="none";
+        document.getElementById('loginbanner').style.display="none";
+        })
+      })
       //alert("Active user "+usremail);
       //user is signed in, use email variable to get the user's email
-      document.getElementById('loginbanner').style.display="none";
+      
     }else{
       document.getElementById('loginbanner').style.display="block";
     }

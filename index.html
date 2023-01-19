@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
+    <link rel="stylesheet" href="main.css">
+
     <script src="form.js"></script>
+    
     <title>Oricoin | Origami Order Limiter</title>
 </head>
 <body>
@@ -157,6 +159,7 @@
         <input type="password" placeholder="Password" id="psw"><p></p>
         <button id="signinbutton" onclick="signIn()">Sign In</button>
         <button id="signupbutton" onclick="signUp()" style="background:linear-gradient(to right, rgba(0, 0, 255, 0.603), rgba(5, 155, 5, 0.672));">Sign Up</button>
+        <h2 id="signinloading">Signing you in...</h2>
 
 
     </div>
@@ -165,8 +168,9 @@
     
 </body>
 </html>
-
-
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-database.js"></script>
 <script type="text/javascript" src="mobile.js"></script>
 <script type="module" src="main.js"></script>
 <script type="text/javascript" src="vanilla-tilt.js"></script>
@@ -305,24 +309,7 @@ if(ishacker!="true" & ishacker!="false"){
     localStorage.setItem('ishacker', ishacker);
 }
 
-//get name
-if(usernamename){
-    //haxtxt.style.display="block";
-    console.log("name works")
-}
-if(usernamename==""){
-    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
-    localStorage.setItem('usrname', usernamename);
-}
-if(usernamename=="true" || usernamename=="false"){
-    console.log(name);
-    usernamename = "";
-    localStorage.setItem('usrname', usernamename);
-}
-if(usernamename==null){
-    usernamename=prompt("Please type your name. Make sure it is your real name, this is how I know who to deliever to.")
-    localStorage.setItem('usrname', usernamename);
-}
+
 
 
 
@@ -578,15 +565,18 @@ const saveToLocalStorage = () => {
             //alert(currentdate)
             newdate = currentdate-lastdate;
             newdatetwelvehr=newdate/10000;
+            
             if(clickcounter==2){
                 window.location.reload();
             }
+            synccoins();
         }
     }else{
         localStorage.setItem('lastdate', Date.now());
     }
     
     localStorage.setItem('currentcoinsval', text.textContent);
+    
 }
 //checks if button is pressed and executes the function to save to local storage
 button.addEventListener('click', saveToLocalStorage)
