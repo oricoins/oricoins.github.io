@@ -127,7 +127,7 @@
         <p></p>
         <p></p>
         <p></p>
-        <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; background-color: rgb(0, 131, 148); color: rgb(255, 255, 255);" onclick="claimupdatereward()">   Claim 25 Oricoins</button>
+        <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; background-color: rgb(0, 131, 148); color: rgb(255, 255, 255);" onclick="claimupdatereward()">   Claim 50 Oricoins</button>
         <h5 style="text-align: center;">Claim Oricoins each time the website <p></p>is updated for free!</h5>
 
 
@@ -337,12 +337,14 @@ function enableadmintxtinput(){
 function claimupdatereward(){
     updatefreecointxt.disabled=true;
     updatefreecoin = true;
-    for (let i = 0; i < 25; i++){
+    for (let i = 0; i < 50; i++){
     counter++;
 }
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent);
     localStorage.setItem('freeclaimed2', updatefreecoin);
+    synccoins();
+    getsynccoins();
     window.location.reload();
 
 }
