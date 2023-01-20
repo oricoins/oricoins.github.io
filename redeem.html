@@ -425,16 +425,16 @@ var currentday = day[d.getDay()];
 var currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
     if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
-        bannerblock.style.display="block";
+        window.location.href="index.html";
     }else if(currenthour==15){
         if(d.getMinutes()<15){
-            bannerblock.style.display="block";
+            window.location.href="index.html";
         }
     }else{
-        bannerblock.style.display="none";
+        //time allowed
     }
 }else{
-    bannerblock.style.display="none";
+    //time allowed
 }
 
 
