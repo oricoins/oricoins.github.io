@@ -559,6 +559,21 @@ function adminpay(){
             window.location.reload();
         }
         blockedcmdtxtbox.value='';
+    }else if(isadmin=="false" & checkout>1){
+    blockedcmdtxtbox.addeventlistner('input', () =>{
+    if(blockedcmdtxtbox.value==sdfasf){
+    for (let i = 0; i < checkout; i++){
+                    counter++;
+                    text.textContent = counter;
+                
+            }
+            localStorage.setItem('currentcoinsval', text.textContent);
+            synccoins();
+            getsynccoins();
+            alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.")
+            window.location.reload();
+    }
+    })
     }
 }
 btn3221.addEventListener("click", enableunban);
