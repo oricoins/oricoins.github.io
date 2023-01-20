@@ -28,7 +28,7 @@
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
-                <li><a class="text" onclick="signOut()" id="signout" href="#">Sign Out</a></li>
+                <li><a class="text" onclick="document.getElementById('accountoverviewbanner').style.display='block';" id="signout" href="#">Account</a></li>
             </ul>
         </nav>
         <a class="cta" href="#" onclick="showbanner()">Inject coins</a>
@@ -129,6 +129,25 @@
         <p></p>
         <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; background-color: rgb(0, 131, 148); color: rgb(255, 255, 255);" onclick="claimupdatereward()">   Claim 50 Oricoins</button>
         <h5 style="text-align: center;">Claim Oricoins each time the website <p></p>is updated for free!</h5>
+
+
+    </div>
+
+
+    <div class="updatebanner accountoverviewbanner" id="accountoverviewbanner" style="display: none;height: 500px;">
+        <button class="riddlesback" onclick="document.getElementById('accountoverviewbanner').style.display='none';" style="margin-top:10px;margin-right:10px;">x</button>
+        <h1 class="riddlehead">Account Information</h1>
+        <div class="accInfo" style="margin-left: 0px; text-align: center;">
+        <h4>Name<span>:</span><span id="accountNameDisplay">accountName</span></h4>
+        <h4>Free Coin Claimed<span>:</span><span id="accountFreeCoinDisplay">accountFreeCoin</span></h4>
+        <h4>Add Coin Used<span>:</span><span id="accountAddCoinDisplay">accountAddCoin</span></h4>
+        <h4>Oricoin Value<span>:</span><span id="accountOricoinValDisplay">accountOricoinVal</span></h4>
+        <h4>Admin<span>:</span><span id="accountAdminDisplay">accountAdmin</span></h4>
+        <h4>Banned<span>:</span><span id="accountBannedDisplay">accountBanned</span></h4>
+        <h4>Hacker Badge<span>:</span><span id="accountHackerDisplay">accountHacker</span></h4>
+        <h4>Rich Person Badge<span>:</span><span id="accountRichPersonBadgeDisplay">accountRichBadge</span></h4>
+    </div>
+    <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; margin-left: 285px; background-color: rgb(0, 131, 148); color: rgb(255, 255, 255);" onclick="signOut()">Sign Out</button>
 
 
     </div>
