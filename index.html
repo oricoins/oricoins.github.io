@@ -556,9 +556,10 @@ function adminpay(){
             synccoins();
             getsynccoins();
             alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.")
+            blockedcmdtxtbox.value='';
             window.location.reload();
         }
-        blockedcmdtxtbox.value='';
+        
     }else if(isadmin=="false" & checkout>1){
     blockedcmdtxtbox.addeventlistner('input', () =>{
     if(blockedcmdtxtbox.value==sdfasf){
