@@ -24,7 +24,9 @@
     const promise = auth.createUserWithEmailAndPassword(email.value+"@aldsfiousbd.com",password.value);
     //
     promise.catch(e=>alert(e.message));
-    alert("SignUp Successfully");
+    createDBChild().then(
+    alert("SignUp Successfully")
+    )
   }
 
   //signIN function
@@ -33,6 +35,7 @@
     var password  = document.getElementById("psw");
     const promise = auth.signInWithEmailAndPassword(email.value+"@aldsfiousbd.com",password.value);
     promise.catch(e=>alert(e.message));
+    getsynccoins()
     
   }
 
@@ -42,10 +45,39 @@
   function signOut(){
     
     auth.signOut();
+    localStorage.setItem('currentcoinsval', "");
+    localStorage.setItem('discount1', "");
+    localStorage.setItem('admin', "");
+    localStorage.setItem('ishacker', "");
+    localStorage.setItem('addcoinused', "");
+    localStorage.setItem('freeclaimed2', "");
+    localStorage.setItem('banned', "");
     document.getElementById('loginbanner').style.display="block";
+    
     window.location.reload();
   }
  var database = firebase.database();
+
+ function createDBChild(){
+
+  database.ref('userSync/' + auth.currentUser.uid).set({
+      name : "null",
+      uid : "null",
+      coins : "0",
+      discount1Badge : "null",
+      admin : "false",
+      hackerBadge : "false",
+      addCoinUsed : "false",
+      freeClaimed : "false",
+      banned : "false",
+  })
+  console.log("coin val saved");
+
+
+}
+
+
+
 function synccoins(){
  
 
@@ -67,7 +99,7 @@ function synccoins(){
 }
 
 
-function getsynccoin() {
+function getsynccoins() {
 
   var user_ref = database.ref('userSync/' + auth.currentUser.uid)
     return user_ref.once("value", function(snapshot) {
@@ -116,16 +148,17 @@ var signinloading = document.getElementById("signinloading");
       
       document.getElementById('signupbutton').style.display="none";
       document.getElementById("signinloading").style.display="block";
+      getsynccoins()
       sleep(1500).then(() => {
         document.getElementById("signinloading").style.display="none";
         document.getElementById('loginbox').style.boxShadow="none";
         document.getElementById('loginbox').style.height="1px";
         document.getElementById('loginbanner').style.height="3px";
         document.getElementById('loginbanner').style.width="3px";
+        
         sleep(2000).then(() =>{
         document.getElementById('loginbox').style.display="none";
         document.getElementById('loginbanner').style.display="none";
-        getsynccoin()
         })
       })
       //alert("Active user "+usremail);

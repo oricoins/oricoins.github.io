@@ -50,6 +50,7 @@
 
   function signOut(){
     auth.signOut();
+    window.location.href="/index.html";
     window.location.reload();
   }
 
@@ -104,7 +105,7 @@
       synccoins();
       getsynccoins();
     }else{
-        window.location.href="index.html";
+        window.location.href="/index.html";
     }
   })
 
