@@ -522,3 +522,14 @@
   font-size: 30px;
   font-family: "Montserrat", sans-serif;
 }
+
+
+.accountoverviewbanner{
+  font-family: "Montserrat", sans-serif;
+  
+}
+
+.accountoverviewbanner h4{
+  margin-top: 30px;
+  font-size: 15px;
+}
