@@ -106,13 +106,23 @@ function getsynccoins() {
     var data = snapshot.val();
     console.log(data);
     //alert(data.coins)
-    localStorage.setItem('currentcoinsval', data.coins)
-    localStorage.setItem('discount1', data.discount1Badge)
-    localStorage.setItem('admin', data.admin)
-    localStorage.setItem('ishacker', data.hackerBadge)
-    localStorage.setItem('addcoinused', data.addCoinUsed)
-    localStorage.setItem('freeclaimed2', data.freeClaimed)
-    localStorage.setItem('banned', data.banned)
+    
+    localStorage.setItem('currentcoinsval', data.coins);
+    localStorage.setItem('discount1', data.discount1Badge);
+    localStorage.setItem('admin', data.admin);
+    localStorage.setItem('ishacker', data.hackerBadge);
+    localStorage.setItem('addcoinused', data.addCoinUsed);
+    localStorage.setItem('freeclaimed2', data.freeClaimed);
+    localStorage.setItem('banned', data.banned);
+    document.getElementById("accountNameDisplay").innerHTML = data.name;
+    document.getElementById("accountFreeCoinDisplay").innerHTML = data.freeClaimed;
+    document.getElementById("accountAddCoinDisplay").innerHTML = data.addCoinUsed;
+    document.getElementById("accountOricoinValDisplay").innerHTML = data.coins;
+    document.getElementById("accountAdminDisplay").innerHTML = data.admin;
+    document.getElementById("accountBannedDisplay").innerHTML = data.banned;
+    document.getElementById("accountHackerDisplay").innerHTML = data.hackerBadge;
+    document.getElementById("accountRichPersonBadgeDisplay").innerHTML = data.discount1Badge;
+    document.getElementById("accountUID").innerHTML = data.uid;
   })
   }
 
