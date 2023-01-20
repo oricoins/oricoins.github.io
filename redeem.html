@@ -337,7 +337,7 @@
     <button type="submit" class="addcoinsub" id="forcecoin" onclick="unbanaccount()">Unban Account</button>
 
 
-</form>
+</form>-->
             
 
     <div class="updatebanner" id="bannerblock" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px; z-index: 10000;">
@@ -354,7 +354,7 @@
 
     </div>
 
-    <div class="updatebanner" id="blockedbanner2" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100000;">
+  <!--  <div class="updatebanner" id="blockedbanner2" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100000;">
         <h3 style="text-align:center;">Sorry, Oricoins is not avaliable right now, check back later.</h3>
 
 
@@ -425,16 +425,16 @@ var currentday = day[d.getDay()];
 var currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
     if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
-        window.location.href="index.html";
+        bannerblock.style.display="block";
     }else if(currenthour==15){
         if(d.getMinutes()<15){
-            window.location.href="index.html";
+            bannerblock.style.display="block";
         }
     }else{
-        //time allowed
+        bannerblock.style.display="none";
     }
 }else{
-    //time allowed
+    bannerblock.style.display="none";
 }
 
 
@@ -739,9 +739,13 @@ function buyrichbadge(){
     counter=counter-1000;
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
+    
     discount1=true;
-    localStorage.setItem('discount1', discount1)
-    alert("Item should be instantly avaliable, contact admin for further assistance.")
+    localStorage.setItem('discount1', discount1);
+    alert("Registering Badge... Please wait.")
+    synccoins();
+    getsynccoins().then(alert("Item should be instantly avaliable, contact admin for further assistance."));
+    
     //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
