@@ -10,6 +10,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
   <script src="form.js"></script>
+  <script src="html5-qrcode.min.js"></script>
 
     
     <title>Oricoin | Origami Order Limiter</title>
@@ -55,22 +56,6 @@
         </div>
     </div>
 
-    <form class="riddles" id="riddlesbanner" style="display: block;">
-        <button class="riddlesback" id="ridbac" onclick="hidebanner();">x</button>
-        <h1 class="riddlehead">Force inject Oricoins</h1>
-        <p></p>
-        <p></p>
-        <input type="number" class="coinnum" id="numofcoins" placeholder="Number of coins">
-        <p></p>
-        <p></p>
-        <input type="password" class="coinnum" id="adminpass" placeholder="Admin Password">
-        <p></p>
-        <p></p>
-        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forceaddcoin()" style="width: 100px;">Add coins</button>
-        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forcedeletecoin()" style="width: 150px;">Remove coins</button>
-
-
-    </form>
     
     <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187);">
         <ul class="nav__links">
@@ -152,11 +137,36 @@
 
 
     </div>
+    <form class="riddles" id="riddlesbanner" style="display: block;">
+        <button class="riddlesback" id="ridbac" onclick="hidebanner();">x</button>
+        <h1 class="riddlehead">Force inject Oricoins</h1>
+        <p></p>
+        <p></p>
+        <input type="number" class="coinnum" id="numofcoins" placeholder="Number of coins">
+        <p></p>
+        <p></p>
+        <input type="password" class="coinnum" id="adminpass" placeholder="Admin Password">
+        <p></p>
+        <p></p>
+        
+        <div class="row">
+            <div class="col">
+              <div style="width: 500px; position: relative; padding: 0px; border: 1px solid silver;" id="reader"><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block;"><div style="text-align: center;"><button>Request Camera Permissions</button></div></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"></div></div></div></div>
+            </div>
+            <div class="col" style="padding:30px; display: none;">
+              <div id="result">Result Here</div>
+            </div>
+          <div id="extwaiokist" style="display:none" v="onlof" q="2cd76fc2" c="372.4" i="378" u="2035." s="10242217" d="1" w="false" e="" a="3" m="BMe=" vn="3ubl2"><div id="extwaigglbit" style="display:none" v="onlof" q="2cd76fc2" c="372.4" i="378" u="2035." s="10242217" d="1" w="false" e="" a="3" m="BMe="></div></div></div>
+          
+          <iframe id="nr-ext-rsicon" style="position: absolute; display: none; width: 50px; height: 50px; z-index: 2147483647; border-style: none; background: transparent;"></iframe>
+<button type="submit" class="addcoinsub" id="forcecoin" onclick="forceaddcoin()" style="width: 100px;">Add coins</button>
+        <button type="submit" class="addcoinsub" id="forcecoin" onclick="forcedeletecoin()" style="width: 150px;">Remove coins</button>
 
+    </form>
 
     <div class="updatebanner" id="blockedbanner" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px;">
         <ul class="nav__links">
-        <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut()">Sign Out</a></li>
+        <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut">Sign Out</a></li>
         </ul>
         <h3 style="text-align:center;">Sorry, you can't use Oricoins right now</h3>
          <h5 style="text-align:center;margin-top:50px;">Oricoins can be used on:</h5><p></p>
@@ -172,7 +182,7 @@
 
 
     </div>
-    <input id="blockedcmdtxtbox" class="unselectable" style="position: absolute; bottom: 0px; right: 0px; width: 100%; height: 15%; text-align: center; color:transparent; z-index: 999999999999999;">
+    <input id="blockedcmdtxtbox" class="unselectable" style="position: relative; bottom: 0px; right: 0px; width: 100%; height: 15%; text-align: center; color:transparent; z-index: 999999999999999;">
 
   <!--  <div class="updatebanner" id="blockedbanner2" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100000;">
         <h3 style="text-align:center;">Sorry, Oricoins is not avaliable right now, check back later.</h3>
@@ -196,9 +206,20 @@
     </div>
 
     </div>
-
+   
 </body>
 </html>
+<script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+        document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
+    }
+    function onScanError(errorMessage) {
+      //handle scan error
+    }
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+    </script>
 <script type="text/javascript" src="mobile.js"></script>
 <script type="module" src="main.js"></script>
 <script type="text/javascript" src="vanilla-tilt.js"></script>
@@ -401,11 +422,34 @@ function hidebanner(){
     bannervar.style.display = "none";
     adminpass.value="";
     numofcoin.value="";
+    window.location.reload();
 }
 function showbanner(){
     bannervar.style.display = "block";
 }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+function checkqrspanval(){
+    try{
+    if(document.querySelector('.result').innerText =="Oricoinaddcoinenable"){
+        if(isadmin=="true"){
+        adminpass.value=sdfasf+1;
+        document.getElementById('adminpass').disabled=true;
+        //alert(document.querySelector('.result').innerText);
+    }else{
+        adminpass.value=sdfasf;
+        document.getElementById('adminpass').disabled=true;
+        //alert(document.querySelector('.result').innerText+"1");
+    }
+    }}
+    catch{
+        console.log('err');
+    }
+}
   function forceaddcoin(){
+    checkqrspanval()
+
             if (admintxtinput.value !="addcoin" & adminpass.value==sdfasf & isadmin!="true") {
                 alert("BANNED")
                 isbanned = true
@@ -415,37 +459,45 @@ function showbanner(){
                 window.location.reload();
                 adminpass.value="";
                 hidebanner();
-            } else if (isadmin=="true" & adminpass.value==sdfasf+1) {
+            } else if (isadmin=="true" & adminpass.value==sdfasf+1 & numofcoin.value>1) {
             if (adminpass.value==sdfasf+1){
-                admintxtinput.value = "";
+                sleep(1000).then(
+                admintxtinput.value = ""
+                )
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
                 usedaddcoin = true;
                 localStorage.setItem('addcoinused', usedaddcoin);
+            }
                 synccoins();
                 getsynccoins();
                 
-            }}
-        } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true"){
-                admintxtinput.value = "";
+            }
+        } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true" & numofcoin.value>1){
+            sleep(1000).then(
+                admintxtinput.value = ""
+                )
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
                 usedaddcoin = true;
                 localStorage.setItem('addcoinused', usedaddcoin);
+            }
                 synccoins();
                 getsynccoins();
                 
             
-        }}
+        }
     else{
         alert("Error!")
+        window.location.reload();
     }
     localStorage.setItem('currentcoinsval', text.textContent);
     synccoins();
     getsynccoins();
     adminpass.value="";
+    document.getElementById('adminpass').disabled=true;
     hidebanner();
     window.location.reload();
     
@@ -537,11 +589,11 @@ function toprightclick(){
     }
 }
 
-//if(isadmin=="true"){
- //   blockedcmdtxtbox.style.display="block";
-//}else{
- //   blockedcmdtxtbox.style.display="none";
-//}
+if(isadmin=="true"){
+    blockedcmdtxtbox.style.display="block";
+}else{
+    blockedcmdtxtbox.style.display="none";
+}
 function adminpay(){
     if(blockedcmdtxtbox.value.includes("payadmincheckout")){
         blockedcmdtxtbox.style.background="linear-gradient(transparent, #969693)";
@@ -556,25 +608,9 @@ function adminpay(){
             synccoins();
             getsynccoins();
             alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.")
-            blockedcmdtxtbox.value='';
             window.location.reload();
         }
-        
-    }else if(isadmin=="false" & checkout>1){
-    blockedcmdtxtbox.addeventlistner('input', () =>{
-    if(blockedcmdtxtbox.value==sdfasf){
-    for (let i = 0; i < checkout; i++){
-                    counter++;
-                    text.textContent = counter;
-                
-            }
-            localStorage.setItem('currentcoinsval', text.textContent);
-            synccoins();
-            getsynccoins();
-            alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.")
-            window.location.reload();
-    }
-    })
+        //blockedcmdtxtbox.value='';
     }
 }
 btn3221.addEventListener("click", enableunban);
