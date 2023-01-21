@@ -149,7 +149,7 @@
                         
                         <p>Get 30% off on all purchases over 100 Oricoins</p>
                         <p>And also get a small badge on the homepage.</p>
-                        <h1>1,000 <span>Oricoins</span></h1>
+                        <h1>750 <span>Oricoins</span></h1>
                         
                         
                         <button type="button" class="buy" onclick="buyrichbadge()" id="buydiscount1badge">Buy Now</button>
@@ -723,7 +723,7 @@ function buypillow(){
 }
 
 function buyrichbadge(){
-    if(counter-1000>=0){
+    if(counter-750>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
             alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
@@ -736,7 +736,7 @@ function buyrichbadge(){
             localStorage.setItem('addcoinused', usedaddcoin);
             window.location.reload();
         }
-    counter=counter-1000;
+    counter=counter-750;
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
     
