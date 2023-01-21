@@ -131,9 +131,9 @@
 .riddles{
     z-index: 20;
     display: inline-block;
-    position: fixed;
+    position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: 10;
     left: 0;
     right: 0;
     width: 600px;
