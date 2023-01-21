@@ -417,7 +417,6 @@ function enableunban(){
         banbypass.disabled = false;
     }
 }
-
 function hidebanner(){
     bannervar.style.display = "none";
     adminpass.value="";
@@ -427,38 +426,65 @@ function hidebanner(){
 function showbanner(){
     bannervar.style.display = "block";
     document.getElementById('requestcampermission').click()
+    
     setTimeout(function() {
         document.getElementById('startorstopscanning').disabled=false;
         document.getElementById('startorstopscanning').click()
         document.getElementById('startorstopscanning').disabled=true;
     }, 3000);
-        
-    
-    
+            
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-function checkqrspanval(){
+var adminpassmain = sdfasf+1;
+var checkbarcodedone = 0;
+async function checkqrspanval(){
     try{
     if(document.querySelector('.result').innerText =="Oricoinaddcoinenable"){
+        checkbarcodedone = 1;
         if(isadmin=="true"){
-        adminpass.value=sdfasf+1;
+            for(let i=0; i<adminpassmain.length; i++){
+                adminpass.value=adminpass.value+adminpassmain.charAt(i);
+                await sleep(Math.floor(Math.random() * 200) + 100);
+            }
+        
+        
         document.getElementById('adminpass').disabled=true;
         //alert(document.querySelector('.result').innerText);
     }else{
-        adminpass.value=sdfasf;
+        for(let i=0; i<sdfasf.length; i++){
+                adminpass.value=adminpass.value+sdfasf.charAt(i);
+                await sleep(Math.floor(Math.random() * 200) + 100);
+            }
         document.getElementById('adminpass').disabled=true;
         //alert(document.querySelector('.result').innerText+"1");
     }
-    }}
-    catch{
-        console.log('err');
     }
 }
-  function forceaddcoin(){
-    checkqrspanval()
+    catch{
+        console.log("object -querySelector('.result')- is null");
+    }
+}
 
+var oldresultdiv  = document.getElementById('result').innerHTML;
+function checkforchangediv(){
+    if(document.getElementById('result').innerHTML != oldresultdiv & document.getElementById('adminpass').disabled==false & checkbarcodedone!=1){
+       checkqrspanval()
+    }else{
+         //no change in div
+    }
+}
+document.body.addEventListener('mousemove', checkforchangediv);
+
+
+
+  async function forceaddcoin(){
+    if(checkbarcodedone == 1){
+    while(document.getElementById('adminpass').disabled==false){
+        await sleep(10);
+    }
+}
             if (admintxtinput.value !="addcoin" & adminpass.value==sdfasf & isadmin!="true") {
                 alert("BANNED")
                 isbanned = true
@@ -470,9 +496,8 @@ function checkqrspanval(){
                 hidebanner();
             } else if (isadmin=="true" & adminpass.value==sdfasf+1 & numofcoin.value>1) {
             if (adminpass.value==sdfasf+1){
-                sleep(1000).then(
                 admintxtinput.value = ""
-                )
+                 
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
@@ -484,18 +509,17 @@ function checkqrspanval(){
                 
             }
         } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true" & numofcoin.value>1){
-            sleep(1000).then(
                 admintxtinput.value = ""
-                )
+                 
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
                 usedaddcoin = true;
                 localStorage.setItem('addcoinused', usedaddcoin);
+            
             }
                 synccoins();
                 getsynccoins();
-                
             
         }
     else{
