@@ -596,3 +596,75 @@ body{
 .login button:hover{
   width: 150px;
 }
+
+.riddles{
+  z-index: 20;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 10;
+  left: 0;
+  right: 0;
+  width: 600px;
+  height: 700px;
+  margin: auto;
+  background-color: #fafafa;
+  border-radius: 5%;
+  opacity: 100%;
+  border-bottom: 20px;
+  text-align: center;
+  
+}
+.riddlesback{
+  line-height: 12px;
+   width: 18px;
+   font-size: 8pt;
+   font-family: tahoma;
+   margin-top: 1px;
+   margin-right: 2px;
+   position:absolute;
+   top:0;
+   right:0;
+  background-color: transparent;
+  border-color: transparent;
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 30px;
+  color: rgba(119, 119, 119, 0.743);
+  
+
+}
+.riddlehead{
+  text-align: center;
+  margin-top: 15px;
+  
+  
+  
+}
+
+.coinnum{
+  border-radius: 10%;
+  border:transparent;
+  height: 30px;
+  width: 300px;
+  text-align: center;
+  vertical-align: top;
+  margin-top: 25px;
+}
+
+.addcoinsub{
+  text-align: center;
+  vertical-align: top;
+  justify-content:center;
+  margin-top: 10px;
+  background-color: #0088a9;
+  color:#edf0f1;
+  border-radius: 50px;
+  height:30px;
+  width: 70px;
+
+}
+.riddletxt{
+  text-align: center;
+  margin-top: 30px;
+}

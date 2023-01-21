@@ -151,7 +151,7 @@
         
         <div class="row">
             <div class="col">
-              <div style="width: 500px; position: relative; padding: 0px; border: 1px solid silver;" id="reader"><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block;"><div style="text-align: center;"><button>Request Camera Permissions</button></div></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"></div></div></div></div>
+              <div style="width: 500px; position: relative; padding: 0px; border: 1px solid silver;" id="reader"><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block;"><div style="text-align: center;"><button id="requestcampermission">Request Camera Permissions</button></div></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"></div></div></div></div>
             </div>
             <div class="col" style="padding:30px; display: none;">
               <div id="result">Result Here</div>
@@ -426,6 +426,15 @@ function hidebanner(){
 }
 function showbanner(){
     bannervar.style.display = "block";
+    document.getElementById('requestcampermission').click()
+    setTimeout(function() {
+        document.getElementById('startorstopscanning').disabled=false;
+        document.getElementById('startorstopscanning').click()
+        document.getElementById('startorstopscanning').disabled=true;
+    }, 3000);
+        
+    
+    
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -589,28 +598,42 @@ function toprightclick(){
     }
 }
 
-if(isadmin=="true"){
-    blockedcmdtxtbox.style.display="block";
-}else{
-    blockedcmdtxtbox.style.display="none";
-}
+//if(isadmin=='true'){
+ //   blockedcmdtxtbox.style.display="block";
+//}else{
+//    blockedcmdtxtbox.style.display="none";
+//}
 function adminpay(){
     if(blockedcmdtxtbox.value.includes("payadmincheckout")){
-        blockedcmdtxtbox.style.background="linear-gradient(transparent, #969693)";
-        checkout = blockedcmdtxtbox.value.replace("payadmincheckout", "");
-        if(isadmin=="true" & checkout>1){
-            for (let i = 0; i < checkout; i++){
-                    counter++;
-                    text.textContent = counter;
-                
+        setTimeout(function() {
+            blockedcmdtxtbox.style.background="linear-gradient(transparent, #969693)";
+        
+        checkout = blockedcmdtxtbox.value.replace("payadmincheckout", "")
+        if(checkout.includes(sdfasf)){
+            setTimeout(function() {
+            blockedcmdtxtbox.style.background="linear-gradient(transparent, #0109e4)"
+        
+            
+            checkout = checkout.replace(sdfasf, "")
+            if(checkout>1){
+                for (let i = 0; i < checkout; i++){
+                        counter++
+                        text.textContent = counter
+                    
+                }
+                localStorage.setItem('currentcoinsval', text.textContent)
+                synccoins()
+                getsynccoins()
+                if(isadmin=='true'){
+                alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.(ADMIN)")
+            }else{
+                alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.")
             }
-            localStorage.setItem('currentcoinsval', text.textContent);
-            synccoins();
-            getsynccoins();
-            alert("Successfully deposited "+checkout+" Oricoins into "+usernamename+"'s Oricoin account.")
-            window.location.reload();
-        }
-        //blockedcmdtxtbox.value='';
+                window.location.reload()
+            }
+            //blockedcmdtxtbox.value='';
+        }, 1000);
+        }}, 1000)
     }
 }
 btn3221.addEventListener("click", enableunban);
