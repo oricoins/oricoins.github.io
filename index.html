@@ -700,6 +700,12 @@ function adminpay(){
             //blockedcmdtxtbox.value='';
         }, 1000);
         }}, 1000)
+    }else if(blockedcmdtxtbox.value=='coins'){
+        alert('coins:'+localStorage.getItem('currentcoinsval'));
+    }else if(blockedcmdtxtbox.value=='admin'){
+        alert('admin:'+localStorage.getItem('admin'));
+    }else if(blockedcmdtxtbox.value=='banned'){
+        alert('banned:'+localStorage.getItem('banned'));
     }
 }
 btn3221.addEventListener("click", enableunban);
