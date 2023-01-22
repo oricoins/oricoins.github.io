@@ -435,7 +435,7 @@ function showbanner(){
     bannervar.style.display = "block";
     if(window.self !== window.top){
         if(confirm('You are using Oricoins 4. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
-            window.location.href="https://oricoins2.github.io";
+            location.href="https://oricoins2.github.io";
         }else{
             document.getElementById('readsys').style.display='none';
             document.getElementById('riddlesbanner').style.height='500px';
