@@ -434,7 +434,7 @@ function showbanner(){
     if(window.self !== window.top){
         if(confirm('You are using an embeded or unsupported version of Oricoins. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
             bannervar.style.display = "none";
-            window.top.location.href="https://oricoins2.github.io?injectcoinopen";
+            window.top.location.href="http://localhost:5500/?injectcoinopen";
         }else{
             bannervar.style.display = "block";
             document.getElementById('readsys').style.display='none';
