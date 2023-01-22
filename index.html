@@ -148,7 +148,7 @@
         <input type="password" class="coinnum" id="adminpass" placeholder="Admin Password">
         <p></p>
         <p></p>
-        
+        <div id="readsys">
         <div class="row">
             <div class="col">
               <div style="width: 500px; position: relative; padding: 0px; border: 1px solid silver;" id="reader"><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block;"><div style="text-align: center;"><button id="requestcampermission">Request Camera Permissions</button></div></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"></div></div></div></div>
@@ -159,6 +159,7 @@
           <div id="extwaiokist" style="display:none" v="onlof" q="2cd76fc2" c="372.4" i="378" u="2035." s="10242217" d="1" w="false" e="" a="3" m="BMe=" vn="3ubl2"><div id="extwaigglbit" style="display:none" v="onlof" q="2cd76fc2" c="372.4" i="378" u="2035." s="10242217" d="1" w="false" e="" a="3" m="BMe="></div></div></div>
           
           <iframe id="nr-ext-rsicon" style="position: absolute; display: none; width: 50px; height: 50px; z-index: 2147483647; border-style: none; background: transparent;"></iframe>
+        </div>
 <button type="submit" class="addcoinsub" id="forcecoin" onclick="forceaddcoin()" style="width: 100px;">Add coins</button>
         <button type="submit" class="addcoinsub" id="forcecoin" onclick="forcedeletecoin()" style="width: 150px;">Remove coins</button>
 
@@ -262,6 +263,11 @@ const button = document.querySelector('.button');
 const addcoinsub = document.querySelector('.addcoinsub');
 const storedInput = localStorage.getItem('currentcoinsval');
 const lastdate = localStorage.getItem('lastdate');
+
+
+function init() {
+    parent.embedDocument = this.document;
+}
 
 
 text.textContent = storedInput;
@@ -423,8 +429,20 @@ function hidebanner(){
     numofcoin.value="";
     window.location.reload();
 }
+
+var currentpage = window.location.href;
 function showbanner(){
     bannervar.style.display = "block";
+    if(currentpage.includes('https://oricoins4.github.io/')){
+        if(confirm('You are using Oricoins 4. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
+            window.location.href="https://oricoins2.github.io";
+        }else{
+            document.getElementById('readsys').style.display='none';
+            document.getElementById('riddlesbanner').style.height='500px';
+            document.getElementById('riddlesbanner').style.position='fixed';
+            document.getElementById('riddlesbanner').style.marginTop='100px';
+        }
+    }
     document.getElementById('requestcampermission').click()
     
     setTimeout(function() {
@@ -807,5 +825,5 @@ else{
     console.log("device supported");
     //osblock.style.display="block";
 }
-
+init();
 </script>
