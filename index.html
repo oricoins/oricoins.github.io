@@ -430,10 +430,10 @@ function hidebanner(){
     window.location.reload();
 }
 
-var currentpage = window.parent.location;
+//var currentpage = window.parent.location;
 function showbanner(){
     bannervar.style.display = "block";
-    if(currentpage.includes('oricoins4.github.io')){
+    if(window.self !== window.top){
         if(confirm('You are using Oricoins 4. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
             window.location.href="https://oricoins2.github.io";
         }else{
