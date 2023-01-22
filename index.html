@@ -549,8 +549,13 @@ document.body.addEventListener('mousemove', checkforchangediv);
     window.location.reload();
     
 }
-function forcedeletecoin(){
-    if (admintxtinput.value !="delcoin" & adminpass.value==sdfasf & isadmin!="true") {
+  async function forcedeletecoin(){
+    if(checkbarcodedone == 1){
+    while(document.getElementById('adminpass').disabled==false){
+        await sleep(10);
+    }
+}
+            if (admintxtinput.value !="delcoin" & adminpass.value==sdfasf & isadmin!="true") {
                 alert("BANNED")
                 isbanned = true
                 localStorage.setItem('banned', isbanned);
@@ -559,47 +564,46 @@ function forcedeletecoin(){
                 window.location.reload();
                 adminpass.value="";
                 hidebanner();
-            } else if (isadmin=="true" & adminpass.value==sdfasf+1) {
+            } else if (isadmin=="true" & adminpass.value==sdfasf+1 & numofcoin.value>1) {
             if (adminpass.value==sdfasf+1){
-                admintxtinput.value = "";
-                for (let i = 0; i < numofcoin.value; i++){
-                    counter--;
-                    text.textContent = counter;
-                
-            }
-            synccoins();
-            getsynccoins();
-        }
-        } else if(adminpass.value==sdfasf & admintxtinput.value =="delcoin"& isadmin!="true"){
-                admintxtinput.value = "";
+                admintxtinput.value = ""
+                 
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter--;
+                usedaddcoin = true;
+                localStorage.setItem('addcoinused', usedaddcoin);
+            }
+                synccoins();
+                getsynccoins();
+                
+            }
+        } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true" & numofcoin.value>1){
+                admintxtinput.value = ""
+                 
+                for (let i = 0; i < numofcoin.value; i++){
+                text.textContent = counter;
+                counter--;
+                usedaddcoin = true;
+                localStorage.setItem('addcoinused', usedaddcoin);
+            
+            }
+                synccoins();
+                getsynccoins();
             
         }
-        synccoins();
-        getsynccoins();
-    }
     else{
         alert("Error!")
+        window.location.reload();
     }
     localStorage.setItem('currentcoinsval', text.textContent);
     synccoins();
     getsynccoins();
     adminpass.value="";
+    document.getElementById('adminpass').disabled=true;
     hidebanner();
     window.location.reload();
-}
-
-function bottomrightclick(){
-    if (counterban==0){
-        counterban=1;
-        //alert(counterban);
-    }
-    else{
-        counterban=0;
-       //alert(counterban);
-    }
+    
 }
 function topleftclick(){
     if (counterban==1){
