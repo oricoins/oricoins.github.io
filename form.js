@@ -50,7 +50,7 @@
     localStorage.setItem('admin', "");
     localStorage.setItem('ishacker', "");
     localStorage.setItem('addcoinused', "");
-    localStorage.setItem('freeclaimed2', "");
+    localStorage.setItem('freeclaimed3', "");
     localStorage.setItem('banned', "");
     document.getElementById('loginbanner').style.display="block";
     
@@ -90,7 +90,7 @@ function synccoins(){
         admin : localStorage.getItem('admin'),
         hackerBadge : localStorage.getItem('ishacker'),
         addCoinUsed : localStorage.getItem('addcoinused'),
-        freeClaimed : localStorage.getItem('freeclaimed2'),
+        freeClaimed : localStorage.getItem('freeclaimed3'),
         banned : localStorage.getItem('banned'),
     })
     console.log("coin val saved");
@@ -112,7 +112,7 @@ function getsynccoins() {
     localStorage.setItem('admin', data.admin);
     localStorage.setItem('ishacker', data.hackerBadge);
     localStorage.setItem('addcoinused', data.addCoinUsed);
-    localStorage.setItem('freeclaimed2', data.freeClaimed);
+    localStorage.setItem('freeclaimed3', data.freeClaimed);
     localStorage.setItem('banned', data.banned);
     document.getElementById("accountNameDisplay").innerHTML = data.name;
     document.getElementById("accountFreeCoinDisplay").innerHTML = data.freeClaimed;

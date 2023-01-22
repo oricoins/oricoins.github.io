@@ -246,7 +246,7 @@ var isbanned = localStorage.getItem('banned');
 var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
 var discount1 = localStorage.getItem('discount1');
-var updatefreecoin = localStorage.getItem('freeclaimed2');
+var updatefreecoin = localStorage.getItem('freeclaimed3');
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -327,7 +327,7 @@ if(updatefreecoin=="true"){
 }
 if(updatefreecoin!="true" & updatefreecoin!="false"){
     updatefreecoin = false;
-    localStorage.setItem('freeclaimed2', updatefreecoin);
+    localStorage.setItem('freeclaimed3', updatefreecoin);
 }
 
 
@@ -391,7 +391,7 @@ function claimupdatereward(){
 }
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent);
-    localStorage.setItem('freeclaimed2', updatefreecoin);
+    localStorage.setItem('freeclaimed3', updatefreecoin);
     synccoins();
     getsynccoins();
     window.location.reload();

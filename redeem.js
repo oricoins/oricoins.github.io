@@ -68,7 +68,7 @@
           admin : localStorage.getItem('admin'),
           hackerBadge : localStorage.getItem('ishacker'),
           addCoinUsed : localStorage.getItem('addcoinused'),
-          freeClaimed : localStorage.getItem('freeclaimed2'),
+          freeClaimed : localStorage.getItem('freeclaimed3'),
           banned : localStorage.getItem('banned')
       })
       console.log("coin val saved");
@@ -88,7 +88,7 @@
       localStorage.setItem('admin', data.admin)
       localStorage.setItem('ishacker', data.hackerBadge)
       localStorage.setItem('addcoinused', data.addCoinUsed)
-      localStorage.setItem('freeclaimed2', data.freeClaimed)
+      localStorage.setItem('freeclaimed3', data.freeClaimed)
       localStorage.setItem('banned', data.banned)
     })
     }
