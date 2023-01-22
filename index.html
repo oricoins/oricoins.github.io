@@ -432,7 +432,7 @@ function showbanner(){
     if(window.self !== window.top){
         if(confirm('You are using Oricoins 4. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
             bannervar.style.display = "none";
-            window.toplocation.href="https://oricoins2.github.io";
+            window.top.location.href="https://oricoins2.github.io";
         }else{
             bannervar.style.display = "block";
             document.getElementById('readsys').style.display='none';
