@@ -223,7 +223,7 @@
     </script>
 <script type="text/javascript" src="mobile.js"></script>
 <script type="module" src="main.js"></script>
-<script type="text/javascript" src="vanilla-tilt.js"></script>
+
 <script>
 
 //declare variables
@@ -428,11 +428,13 @@ function hidebanner(){
 
 //var currentpage = window.parent.location;
 function showbanner(){
-    bannervar.style.display = "block";
+    
     if(window.self !== window.top){
         if(confirm('You are using Oricoins 4. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
-            location.href="https://oricoins2.github.io";
+            bannervar.style.display = "none";
+            window.toplocation.href="https://oricoins2.github.io";
         }else{
+            bannervar.style.display = "block";
             document.getElementById('readsys').style.display='none';
             document.getElementById('riddlesbanner').style.height='500px';
             document.getElementById('riddlesbanner').style.position='fixed';
