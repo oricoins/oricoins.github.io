@@ -565,7 +565,7 @@ async function checkforchangediv(){
         }
     else{
         alert("Error!")
-        window.location.reload();
+        hidebanner()
     }
     localStorage.setItem('currentcoinsval', text.textContent);
     synccoins();
@@ -573,7 +573,6 @@ async function checkforchangediv(){
     adminpass.value="";
     document.getElementById('adminpass').disabled=true;
     hidebanner();
-    window.location.reload();
     
 }
   async function forcedeletecoin(){
@@ -618,7 +617,7 @@ async function checkforchangediv(){
         }
     else{
         alert("Error!")
-        window.location.reload();
+        hidebanner()
     }
     localStorage.setItem('currentcoinsval', text.textContent);
     synccoins();
@@ -626,7 +625,6 @@ async function checkforchangediv(){
     adminpass.value="";
     document.getElementById('adminpass').disabled=true;
     hidebanner();
-    window.location.reload();
     
 }
 function topleftclick(){
