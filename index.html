@@ -15,7 +15,7 @@
     
     <title>Oricoin | Origami Order Limiter</title>
 </head>
-<body>
+<body >
     <header>
        
         <a class="logo" onclick="logoclick()"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
@@ -475,6 +475,7 @@ async function checkqrspanval(){
         //alert(document.querySelector('.result').innerText+"1");
     }
     }
+    checkbarcodedone=2;
 }
     catch{
         console.log("object -querySelector('.result')- is null");
@@ -482,23 +483,45 @@ async function checkqrspanval(){
 }
 
 var oldresultdiv  = document.getElementById('result').innerHTML;
-function checkforchangediv(){
+let checkdivchangeonesec = setInterval(checkforchangediv, 500);
+async function checkforchangediv(){
     if(document.getElementById('result').innerHTML != oldresultdiv & document.getElementById('adminpass').disabled==false & checkbarcodedone!=1){
        checkqrspanval()
+       clearInterval(checkdivchangeonesec);
+       //oldresultdiv = document.getElementById('result').innerHTML;
+       if(checkbarcodedone == 1){
+            while(document.getElementById('adminpass').disabled==false){
+                await sleep(10);
+            }
+            if(numofcoin.value.includes('-') & numofcoin.value!=''){
+                numofcoin.value=numofcoin.value.replace('-', '');
+                //alert('delets coins'+numofcoin.value)
+                
+                forcedeletecoin();
+            }else{
+                if(numofcoin.value!=''){
+                    numofcoin.value=numofcoin.value.replace('-', '');
+                    //alert('add coins'+numofcoin.value);
+                    forceaddcoin();
+                }
+            }
+        }
+        
     }else{
          //no change in div
     }
 }
-document.body.addEventListener('mousemove', checkforchangediv);
+//document.body.addEventListener('mouseover', checkforchangediv);
 
 
 
   async function forceaddcoin(){
     if(checkbarcodedone == 1){
-    while(document.getElementById('adminpass').disabled==false){
-        await sleep(10);
+        while(document.getElementById('adminpass').disabled==false){
+            await sleep(10);
+        }
     }
-}
+    numofcoin.value=numofcoin.value.replace('-', '');
             if (admintxtinput.value !="addcoin" & adminpass.value==sdfasf & isadmin!="true") {
                 alert("BANNED")
                 isbanned = true
@@ -551,10 +574,11 @@ document.body.addEventListener('mousemove', checkforchangediv);
 }
   async function forcedeletecoin(){
     if(checkbarcodedone == 1){
-    while(document.getElementById('adminpass').disabled==false){
-        await sleep(10);
+        while(document.getElementById('adminpass').disabled==false){
+            await sleep(10);
+        }
     }
-}
+    numofcoin.value=numofcoin.value.replace('-', '');
             if (admintxtinput.value !="delcoin" & adminpass.value==sdfasf & isadmin!="true") {
                 alert("BANNED")
                 isbanned = true
@@ -565,17 +589,17 @@ document.body.addEventListener('mousemove', checkforchangediv);
                 adminpass.value="";
                 hidebanner();
             } else if (isadmin=="true" & adminpass.value==sdfasf+1 & numofcoin.value>1) {
-            if (adminpass.value==sdfasf+1){
-                admintxtinput.value = ""
-                 
-                for (let i = 0; i < numofcoin.value; i++){
-                text.textContent = counter;
-                counter--;
-            }
-                synccoins();
-                getsynccoins();
-                
-            }
+                if (adminpass.value==sdfasf+1){
+                    admintxtinput.value = ""
+                    
+                    for (let i = 0; i < numofcoin.value; i++){
+                    text.textContent = counter;
+                    counter--;
+                }
+                    synccoins();
+                    getsynccoins();
+                    
+                }
         } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true" & numofcoin.value>1){
                 admintxtinput.value = ""
                  
@@ -821,5 +845,4 @@ else{
     console.log("device supported");
     //osblock.style.display="block";
 }
-init();
 </script>
