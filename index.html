@@ -430,12 +430,12 @@ function hidebanner(){
     window.location.reload();
 }
 
-var currentpage = window.location.href;
+var currentpage = window.parent.location;
 function showbanner(){
     bannervar.style.display = "block";
     if(currentpage.includes('oricoins4.github.io')){
         if(confirm('You are using Oricoins 4. The QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
-            window.location.href="https://oricoins4.github.io";
+            window.location.href="https://oricoins2.github.io";
         }else{
             document.getElementById('readsys').style.display='none';
             document.getElementById('riddlesbanner').style.height='500px';
