@@ -27,6 +27,7 @@
                 <a class="spoiledtxt" id="richtxt"style="margin-left:10px">RICH SPENDER</a>
                 <a class="updatelog" id="updatelog" onclick="updatesbanner.style.display='block';">Updates</a>
                 <li><a href="redeem.html">Redeem</a></li>
+                <li><a href="barcodes.html">Barcodes</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
                 <li><a class="text" onclick="document.getElementById('accountoverviewbanner').style.display='block';" id="signout" href="#">Account</a></li>
@@ -57,13 +58,15 @@
     </div>
 
     
-    <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187);">
+    <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187); text-align: center;">
         <ul class="nav__links">
             <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut()">Sign Out</a></li>
             </ul>
         <button onclick="topleftclick()" id="btn322" unselectable="on" class="unselectable">ㅤㅤㅤㅤ</button>
         <button onclick="toprightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right;">ㅤㅤㅤㅤ</button>
         <h3>ACCOUNT SUSPENDED</h3>
+        <h4>Time remaining: <span id="timeleftinsentance"></span></h4>
+        <h6>Sentance: <span id="sentanceDisplay"></span></h6>
         <center>
             <input id="banbypass">
             <h5>This might have been caused because of using the admin password.</h5>
@@ -247,6 +250,9 @@ var isadmin = localStorage.getItem('admin');
 var ishacker = localStorage.getItem('ishacker');
 var discount1 = localStorage.getItem('discount1');
 var updatefreecoin = localStorage.getItem('freeclaimed3');
+var timesbanned = localStorage.getItem('timesbanned');
+var bansentance = localStorage.getItem('bansentance');
+
 var counter = 50;
 var banbox = document.getElementById("banbox")
 var claimbutton = document.getElementById('claimbutton')
@@ -297,9 +303,7 @@ makeUnselectable(document.getElementById("btn322"));
 unbanbanner.style.display="none";
 banbypass.disabled = true;
 banbox.style.display="none";
-if(isbanned=="true"){
-    banbox.style.display="block";
-}
+
 
 
 if(isadmin=="true"){
@@ -364,7 +368,171 @@ if(ishacker!="true" & ishacker!="false"){
 }
 
 
-if(window.top.location.href.includes('injectcoinopen')){
+
+if(bansentance==''){
+    //user not banned
+}
+if(bansentance!=''){
+    //user banned
+}
+if(bansentance==null || bansentance==undefined){
+    bansentance = '';
+    localStorage.setItem('bansentance', bansentance);
+}
+
+
+if(timesbanned==0){
+    //user has never been banned
+}
+if(timesbanned>1){
+    //user has been banned multiple times
+}
+if(timesbanned==null || timesbanned==undefined){
+    timesbanned = 0;
+    localStorage.setItem('timesbanned', timesbanned);
+}
+var codeallreadypassed = localStorage.getItem('codeallreadypassed');
+
+if(codeallreadypassed==null || codeallreadypassed==undefined){
+    alert('codeallreadypassed is null/undefined')
+    codeallreadypassed = false;
+    localStorage.setItem('codeallreadypassed', codeallreadypassed);
+}
+var latesttime = localStorage.getItem('latesttime');
+
+if(latesttime==null || latesttime==undefined){
+    latesttime = 0;
+    localStorage.setItem('latesttime', latesttime);
+}
+
+
+if(isbanned=="true"){
+    banbox.style.display="block";
+
+    if(bansentance!=''){
+        const d = new Date();
+        const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+        
+        var mon = month[d.getMonth()];
+        var datenow = d.getDate();
+        var yearnow = d.getFullYear();
+        var hrnow = d.getHours();
+        var minnow = d.getMinutes();
+
+        if(timesbanned==1){
+            //user has been banned once
+            var countDate = new Date().getTime();
+            if(codeallreadypassed==false){
+                var newhr1 = parseInt(hrnow)+1;
+                var countDate = new Date(mon + " " + datenow + ", " + yearnow + " " + newhr1+":"+minnow+":"+"00").getTime();
+                latesttime = countDate;
+                //alert(latesttime);
+                localStorage.setItem('latesttime', latesttime);
+                codeallreadypassed =true;
+                localStorage.setItem('codeallreadypassed', codeallreadypassed);
+            }else{
+                countDate = latesttime;
+            }
+            const countdown = () => {
+             //countDate = new Date('May 17, 2023 00:00:00').getTime();
+    //console.log(countDate)
+    document.getElementById('sentanceDisplay').innerHTML='1 Hour';
+    setInterval(() => {
+    const now = new Date().getTime();
+    const gap = countDate - now;
+
+    const seconds = 1000;
+    const minute = seconds * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+   
+    
+
+    const textDay = Math.floor(gap / day);
+    const textHour = Math.floor((gap % day)/hour);
+    const textMinute = Math.floor((gap % hour)/minute);
+    const textSencond = Math.floor((gap % minute)/seconds);
+    document.getElementById('timeleftinsentance').innerHTML=textDay+' days, '+textHour+' hours, '+textMinute+' minutes, '+textSencond+' seconds,';
+    latesttime = gap;
+
+    localStorage.setItem('latesttime', latesttime);
+
+}, 1000);
+};
+
+countdown();
+        }
+        if(timesbanned>1){
+            //user has been banned multiple times
+            var countDate = new Date().getTime();
+            alert(codeallreadypassed)
+            if(codeallreadypassed==true){
+                alert('hei');
+                var newday1 = parseInt(datenow)+1;
+                latesttime = mon + " " + newday1 + ", " + yearnow + " " + hrnow+":"+minnow+":"+"00";
+                alert('latesttime:'+latesttime)
+                
+                countDate = new Date(latesttime).getTime();
+                
+                //alert(latesttime);
+                localStorage.setItem('latesttime', latesttime);
+                codeallreadypassed =true;
+                localStorage.setItem('codeallreadypassed', codeallreadypassed);
+            }else{
+                alert('ih');
+                //var newday1 = parseInt(datenow)+1;
+                //latesttime = mon + " " + newday1 + ", " + yearnow + " " + hrnow+":"+minnow+":"+"00";
+                var newday1 = parseInt(datenow)+1;
+                latesttime = localStorage.getItem('latesttime');
+                alert('latesttime:'+latesttime)
+                
+                countDate = new Date(latesttime).getTime();
+                
+                //alert(latesttime);
+                localStorage.setItem('latesttime', latesttime);
+                codeallreadypassed =true;
+                localStorage.setItem('codeallreadypassed', codeallreadypassed);
+            }
+            const countdown = () => {
+             //countDate = new Date('May 17, 2023 00:00:00').getTime();
+    //console.log(countDate)
+    document.getElementById('sentanceDisplay').innerHTML='1 Hour';
+    setInterval(() => {
+    const now = new Date().getTime();
+    const gap = countDate - now;
+
+    const seconds = 1000;
+    const minute = seconds * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+   
+    
+
+    const textDay = Math.floor(gap / day);
+    const textHour = Math.floor((gap % day)/hour);
+    const textMinute = Math.floor((gap % hour)/minute);
+    const textSencond = Math.floor((gap % minute)/seconds);
+    document.getElementById('timeleftinsentance').innerHTML=textDay+' days, '+textHour+' hours, '+textMinute+' minutes, '+textSencond+' seconds,';
+    latesttime = gap;
+    localStorage.setItem('latesttime', latesttime);
+
+}, 1000);
+};
+
+countdown();
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+if(window.top.location.href.includes('injectcoinopen') & isbanned != 'true'){
     showbanner()
 }
 
@@ -825,16 +993,16 @@ let currentday = day[d.getDay()];
 let currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
     if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
-        document.getElementById("blockedbanner").style.display="block";
+        blockedbanner.style.display="block";
     }else if(currenthour==15){
         if(d.getMinutes()<15){
-            document.getElementById("blockedbanner").style.display="block";
+            blockedbanner.style.display="block";
         }
     }else{
-        document.getElementById("blockedbanner").style.display="none";
+        blockedbanner.style.display="none";
     }
 }else{
-    document.getElementById("blockedbanner").style.display="none";
+    blockedbanner.style.display="none";
 }
 
 
