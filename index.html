@@ -165,7 +165,7 @@
 
     </form>
 
-    <div class="updatebanner" id="blockedbanner1234" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;">
+    <div class="updatebanner" id="blockedbanner" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;">
         <ul class="nav__links">
         <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut">Sign Out</a></li>
         </ul>
@@ -825,16 +825,16 @@ let currentday = day[d.getDay()];
 let currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
     if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
-        blockedbanner.style.display="block";
+        document.getElementById("blockedbanner").style.display="block";
     }else if(currenthour==15){
         if(d.getMinutes()<15){
-            blockedbanner.style.display="block";
+            document.getElementById("blockedbanner").style.display="block";
         }
     }else{
-        blockedbanner.style.display="none";
+        document.getElementById("blockedbanner").style.display="none";
     }
 }else{
-    blockedbanner.style.display="none";
+    document.getElementById("blockedbanner").style.display="none";
 }
 
 
