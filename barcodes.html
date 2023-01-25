@@ -1,0 +1,649 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="redeem.js"></script>
+    <script src="barcodes.js"></script>
+
+    <title>Redeem | Oricoins</title>
+</head>
+<body>
+    
+<input id="pass1">
+    
+    
+    
+    
+    <div id="body" style="display:none; z-index: 50;">
+    <header>
+        <a class="logo" href="https://oricoins5.github.io"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#" class="txt">Balance:</a></li>
+                <li><a class="text" id="text" href="#"></a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="index.html">Home</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div class="overlay">
+        <a class="close">×</a>
+        <div class="overlay__content">
+            
+            <a class="text" id="text" href="#">currentbalance</a>
+            <a href="#">Balance: </a>
+        </div>
+    <div id="extwaiokist" style="display:none" v="onlof" q="2cd76fc2" c="376.3" i="382" u="2129." s="10242217" d="1" w="false" e="" a="3" m="BMe=" vn="3ubl2"><div id="extwaigglbit" style="display:none" v="onlof" q="2cd76fc2" c="376.3" i="382" u="2129." s="10242217" d="1" w="false" e="" a="3" m="BMe="></div></div></div>
+    <div class="container container2">
+        <input type="text" id="storage" class="storage" style="display: none;">
+        <!--<p class="text" id="text">text</p>--->
+        <div class="container" style="
+    margin-left: 600px;
+">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top">
+                                <h1>QR A</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 50px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR A</h2>
+                                
+                                
+                                <h1 id="figitbanner" style="display: block;"><span style="color: black;" id="adisplay">0 </span><span>Oricoins</span></h1>
+                                <input type="number" id="figitq" placeholder="Quantity">
+                                <button type="button" class="buy" onclick="changeVal('a', document.getElementById('figitq').value)">Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('a')" id="astate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+    <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top product-top2">
+                                <h1>QR B</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 50px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR B</h2>
+                                
+                                <h1><span id="bdisplay">0</span> <span>Oricoins</span></h1>
+                                
+                                
+                                <input type="number" id="twistq" placeholder="Quantity">
+                                <button type="button" class="buy" onclick="changeVal('b', document.getElementById('twistq').value)">Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('b')" id="bstate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </div></div>
+
+    <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top product-top3">
+                                <h1>QR C</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 75px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR C</h2>
+                                
+                                
+                                <h1 id="pillowbanner" style="display: block;"><span style="color: black;" id="cdisplay">0 </span><span>Oricoins</span></h1>
+                                
+                                
+                                <input type="number" id="pillowq" placeholder="Quantity"  >
+                                
+                                <button type="button" class="buy" onclick="changeVal('c', document.getElementById('pillowq').value)"  >Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('c')" id="cstate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+    </div></div>
+    <div class="container" style="margin-left: 10px;">
+        <div class="product">
+            
+            <div class="product-inner" id="productBox">
+                <div class="product-front">
+                    <div class="product-top product-top4">
+                        <h1>QR D</h1>
+                        <div class="figitimgdiv" onmouseover="changeocapticty()">
+                        <img style="margin-top: 75px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                        </div>
+                    </div>
+                    <div class="product-bottom">
+                        <p>QR CODE</p>
+                        <h2>QR D</h2>
+                        
+                        
+                        
+                        <h1><span id="ddisplay">0</span> <span>Oricoins</span></h1>
+                        
+                        <input type="number" id="dq" placeholder="Quantity">
+                        <button type="button" class="buy" onclick="changeVal('d', document.getElementById('dq').value)" id="buydiscount1badge">Commit changes</button>
+                        <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('d')" id="dstate">Active</span></button>
+                        
+                        
+                        <div class="color-select">
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div></div>
+        
+            
+            
+    
+    </div>
+
+    <div class="container container2">
+        <input type="text" id="storage" class="storage" style="display: none;">
+        <!--<p class="text" id="text">text</p>--->
+        <div class="container" style="
+    margin-left: 600px;
+">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top">
+                                <h1>QR E</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 50px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR E</h2>
+                                
+                                
+                                <h1 id="figitbanner" style="display: block;"><span style="color: black;" id="edisplay">0 </span><span>Oricoins</span></h1>
+                                <input type="number" id="eq" placeholder="Quantity" >
+                                <button type="button" class="buy" onclick="changeVal('e', document.getElementById('eq').value)" >Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('e')" id="estate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+    <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top product-top2">
+                                <h1>QR F</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 50px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR F</h2>
+                                
+                                <h1><span id="fdisplay">0</span> <span>Oricoins</span></h1>
+                                
+                                
+                                <input type="number" id="fq" placeholder="Quantity">
+                                <button type="button" class="buy" onclick="changeVal('f', document.getElementById('fq').value)">Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('f')" id="fstate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </div></div>
+
+    <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top product-top3">
+                                <h1>QR G</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 75px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR G</h2>
+                                
+                               
+                                <h1 id="pillowbanner" style="display: block;"><span style="color: black;" id="gdisplay">0 </span><span>Oricoins</span></h1>
+                                
+                                
+                                <input type="number" id="gq" placeholder="Quantity"  >
+                                
+                                <button type="button" class="buy" onclick="changeVal('g', document.getElementById('gq').value)"  >Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('g')" id="gstate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+    </div></div>
+    <div class="container" style="margin-left: 10px;">
+        <div class="product">
+            
+            <div class="product-inner" id="productBox">
+                <div class="product-front">
+                    <div class="product-top product-top4">
+                        <h1>QR H</h1>
+                        <div class="figitimgdiv" onmouseover="changeocapticty()">
+                        <img style="margin-top: 75px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                        </div>
+                    </div>
+                    <div class="product-bottom">
+                        <p>QR CODE</p>
+                        <h2>QR H</h2>
+                        
+                        
+                        
+                        <h1><span id="hdisplay">0</span> <span>Oricoins</span></h1>
+                        
+                        <input type="number" id="hq" placeholder="Quantity">
+                        <button type="button" class="buy" onclick="changeVal('h', document.getElementById('hq').value)" id="buydiscount1badge">Commit changes</button>
+                        <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('h')" id="hstate">Active</span></button>
+                        
+                        
+                        <div class="color-select">
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div></div>
+        
+            
+            
+    
+    </div>
+
+
+
+
+
+    <div class="container container2">
+        <input type="text" id="storage" class="storage" style="display: none;">
+        <!--<p class="text" id="text">text</p>--->
+        <div class="container" style="
+    margin-left: 600px;
+">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top">
+                                <h1>QR I</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 50px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR I</h2>
+                                <h6>Color: <span style="color:rgb(193, 193, 26);margin-bottom: 0px;">YELLOW</span></h6>
+                                <h1 id="popbanner" style="display: block;"><span style="color: black;" id="idisplay">0 </span><span>Oricoins</span></h1>
+                                <input type="number" id="iq" placeholder="Quantity">
+                                
+                                <button type="button" class="buy" onclick="changeVal('i', document.getElementById('iq').value)">Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('i')" id="istate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+    <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                            <div class="product-top product-top2">
+                                <h1>QR J</h1>
+                                <div class="figitimgdiv" onmouseover="changeocapticty()">
+                                <img style="margin-top: 50px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                                </div>
+                            </div>
+                            <div class="product-bottom">
+                                <p>QR CODE</p>
+                                <h2>QR J</h2>
+                                
+                                <h1 id="pullbanner" style="display: block;"><span style="color: black;" id="jdisplay">0 </span><span>Oricoins</span></h1>
+                                
+                                <input type="number" id="jq" placeholder="Quantity">
+                                
+                                <button type="button" class="buy" onclick="changeVal('j', document.getElementById('jq').value)">Commit changes</button>
+                                <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('j')" id="jstate">Active</span></button>
+                                
+                                
+                                
+                                <div class="color-select">
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+    </div></div>
+
+    <div class="container" style="margin-left: 10px;">
+                <div class="product">
+                    
+                    <div class="product-inner" id="productBox">
+                        <div class="product-front">
+                    <div class="product-top product-top1">
+                        <h1>QR K</h1>
+                        <div class="figitimgdiv" onmouseover="changeocapticty()">
+                        <img style="margin-top: 75px;" src="images/randomcode.png" id="figitimg" class="figitimg">
+                        </div>
+                    </div>
+                    <div class="product-bottom">
+                        <p>QR CODE</p>
+                        <h2>QR K</h2>
+                        
+                        
+                        
+                        <h1><span id="kdisplay">0</span> <span>Oricoins</span></h1>
+                        
+                        <input type="number" id="kq" placeholder="Quantity">
+                        <button type="button" class="buy" onclick="changeVal('k', document.getElementById('kq').value)" id="buydiscount1badge"  >Commit changes</button>
+                        <button style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;" onclick="changeState('k')" id="kstate">Active</span></button>
+                        
+                        
+                        <div class="color-select">
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+                        
+                    </div>
+                    
+    </div></div>
+    <div class="container" style="margin-left: 10px;">
+        <div class="product">
+            
+            <div class="product-inner" id="productBox">
+                <div class="product-front">
+                    <div class="product-top product-top6">
+                        <h1>???</h1>
+                        <div class="figitimgdiv" onmouseover="changeocapticty()">
+                        <img style="margin-top: 75px;" src="images/questionmarks.png" id="figitimg" class="figitimg">
+                        </div>
+                    </div>
+                    <div class="product-bottom">
+                        <p>???</p>
+                        <h2>???</h2>
+                        
+                        
+                        
+                        <h1>0 <span>Oricoins</span></h1>
+                        
+                        <input type="number" id="pullq" placeholder="Quantity">
+                        <button type="button" class="buy" onclick="//nothing" id="buydiscount1badge"  >Commit changes</button>
+                        
+                        
+                        <div class="color-select">
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div></div>
+<!--<div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187);">
+    <ul class="nav__links">
+        <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut()">Sign Out</a></li>
+        </ul>
+    <button onclick="topleftclick()" id="btn322" unselectable="on" class="unselectable">ㅤㅤㅤㅤ</button>
+    <button onclick="toprightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right;">ㅤㅤㅤㅤ</button>
+    <h3>ACCOUNT BANNED</h3>
+    <center>
+        <input id="banbypass">
+        <h5>This might have been caused because of using the admin password.</h5>
+        <h5>Unban your account to continue.</h5>
+    </center>
+    <button onclick="bottomleftclick()" id="btn3221" unselectable="on" class="unselectable" style="position: absolute; bottom: 0px; left: 0px;">ㅤㅤㅤㅤ</button>
+    <button onclick="bottomrightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right; position: absolute; bottom: 0px; right: 0px;">ㅤㅤㅤㅤ</button>
+
+</div>
+<form class="riddles" id="unbanbanner" style="display: block;height: 275px; z-index: 1000;">
+    <h1 class="riddlehead">Unban Account</h1>
+    <p></p>
+    <p></p>
+    <h2 style="padding-top: 10px;">Unbanning your account shows that you agree to the following:</h2>
+    <p></p>
+    <p></p>
+    <h4 style="padding-top: 10px;">I will stop using the admin password.</h4>
+    <h4 style="padding-top: 10px;">I understand that all my Oricoins will be deleted.</h4>
+    <p></p>
+    <p></p>
+    <button type="submit" class="addcoinsub" id="forcecoin" onclick="unbanaccount()">Unban Account</button>
+
+
+</form>-->
+            
+
+    <div class="updatebanner" id="bannerblock" style="display: none;height: 100%;width:100%; background-color:grey; border-radius:0px; z-index: 10000;">
+        <h3 style="text-align:center;">Sorry, you can't use Oricoins right now</h3>
+         <h5 style="text-align:center;margin-top:50px;">Oricoins can be used on:</h5><p></p>
+         <h5 style="text-align:center;margin-top:50px; font-size: 10px;">Sun: All day</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Mon: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Tues: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Wed: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Thurs: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Fri: Until 9:00A.M and after 3:15P.M</h5><p></p>
+         <h5 style="text-align:center;margin-top:20px; font-size: 10px;">Sat: All day</h5><p></p>
+
+
+    </div>
+
+  <!--  <div class="updatebanner" id="blockedbanner2" style="display: block;height: 100%;width:100%; background-color:grey; border-radius:0px;z-index: 100000;">
+        <h3 style="text-align:center;">Sorry, Oricoins is not avaliable right now, check back later.</h3>
+
+
+    </div> -->
+
+
+
+
+<script type="text/javascript" src="mobile.js"></script>
+
+
+<script>
+if(document.querySelector('.storage')){
+    document.getElementById("text").textContent=localStorage.getItem('currentcoinsval');
+    var counter = localStorage.getItem('currentcoinsval');
+}
+
+
+//declare variables
+var bannerblock = document.getElementById("bannerblock");
+var pillowqvar = document.getElementById("pillowq");
+var qpop = document.getElementById("popq");
+var qpull = document.getElementById("pullq");
+
+var pullbanner = document.getElementById("pullbanner");
+var pullrich = document.getElementById("pullrich");
+var pillowbanner = document.getElementById("pillowbanner");
+var figitbanner = document.getElementById("figitbanner");
+var pillowrich = document.getElementById("pillowrich");
+var figitrich = document.getElementById("figitrich");
+var richspecific = document.getElementById("richspecific");
+var richspecific1 = document.getElementById("richspecific1");
+var richspecific2 = document.getElementById("richspecific2");
+var richspecific3 = document.getElementById("richspecific3");
+var pricetxt = document.getElementById("price");
+var pricetxt1 = document.getElementById("price1");
+var pricetxt2 = document.getElementById("price2");
+var buydiscount1badge = document.getElementById("buydiscount1badge");
+var haxtxt = document.getElementById("haxtxt");
+var sdfasf = "greenskybluegrass";
+var usernamename = localStorage.getItem('usrname');
+var admintxt = document.getElementById('admintxt');
+var admintxtinput = document.getElementById('setadmintxt');
+//var unbanbanner = document.getElementById("unbanbanner");
+//var banbypass = document.getElementById("banbypass");
+//var banbox = document.getElementById('banbox');
+var usedaddcoin = localStorage.getItem('addcoinused');
+var isbanned = localStorage.getItem('banned');
+var isadmin = localStorage.getItem('isadmin');
+var ishacker = localStorage.getItem('ishacker');
+var discount1 = localStorage.getItem('discount1');
+var counter = localStorage.getItem('currentcoinsval');
+var figitq = document.getElementById('figitq');
+var twistq = document.getElementById('twistq');
+var storagevar = document.getElementById("storage"); 
+//var retailTwist = document.getElementById("retailTwist");
+const storageInput = document.querySelector('.storage');
+const text =  document.querySelector('.text');
+const button = document.querySelector('.button');
+const storedInput = localStorage.getItem('currentcoinsval');
+
+//get the current day
+
+const day = ["sunday","monday","tuesday","wedensday","thursday","friday","saturday"];
+
+const d = new Date();
+var currentday = day[d.getDay()];
+var currenthour = d.getHours();
+if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
+    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
+        bannerblock.style.display="block";
+    }else if(currenthour==15){
+        if(d.getMinutes()<15){
+            bannerblock.style.display="block";
+        }
+    }else{
+        bannerblock.style.display="none";
+    }
+}else{
+    bannerblock.style.display="none";
+}
+
+
+  //firebase
+  
+  var firebaseConfig = {
+    apiKey: "AIzaSyCkyYCoGxBZ7qRjqQUAI_QK1CK1UjZ3C1s",
+  authDomain: "oricoinorders.firebaseapp.com",
+  databaseURL: "https://oricoinorders-default-rtdb.firebaseio.com",
+  projectId: "oricoinorders",
+  storageBucket: "oricoinorders.appspot.com",
+  messagingSenderId: "163444654010",
+  appId: "1:163444654010:web:75c93a2617543ae0702783",
+  measurementId: "G-Y0YBKFCB71"
+  };
+  // Initialize Firebase
+  
+  //const firebase = firebase.auth();
+//const app = initializeApp(firebaseConfig);
+//const analytics = getAnalytics(app);
+
+var database = firebase.database();
+
+//document.getElementById('body').style.display='block';
+
+document.getElementById('pass1').style.color='transparent';
+
+
+if(localStorage.getItem('admin') =='true'){
+    setInterval(() => {
+        if(document.getElementById('pass1').value=='barcodeeditnow'){
+            document.getElementById('pass1').style.display='none';
+            setTimeout(() => {
+                document.getElementById('body').style.display='block';
+            }, 1000);
+            
+        }
+    }, 1000);
+    
+}else{
+    window.top.location.href='index.html';
+}
+
+</script>
+</div></div></body></html>

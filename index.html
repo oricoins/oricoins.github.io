@@ -11,6 +11,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
   <script src="form.js"></script>
   <script src="html5-qrcode.min.js"></script>
+  <script src="barcodes.js"></script>
 
     
     <title>Oricoin | Origami Order Limiter</title>
@@ -262,6 +263,7 @@ var forcecoin = document.getElementById('forcecoin');
 var storagevar = document.getElementById("storage");  
 var bannervar = document.getElementById("riddlesbanner");
 var blockedcmdtxtbox = document.getElementById('blockedcmdtxtbox'); 
+var goodez = true;
 bannervar.style.display = "none"; 
 const storageInput = document.querySelector('.storage');
 const text =  document.querySelector('.text');
@@ -646,6 +648,39 @@ async function checkqrspanval(){
         document.getElementById('adminpass').disabled=true;
         //alert(document.querySelector('.result').innerText+"1");
     }
+    }else if(document.querySelector('.result').innerText =="oricoinadda"){
+        goodez = false;
+        runsys('a');
+    }else if(document.querySelector('.result').innerText =="oricoinaddb"){
+        goodez = false;
+        runsys('b');
+    }else if(document.querySelector('.result').innerText =="oricoinaddc"){
+        goodez = false;
+        runsys('c');
+    }else if(document.querySelector('.result').innerText =="oricoinaddd"){
+        goodez = false;
+        runsys('d');
+    }else if(document.querySelector('.result').innerText =="oricoinadde"){
+        goodez = false;
+        runsys('e');
+    }else if(document.querySelector('.result').innerText =="oricoinaddf"){
+        goodez = false;
+        runsys('f');
+    }else if(document.querySelector('.result').innerText =="oricoinaddg"){
+        goodez = false;
+        runsys('g');
+    }else if(document.querySelector('.result').innerText =="oricoinaddh"){
+        goodez = false;
+        runsys('h');
+    }else if(document.querySelector('.result').innerText =="oricoinaddi"){
+        goodez = false;
+        runsys('i');
+    }else if(document.querySelector('.result').innerText =="oricoinaddj"){
+        goodez = false;
+        runsys('j');
+    }else if(document.querySelector('.result').innerText =="oricoinaddk"){
+        goodez = false;
+        runsys('k');
     }
     checkbarcodedone=2;
 }
@@ -710,8 +745,10 @@ async function checkforchangediv(){
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
+                if (goodez==false){
                 usedaddcoin = true;
                 localStorage.setItem('addcoinused', usedaddcoin);
+            }
             }
                 synccoins();
                 getsynccoins();
