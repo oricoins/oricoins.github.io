@@ -632,7 +632,7 @@ document.getElementById('pass1').style.color='transparent';
 
 if(localStorage.getItem('admin') =='true'){
     setInterval(() => {
-        if(document.getElementById('pass1').value=='barcodeeditnow' || localStorage.getItem('allowvar')=='true'){
+        if(document.getElementById('pass1').value=='barcodeeditnow'){
             document.getElementById('pass1').style.display='none';
             setTimeout(() => {
                 var allowvar = 'false';
@@ -641,6 +641,12 @@ if(localStorage.getItem('admin') =='true'){
                 
             }, 1000);
             
+        }else if(localStorage.getItem('allowvar')=='true'){
+            var allowvar = 'false';
+            localStorage.setItem('allowvar', allowvar);
+            
+            document.getElementById('body').style.display='block';
+            document.getElementById('pass1').style.display='none';
         }
     }, 1000);
     
