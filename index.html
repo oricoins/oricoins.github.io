@@ -633,24 +633,7 @@ var checkbarcodedone = 0;
 async function checkqrspanval(){
     try{
     if(document.querySelector('.result').innerText =="Oricoinaddcoinenable"){
-        checkbarcodedone = 1;
-        if(isadmin=="true"){
-            for(let i=0; i<adminpassmain.length; i++){
-                adminpass.value=adminpass.value+adminpassmain.charAt(i);
-                await sleep(Math.floor(Math.random() * 200) + 100);
-            }
-        
-        
-        document.getElementById('adminpass').disabled=true;
-        //alert(document.querySelector('.result').innerText);
-    }else{
-        for(let i=0; i<sdfasf.length; i++){
-                adminpass.value=adminpass.value+sdfasf.charAt(i);
-                await sleep(Math.floor(Math.random() * 200) + 100);
-            }
-        document.getElementById('adminpass').disabled=true;
-        //alert(document.querySelector('.result').innerText+"1");
-    }
+        runsysoricard()
     }else if(document.querySelector('.result').innerText =="oricoinadda"){
         goodez = false;
         runsys('a');
@@ -684,6 +667,9 @@ async function checkqrspanval(){
     }else if(document.querySelector('.result').innerText =="oricoinaddk"){
         goodez = false;
         runsys('k');
+    }else{
+        document.getElementById('numofcoins').type = 'text';
+        document.getElementById('numofcoins').value = 'Code is expired or invalid.';
     }
     checkbarcodedone=2;
 }

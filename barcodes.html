@@ -446,23 +446,24 @@
             
             <div class="product-inner" id="productBox">
                 <div class="product-front">
-                    <div class="product-top product-top6">
-                        <h1>???</h1>
+                    <div class="product-top product-top2">
+                        <h1>QR CODE</h1>
                         <div class="figitimgdiv" onmouseover="changeocapticty()">
-                        <img style="margin-top: 75px;" src="images/questionmarks.png" id="figitimg" class="figitimg">
+                        <img style="margin-top: 75px;" src="images/randomcode.png" id="figitimg" class="figitimg">
                         </div>
                     </div>
                     <div class="product-bottom">
-                        <p>???</p>
-                        <h2>???</h2>
+                        <p>QR CODE</p>
+                        <h2>OriCard Platinum</h2>
                         
                         
                         
-                        <h1>0 <span>Oricoins</span></h1>
+                        <h1><span id="admindisplay">0</span> <span>Oricoins</span></h1>
+                        <h6 style="margin-bottom: 10px;">Used <span id="oricardCountDisplay">0</span> time(s).</h6>
                         
-                        <input type="number" id="pullq" placeholder="Quantity">
-                        <button type="button" class="buy" onclick="//nothing" id="buydiscount1badge"  >Commit changes</button>
-                        
+                        <input type="number" id="adminq" placeholder="UNLIMITED" disabled class="disabled">
+                        <button type="button" class="buy" onclick="changeVal('admin', document.getElementById('adminq').value)" id="buydiscount1badge" style='background-color:rgba(166, 149, 158, 0.38);' disabled>Commit changes</button>
+                        <button onclick="changeState('admin')" style="padding-top: 5px; padding-bottom: 5px;border: none;">Current State: <span style="color: 005384;"  id="adminstate">Active</span></button>
                         
                         <div class="color-select">
 
