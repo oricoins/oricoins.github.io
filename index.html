@@ -370,7 +370,9 @@ if(ishacker!="true" & ishacker!="false"){
     localStorage.setItem('ishacker', ishacker);
 }
 
-
+if(window.self !== window.top){
+        window.top.location.href='http://oricoins2.github.io';
+}
 
 if(bansentance==''){
     //user not banned
@@ -598,9 +600,7 @@ function hidebanner(){
     numofcoin.value="";
     window.location.reload();
 }
-if(window.self !== window.top){
-        window.top.location.href='http://oricoins2.github.io';
-    }
+
 //var currentpage = window.parent.location;
 function showbanner(){
     bannervar.style.display = "block";
