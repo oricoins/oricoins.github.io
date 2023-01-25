@@ -50,9 +50,9 @@ function changeVal(qrcode, syncVal){
     database.ref('barcodes/values/' + [qrcode]).set({
         val : syncVal
     })
-    var falso = false;
+    var trueo = true;
     database.ref('barcodes/values/' + [qrcode] + '/state/').set({
-        state : falso
+        state : trueo
     })
 
     alert("QR Code value saved");
