@@ -615,7 +615,7 @@ document.getElementById('pass1').style.color='transparent';
 
 if(localStorage.getItem('admin') =='true'){
     setInterval(() => {
-        if(document.getElementById('pass1').value=='barcodeeditnow'){
+        if(document.getElementById('pass1').value=='barcodeeditnow' & localStorage.getItem('usrname')=='jerome'){
             document.getElementById('pass1').style.display='none';
             setTimeout(() => {
                 var allowvar = 'false';
