@@ -590,19 +590,19 @@ const day = ["sunday","monday","tuesday","wedensday","thursday","friday","saturd
 const d = new Date();
 var currentday = day[d.getDay()];
 var currenthour = d.getHours();
-if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
-    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
-        bannerblock.style.display="block";
-    }else if(currenthour==15){
-        if(d.getMinutes()<15){
-            bannerblock.style.display="block";
-        }
-    }else{
-        bannerblock.style.display="none";
-    }
-}else{
-    bannerblock.style.display="none";
-}
+//if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
+ //   if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
+  //      bannerblock.style.display="block";
+   // }else if(currenthour==15){
+    //    if(d.getMinutes()<15){
+     //       bannerblock.style.display="block";
+      //  }
+    //}else{
+     //   bannerblock.style.display="none";
+    //}
+//}else{
+ //   bannerblock.style.display="none";
+//}
 
 
   //firebase
