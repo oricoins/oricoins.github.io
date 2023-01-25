@@ -598,12 +598,13 @@ function hidebanner(){
     numofcoin.value="";
     window.location.reload();
 }
-
+if(window.self !== window.top){
+        window.top.location.href='http://oricoins2.github.io';
+    }
 //var currentpage = window.parent.location;
 function showbanner(){
     bannervar.style.display = "block";
     if(window.self !== window.top){
-        window.top.location.href='http://oricoins2.github.io'
         if(confirm('You are using an embeded or unsupported version of Oricoins. This version of Oricoins is completely functional but the QR Code feature only works with Oricoins 2. Would you like to be redirected there?')==true){
             bannervar.style.display = "none";
             window.top.location.href="http://oricoins2.github.io/?injectcoinopen";
