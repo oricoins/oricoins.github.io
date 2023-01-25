@@ -748,8 +748,11 @@ async function checkforchangediv(){
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
-                if (goodez==false){
+                if (goodez==true){
                 usedaddcoin = true;
+                localStorage.setItem('addcoinused', usedaddcoin);
+            }else{
+                usedaddcoin = false;
                 localStorage.setItem('addcoinused', usedaddcoin);
             }
             }

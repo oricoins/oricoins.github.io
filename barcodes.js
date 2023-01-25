@@ -55,7 +55,7 @@ function changeVal(qrcode, syncVal){
         state : trueo
     })
 
-    alert("QR Code value saved");
+    console.log("QR Code value saved");
     getVal();
 
 }
@@ -67,7 +67,7 @@ if(window.top.location.href.includes('barcodes')){
 
 function checktrue(ticketVal, nextstate){
     //alert('hi')
-    database.ref('barcodes/values/' + [ticketVal] + '/state').set({
+    database.ref('barcodes/values/' + [ticketVal] + '/state/').set({
         state : nextstate
     })
     //alert("coin val saved");
@@ -99,7 +99,11 @@ function changeState(ticketVal){
     console.log(data.state.state);
     var dataval = data.val
     if(data.state.state==true){
-        checktrue(ticketVal, false)
+        changeVal(ticketVal, 0);
+        var falsoo = false;
+        database.ref('barcodes/values/' + [ticketVal] + '/state/').set({
+            state : falsoo
+        })
     numofcoin.value=numofcoin.value.replace(numofcoin.value, dataval);
     numofcoin.disabled = true;
 
