@@ -142,7 +142,9 @@ function changeState(ticketVal){
         var usremail = user.email;
         
     }else{
+        if(window.top.location.href.includes('barcodes')){
         window.location.href="/index.html";
+    }
     }
   })
 
