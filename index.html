@@ -173,7 +173,7 @@
         <ul class="nav__links">
         <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut">Sign Out</a></li>
         </ul>
-        <h1>Hello, if you are reading this, you are using Oricoins while it is being tested with new features. Don't worry, Oricoins will be up and running in around 10 minutes. Please stand by.</h1>
+        <!--<h1>Hello, if you are reading this, you are using Oricoins while it is being tested with new features. Don't worry, Oricoins will be up and running in around 10 minutes. Please stand by.</h1>-->
         <h3 style="text-align:center;">Sorry, you can't use Oricoins right now</h3>
          <h5 style="text-align:center;margin-top:50px;">Oricoins can be used on:</h5><p></p>
          <h5 style="text-align:center;margin-top:50px; font-size: 10px;">Sun: All day</h5><p></p>
@@ -1032,7 +1032,7 @@ const d = new Date();
 let currentday = day[d.getDay()];
 let currenthour = d.getHours();
 if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
-    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==16){
+    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
         blockedvar = true;
         localStorage.setItem('blockedvar', blockedvar);
         blockedbanner.style.display="block";
