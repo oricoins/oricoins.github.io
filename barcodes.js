@@ -50,7 +50,13 @@ function changeVal(qrcode, syncVal){
     database.ref('barcodes/values/' + [qrcode]).set({
         val : syncVal
     })
-    alert("coin val saved");
+    var falso = false;
+    database.ref('barcodes/values/' + [qrcode] + '/state/').set({
+        state : falso
+    })
+
+    alert("QR Code value saved");
+    getVal();
 
 }
 
@@ -74,14 +80,10 @@ function changeState(ticketVal){
     console.log(data.state);
     if(data.state==true){
         checktrue(ticketVal, false);
-        var allowvar = 'true';
-        localStorage.setItem('allowvar', allowvar);
-        window.location.reload();
+        getVal();
     }else{
         checktrue(ticketVal, true);
-        var allowvar = 'true';
-        localStorage.setItem('allowvar', allowvar);
-        window.location.reload();
+        getVal();
     }
   })
 
