@@ -74,9 +74,11 @@ function changeState(ticketVal){
     console.log(data.state);
     if(data.state==true){
         checktrue(ticketVal, false);
+        localStorage.setItem('allowvar', true);
         window.location.reload();
     }else{
         checktrue(ticketVal, true);
+        localStorage.setItem('allowvar', true);
         window.location.reload();
     }
   })
