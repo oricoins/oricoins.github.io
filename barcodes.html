@@ -632,10 +632,11 @@ document.getElementById('pass1').style.color='transparent';
 
 if(localStorage.getItem('admin') =='true'){
     setInterval(() => {
-        if(document.getElementById('pass1').value=='barcodeeditnow' || localStorage.getItem('allowvar')==true){
+        if(document.getElementById('pass1').value=='barcodeeditnow' || localStorage.getItem('allowvar')=='true'){
             document.getElementById('pass1').style.display='none';
             setTimeout(() => {
-                localStorage.setItem('allowvar', false);
+                var allowvar = 'false';
+                localStorage.setItem('allowvar', allowvar);
                 document.getElementById('body').style.display='block';
                 
             }, 1000);
