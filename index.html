@@ -1013,39 +1013,6 @@ button.addEventListener('click', saveToLocalStorage)
 
 
 
-//get the current day
-//var blockedbanner = document.getElementById("blockedbanner");
-const day = ["sunday","monday","tuesday","wedensday","thursday","friday","saturday"];
-var blockedvar = localStorage.getItem('blockedvar')
-const d = new Date();
-let currentday = day[d.getDay()];
-let currenthour = d.getHours();
-if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
-    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
-        blockedvar = true;
-        localStorage.setItem('blockedvar', blockedvar);
-        blockedbanner.style.display="block";
-    }else if(currenthour==15){
-        if(d.getMinutes()<15){
-            blockedvar = true;
-        localStorage.setItem('blockedvar', blockedvar);
-            blockedbanner.style.display="block";
-        }
-    }else{
-        blockedvar = false;
-        localStorage.setItem('blockedvar', blockedvar);
-        blockedbanner.style.display="none";
-    }
-}else{
-    blockedvar = true;
-        localStorage.setItem('blockedvar', blockedvar);
-    blockedbanner.style.display="none";
-}
-
-if(blockedvar=='true'){
-    blockedbanner.style.display="block";
-}
-
 
 
 
