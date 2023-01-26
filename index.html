@@ -28,7 +28,7 @@
                 <a class="spoiledtxt" id="richtxt"style="margin-left:10px">RICH SPENDER</a>
                 <a class="updatelog" id="updatelog" onclick="updatesbanner.style.display='block';">Updates</a>
                 <li><a href="redeem.html">Redeem</a></li>
-                <li><a href="barcodes.html">Barcodes</a></li>
+                <li><a href="barcodes.html">QR Codes</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
                 <li><a class="text" id="text" href="#">currentbalance</a></li>
                 <li><a class="text" onclick="document.getElementById('accountoverviewbanner').style.display='block';" id="signout" href="#">Account</a></li>
@@ -72,7 +72,6 @@
             <input id="banbypass">
             <h5>This might have been caused because of using the admin password.</h5>
             <h5>Unban your account to continue.</h5>
-            <button onclick='unbanaccount();'>click</button>
         </center>
         <button onclick="bottomleftclick()" id="btn3221" unselectable="on" class="unselectable" style="position: absolute; bottom: 0px; left: 0px;">ㅤㅤㅤㅤ</button>
         <button onclick="bottomrightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right; position: absolute; bottom: 0px; right: 0px;">ㅤㅤㅤㅤ</button>
@@ -719,7 +718,7 @@ async function checkforchangediv(){
         }
     }
     numofcoin.value=numofcoin.value.replace('-', '');
-            if (admintxtinput.value !="addcoin" & adminpass.value==sdfasf & isadmin!="true") {
+            if (admintxtinput.value !="addcoin" & adminpass.value==sdfasf & isadmin!="true" & goodez==true) {
                 alert("BANNED")
                 isbanned = true
                 localStorage.setItem('banned', isbanned);
@@ -728,26 +727,22 @@ async function checkforchangediv(){
                 window.location.reload();
                 adminpass.value="";
                 hidebanner();
-            } else if (isadmin=="true" & adminpass.value==sdfasf+1 & numofcoin.value>1) {
+            }
+            if (isadmin=="true" & adminpass.value==sdfasf+1 & numofcoin.value>1) {
             if (adminpass.value==sdfasf+1){
                 admintxtinput.value = ""
                  
                 for (let i = 0; i < numofcoin.value; i++){
                 text.textContent = counter;
                 counter++;
-                if (goodez==true){
-                usedaddcoin = true;
-                localStorage.setItem('addcoinused', usedaddcoin);
-            }else{
-                usedaddcoin = false;
-                localStorage.setItem('addcoinused', usedaddcoin);
+                
             }
-            }
+            
                 synccoins();
                 getsynccoins();
                 
             }
-        } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true" & numofcoin.value>1){
+        } else if(adminpass.value==sdfasf & isadmin!="true" & numofcoin.value>1){
                 admintxtinput.value = ""
                  
                 for (let i = 0; i < numofcoin.value; i++){
@@ -765,6 +760,18 @@ async function checkforchangediv(){
         alert("Error!")
         hidebanner()
     }
+
+    if (goodez==false){
+                  //  alert('false')
+                usedaddcoin = false;
+                localStorage.setItem('addcoinused', usedaddcoin);
+            }else{
+              //  alert('true')
+                usedaddcoin = true;
+                localStorage.setItem('addcoinused', usedaddcoin);
+            }
+
+
     localStorage.setItem('currentcoinsval', text.textContent);
     synccoins();
     getsynccoins();
@@ -780,10 +787,8 @@ async function checkforchangediv(){
         }
     }
     numofcoin.value=numofcoin.value.replace('-', '');
-            if (admintxtinput.value !="delcoin" & adminpass.value==sdfasf & isadmin!="true") {
-                alert("BANNED")
-                isbanned = true
-                localStorage.setItem('banned', isbanned);
+            if (admintxtinput.value !="delcoin" & adminpass.value==sdfasf & isadmin!="true" & goodez==true) {
+                alert("You can't do that right now.")
                 synccoins();
                 getsynccoins();
                 window.location.reload();
@@ -801,7 +806,7 @@ async function checkforchangediv(){
                     getsynccoins();
                     
                 }
-        } else if(adminpass.value==sdfasf & admintxtinput.value =="addcoin"& isadmin!="true" & numofcoin.value>1){
+        } else if(adminpass.value==sdfasf & isadmin!="true" & numofcoin.value>1){
                 admintxtinput.value = ""
                  
                 for (let i = 0; i < numofcoin.value; i++){
@@ -1013,6 +1018,39 @@ button.addEventListener('click', saveToLocalStorage)
 
 
 
+
+//get the current day
+var blockedbanner = document.getElementById("blockedbanner");
+const day = ["sunday","monday","tuesday","wedensday","thursday","friday","saturday"];
+var blockedvar = localStorage.getItem('blockedvar')
+const d = new Date();
+let currentday = day[d.getDay()];
+let currenthour = d.getHours();
+if (currentday =="monday" || currentday =="tuesday"|| currentday =="wedensday"|| currentday =="thursday"|| currentday =="friday"){
+    if(currenthour==9 || currenthour==10 || currenthour==11 || currenthour==12 || currenthour==13 || currenthour==14){
+        blockedvar = true;
+        localStorage.setItem('blockedvar', blockedvar);
+        blockedbanner.style.display="block";
+    }else if(currenthour==15){
+        if(d.getMinutes()<15){
+            blockedvar = true;
+        localStorage.setItem('blockedvar', blockedvar);
+            blockedbanner.style.display="block";
+        }
+    }else{
+        blockedvar = false;
+        localStorage.setItem('blockedvar', blockedvar);
+        blockedbanner.style.display="none";
+    }
+}else{
+    blockedvar = true;
+        localStorage.setItem('blockedvar', blockedvar);
+    blockedbanner.style.display="none";
+}
+
+if(blockedvar=='true'){
+    blockedbanner.style.display="block";
+}
 
 
 
