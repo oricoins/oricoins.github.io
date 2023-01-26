@@ -139,7 +139,7 @@ function changeState(ticketVal){
 }
 }else{
     document.getElementById('numofcoins').type = 'text';
-    document.getElementById('numofcoins').value = 'Code Expired.';
+    document.getElementById('numofcoins').value = 'Code has expired or has not been activated.';
 }
 
 
