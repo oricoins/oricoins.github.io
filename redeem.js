@@ -19,6 +19,35 @@
 
   const auth =  firebase.auth();
 
+
+
+
+
+
+  function hasNetwork(online) {
+    // Update the DOM to reflect the current status
+    if (online) {
+      console.log('System Online.')
+    } else {
+      alert('Device Offline.')
+    }
+  }
+
+
+hasNetwork(navigator.onLine);
+window.addEventListener("online", () => {
+  // Set hasNetwork to online when they change to online.
+  hasNetwork(true);
+});
+window.addEventListener("offline", () => {
+  // Set hasNetwork to offline when they change to offline.
+  hasNetwork(false);
+});
+
+
+
+
+
   //signup function
   function signUp(){
     var email = document.getElementById("email");

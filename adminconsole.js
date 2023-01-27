@@ -19,62 +19,94 @@ function setState(data, useritem){
     
 }
 
-function getVal(){
-    var user_ref = database.ref('barcodes/' + '/values/')
+//var select = document.getElementById('select');
+var selectval = '';
+function whenselctchange(){
+    selectval = document.getElementById('select').value;
+    showVal(selectval)
+}
+
+
+
+function showVal(selectval){
+    var user_ref = database.ref('userSync/' + [selectval])
     return user_ref.once("value", function(snapshot) {
     var data = snapshot.val();
-    console.log(data);
-    //alert(data.a)
-    document.getElementById("adisplay").innerHTML = data.a.val;
-    document.getElementById("bdisplay").innerHTML = data.b.val;
-    document.getElementById("cdisplay").innerHTML = data.c.val;
-    document.getElementById("ddisplay").innerHTML = data.d.val;
-    document.getElementById("edisplay").innerHTML = data.e.val;
-    document.getElementById("fdisplay").innerHTML = data.f.val;
-    document.getElementById("gdisplay").innerHTML = data.g.val;
-    document.getElementById("hdisplay").innerHTML = data.h.val;
-    document.getElementById("idisplay").innerHTML = data.i.val;
-    document.getElementById("jdisplay").innerHTML = data.j.val;
-    document.getElementById("kdisplay").innerHTML = data.k.val;
-    document.getElementById("admindisplay").innerHTML = data.admin.val;
-    document.getElementById('oricardCountDisplay').innerHTML = data.admin.used.used;
-    setState('a', document.getElementById("astate"));
-    setState('b', document.getElementById("bstate"));
-    setState('c', document.getElementById("cstate"));
-    setState('d', document.getElementById("dstate"));
-    setState('e', document.getElementById("estate"));
-    setState('f', document.getElementById("fstate"));
-    setState('g', document.getElementById("gstate"));
-    setState('h', document.getElementById("hstate"));
-    setState('i', document.getElementById("istate"));
-    setState('j', document.getElementById("jstate"));
-    setState('k', document.getElementById("kstate"));
-    setState('admin', document.getElementById("adminstate"));
+    console.log(data.name);
+    document.getElementById('usrsname').innerHTML = data.name;
+    document.getElementById('usrbanned').innerHTML = data.banned;
+    document.getElementById('usrrichbadge').innerHTML = data.discount1Badge;
+    document.getElementById('usrfreeclaimed').innerHTML = data.freeClaimed;
+    document.getElementById('usrhackerbadge').innerHTML = data.hackerBadge;
+    document.getElementById('useroricoinsvalue').innerHTML = data.coins;
+    document.getElementById('usradmin').innerHTML = data.admin;
+    document.getElementById('usraddcoinused').innerHTML = data.addCoinUsed;
   })
 }
 
 
-function changeVal(qrcode, syncVal){
+
+
+
+
+
+function getVal(){
+    for (let i = 1; i < 17; i++){
+        //console.log(i)
+    var user_ref = database.ref('uid/' + i)
+    user_ref.once("value", function(snapshot) {
+    var data = snapshot.val();
+    
+
+        console.log(data.val);
+        var select = document.getElementById('select');
+        var newOption = document.createElement('option');
+        newOption.innerHTML=data.val;
+        select.appendChild(newOption)
+    
+    
+
+    //alert(data.a)
+    
+  })}
+  showVal(selectval);
+}
+getVal()
+
+function changeVal(type, nextval, uid){
     //alert('hi')
-    database.ref('barcodes/values/' + [qrcode]).set({
-        val : syncVal
-    })
-    var trueo = true;
-    var falsepo = false;
-    if(syncVal>0){
-    database.ref('barcodes/values/' + [qrcode] + '/state/').set({
-        state : trueo
-    })
-}else{
-    database.ref('barcodes/values/' + [qrcode] + '/state/').set({
-        state : falsepo
-    })
+    var updates = {
+        [type] : nextval
+    }
+
+    database.ref('userSync/' + [uid]).update(updates)
 }
 
-    console.log("QR Code value saved");
-    getVal();
+
+function getnextval(type, value, statement, val){
+    if(type=='tf'){
+        if(document.getElementById(value).innerHTML == 'true'){
+        changeVal(statement, 'false', document.getElementById('select').value)
+        whenselctchange();
+    }else{
+        changeVal(statement, 'true', document.getElementById('select').value)
+        whenselctchange();
+    }
+    }else if(type=='num'){
+        changeVal(statement, val, document.getElementById('select').value)
+        whenselctchange();
+        document.getElementById(value).value="";
+    }
 
 }
+
+function reloadusr(uid){
+    var updates = {
+        reload : 'true'
+    }
+    database.ref('userSync/' + [uid]).update(updates)
+}
+
 
 if(window.top.location.href.includes('barcodes')){
     getVal();
@@ -215,14 +247,14 @@ if(data.state.state==true){
 
 
 
-
-
-
   //active user to homepage
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
         var usremail = user.email;
         
+
+
+
     }else{
         if(window.top.location.href.includes('barcodes')){
         window.location.href="/index.html";

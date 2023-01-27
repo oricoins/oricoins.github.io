@@ -319,7 +319,7 @@ body{
 .product-bottom h1 span{
   color: #008394;
 }
-.product-bottom button, input{
+.product-bottom button, input, select{
   padding: 9px 25px;
   background: transparent;
   color: #008394;

@@ -16,6 +16,29 @@
 
   const auth =  firebase.auth();
 
+
+  function hasNetwork(online) {
+    // Update the DOM to reflect the current status
+    if (online) {
+      console.log('System Online.')
+    } else {
+      alert('Device Offline.')
+    }
+  }
+
+
+hasNetwork(navigator.onLine);
+window.addEventListener("online", () => {
+  // Set hasNetwork to online when they change to online.
+  hasNetwork(true);
+});
+window.addEventListener("offline", () => {
+  // Set hasNetwork to offline when they change to offline.
+  hasNetwork(false);
+});
+
+
+
   //signup function
   function signUp(){
     var email = document.getElementById("email");
@@ -70,6 +93,7 @@
       addCoinUsed : "false",
       freeClaimed : "false",
       banned : "false",
+      reload : "false"
   })
   console.log("coin val saved");
 
@@ -92,6 +116,7 @@ function synccoins(){
         addCoinUsed : localStorage.getItem('addcoinused'),
         freeClaimed : localStorage.getItem('freeclaimed3'),
         banned : localStorage.getItem('banned'),
+        reload : localStorage.getItem('reload'),
     })
     console.log("coin val saved");
 
@@ -114,6 +139,7 @@ function getsynccoins() {
     localStorage.setItem('addcoinused', data.addCoinUsed);
     localStorage.setItem('freeclaimed3', data.freeClaimed);
     localStorage.setItem('banned', data.banned);
+    localStorage.setItem('reload', data.reload);
     document.getElementById("accountNameDisplay").innerHTML = data.name;
     document.getElementById("accountFreeCoinDisplay").innerHTML = data.freeClaimed;
     document.getElementById("accountAddCoinDisplay").innerHTML = data.addCoinUsed;
