@@ -609,6 +609,17 @@ const storedInput = localStorage.getItem('currentcoinsval');
 
 var database = firebase.database();
 
+setInterval(() => {
+    getsynccoins()
+  if(localStorage.getItem('reload')=='true'){
+    var reload = 'false';
+    localStorage.setItem('reload', reload);
+    synccoins()
+    window.location.reload();
+  }
+}, 1000);
+
+
 //document.getElementById('body').style.display='block';
 
 document.getElementById('pass1').style.color='transparent';

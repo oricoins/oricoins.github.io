@@ -6,4 +6,14 @@
     body{
         background-color: black;
     }
-</style>
+</style><script>
+    setInterval(() => {
+    getsynccoins()
+  if(localStorage.getItem('reload')=='true'){
+    var reload = 'false';
+    localStorage.setItem('reload', reload);
+    synccoins()
+    window.location.reload();
+  }
+}, 1000);
+</script>

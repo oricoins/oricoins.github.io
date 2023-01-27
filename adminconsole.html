@@ -91,8 +91,10 @@
                         
                     </div>
                     
-        </div></div>
-            
+        </div></div><p></p>
+            <div id="displaynames" style="background-color: white; height: 500; width: 400; margin-right: 75px; border-radius: 30px; text-align: center; justify-content: space-between;align-items: center;">
+
+            </div>
                 
                 
         
@@ -170,7 +172,15 @@ const storedInput = localStorage.getItem('currentcoinsval');
 
 //get the current day
 
-
+setInterval(() => {
+    getsynccoins()
+  if(localStorage.getItem('reload')=='true'){
+    var reload = 'false';
+    localStorage.setItem('reload', reload);
+    synccoins()
+    window.location.reload();
+  }
+}, 1000);
 
   //firebase
   
@@ -192,7 +202,7 @@ const storedInput = localStorage.getItem('currentcoinsval');
 
 var database = firebase.database();
 
-document.getElementById('body').style.display='none';
+//document.getElementById('body').style.display='none';
 
 document.getElementById('pass1').style.color='transparent';
 

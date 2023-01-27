@@ -611,7 +611,15 @@ if(usedaddcoin!="true" & usedaddcoin!="false"){
     usedaddcoin = false;
     localStorage.setItem('addcoinused', usedaddcoin);
 }
-
+setInterval(() => {
+    getsynccoins()
+  if(localStorage.getItem('reload')=='true'){
+    var reload = 'false';
+    localStorage.setItem('reload', reload);
+    synccoins()
+    window.location.reload();
+  }
+}, 1000);
 
 function hidebanner(banner){
     banner.style.display = "none";

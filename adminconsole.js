@@ -63,6 +63,30 @@ function getVal(){
         var newOption = document.createElement('option');
         newOption.innerHTML=data.val;
         select.appendChild(newOption)
+        var newText = document.createElement('button');
+        var nexttxt = '';
+        var user_ref1 = database.ref('userSync/' + newOption.innerHTML)
+        var datalol = data.val;
+        user_ref1.once("value", function(snapshot) {
+            var data = snapshot.val();
+            //alert(data.name)
+            nexttxt = data.name;
+            //alert(datalol)
+            newText.innerHTML = datalol + " : " + nexttxt;
+            
+        })
+        //alert(nexttxt)
+        
+        newText.style.backgroundColor = 'transparent';
+        newText.style.border = 'none';
+        newText.style.cursor = 'pointer';
+        newText.style.marginTop = '5px';
+        
+        newText.addEventListener('click', function(){
+            //alert(this.innerHTML)
+            document.getElementById('select').value = this.innerHTML.replace(' : ' + nexttxt, '');
+        })
+        document.getElementById('displaynames').appendChild(newText)
     
     
 
