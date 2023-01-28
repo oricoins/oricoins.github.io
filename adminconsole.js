@@ -29,6 +29,16 @@ function whenselctchange(){
 
 
 function showVal(selectval){
+    if (selectval=='Choose User'){
+        document.getElementById('usrsname').innerHTML = 'undefined';
+    document.getElementById('usrbanned').innerHTML = 'undefined';
+    document.getElementById('usrrichbadge').innerHTML = 'undefined';
+    document.getElementById('usrfreeclaimed').innerHTML = 'undefined';
+    document.getElementById('usrhackerbadge').innerHTML = 'undefined';
+    document.getElementById('useroricoinsvalue').innerHTML = 'undefined';
+    document.getElementById('usradmin').innerHTML = 'undefined';
+    document.getElementById('usraddcoinused').innerHTML = 'undefined';
+    }else{
     var user_ref = database.ref('userSync/' + [selectval])
     return user_ref.once("value", function(snapshot) {
     var data = snapshot.val();
@@ -43,6 +53,7 @@ function showVal(selectval){
     document.getElementById('usraddcoinused').innerHTML = data.addCoinUsed;
   })
 }
+}
 
 
 
@@ -50,8 +61,8 @@ function showVal(selectval){
 
 
 
-function getVal(){
-    for (let i = 1; i < 17; i++){
+function getVal(varlol){
+    for (let i = 1; i < 19; i++){
         //console.log(i)
     var user_ref = database.ref('uid/' + i)
     user_ref.once("value", function(snapshot) {
@@ -73,7 +84,9 @@ function getVal(){
             nexttxt = data.name;
             //alert(datalol)
             newText.innerHTML = datalol + " : " + nexttxt;
-            
+            if(varlol==1){
+                showVal(document.getElementById('select').value)
+            }
         })
         //alert(nexttxt)
         
@@ -96,7 +109,7 @@ function getVal(){
   })}
   showVal(selectval);
 }
-getVal()
+getVal(0)
 
 function changeVal(type, nextval, uid){
     //alert('hi')

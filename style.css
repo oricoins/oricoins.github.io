@@ -668,3 +668,16 @@ body{
   text-align: center;
   margin-top: 30px;
 }
+
+.onlinecontainer {
+  width: 100%;
+  height: 30px;
+  border: 1px solid black;
+  text-align: center;
+  color: #fff;
+  background-color: green;
+  position: absolute;
+  z-index: -2;
+  transition: 2s;
+
+}

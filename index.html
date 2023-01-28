@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,25 +10,27 @@
   <script src="form.js"></script>
   <script src="html5-qrcode.min.js"></script>
   <script src="barcodes.js"></script>
+  
 
     
     <title>Oricoin | Origami Order Limiter</title>
 </head>
-<body >
-    <header>
+<body>
+    
+    <header id="header1">
        
         <a class="logo" onclick="logoclick()"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
         
         <nav>
             <ul class="nav__links">
-                <a class="adminTxt" id="admintxt" style="margin-left:10px">ADMIN ACCOUNT</a>
-                <a class="haxtxt" id="haxtxt" style="margin-left:10px">TOP G HACKER</a>
-                <a class="spoiledtxt" id="richtxt"style="margin-left:10px">RICH SPENDER</a>
+                <a class="adminTxt" id="admintxt" style="margin-left: 10px; display: block;">ADMIN ACCOUNT</a>
+                <a class="haxtxt" id="haxtxt" style="margin-left: 10px; display: none;">TOP G HACKER</a>
+                <a class="spoiledtxt" id="richtxt" style="margin-left: 10px; display: block;">RICH SPENDER</a>
                 <a class="updatelog" id="updatelog" onclick="updatesbanner.style.display='block';">Updates</a>
                 <li><a href="redeem.html">Redeem</a></li>
                 <li><a href="adminconsole.html">Admin Console</a></li>
                 <li><a href="#" class="txt">Balance:</a></li>
-                <li><a class="text" id="text" href="#">currentbalance</a></li>
+                <li><a class="text" id="text" href="#">38</a></li>
                 <li><a class="text" onclick="document.getElementById('accountoverviewbanner').style.display='block';" id="signout" href="#">Account</a></li>
             </ul>
         </nav>
@@ -38,17 +38,27 @@
         <button unselectable="on" class="unselectable enablebutton1" id="enablebutton1" onclick="enableadmintxtinput()">ㅤㅤㅤㅤ</button>
         <p class="menu cta">Menu</p>
     </header>
-    <input type="text" id="setadmintxt" class="admintxtinput" disabled>
+    
+    <div id="onlinecontainer" class="onlinecontainer">
+        <span id="statspan"></span>
+    </div>
+
+
+    <input type="text" id="setadmintxt" class="admintxtinput" disabled="">
     <div class="overlay">
-        <a class="close">&times;</a>
+        <a class="close">×</a>
         <div class="overlay__content">
             <a href="#">Redeem</a>
         </div>
     </div>
+
+    
+
+
     <div class="container">
         <input type="text" id="storage" class="storage" style="display: none;">
         <!--<p class="text" id="text">text</p>-->
-        <button class="button" id="claimbutton" onmouseover="buttonhover()">Claim</button>
+        <button class="button" id="claimbutton" onmouseover="buttonhover()" style="transition: all 0s ease 0s; left: 124px; top: 312px;">Claim</button>
         <div class="headcontainer">
         <h5 class="disc">*Double-tap button to claim</h5>
         <h5 class="disc">*You can claim around one Oricoin every 10 seconds if you are on the page</h5>
@@ -59,7 +69,7 @@
     </div>
 
     
-    <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187); text-align: center;">
+    <div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187); text-align: center; display: none;">
         <ul class="nav__links">
             <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut()">Sign Out</a></li>
             </ul>
@@ -69,7 +79,7 @@
         <h4>Time remaining: <span id="timeleftinsentance"></span></h4>
         <h6>Sentance: <span id="sentanceDisplay"></span></h6>
         <center>
-            <input id="banbypass">
+            <input id="banbypass" disabled="">
             <h5>This might have been caused because of using the admin password.</h5>
             <h5>Unban your account to continue.</h5>
         </center>
@@ -77,7 +87,7 @@
         <button onclick="bottomrightclick()" id="btn322" unselectable="on" class="unselectable" style="float: right; position: absolute; bottom: 0px; right: 0px;">ㅤㅤㅤㅤ</button>
 
     </div>
-    <form class="riddles" id="unbanbanner" style="display: block;height: 275px; z-index: 1000;">
+    <form class="riddles" id="unbanbanner" style="display: none; height: 275px; z-index: 1000;">
         <h1 class="riddlehead">Unban Account</h1>
         <p></p>
         <p></p>
@@ -116,7 +126,7 @@
         <p></p>
         <p></p>
         <p></p>
-        <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; background-color: rgb(0, 131, 148); color: rgb(255, 255, 255);" onclick="claimupdatereward()">   Claim 50 Oricoins</button>
+        <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; background-color: rgba(166, 149, 158, 0.38); color: rgb(0, 131, 148);" onclick="claimupdatereward()" disabled="">   Claim 50 Oricoins</button>
         <h5 style="text-align: center;">Claim Oricoins each time the website <p></p>is updated for free!</h5>
 
 
@@ -127,21 +137,21 @@
         <button class="riddlesback" onclick="document.getElementById('accountoverviewbanner').style.display='none';" style="margin-top:10px;margin-right:10px;">x</button>
         <h1 class="riddlehead">Account Information</h1>
         <div class="accInfo" style="margin-left: 0px; text-align: center;">
-        <h4>Name<span>:</span><span id="accountNameDisplay">accountName</span></h4>
-        <h4>Free Coin Claimed<span>:</span><span id="accountFreeCoinDisplay">accountFreeCoin</span></h4>
-        <h4>Add Coin Used<span>:</span><span id="accountAddCoinDisplay">accountAddCoin</span></h4>
-        <h4>Oricoin Value<span>:</span><span id="accountOricoinValDisplay">accountOricoinVal</span></h4>
-        <h4>Admin<span>:</span><span id="accountAdminDisplay">accountAdmin</span></h4>
-        <h4>Banned<span>:</span><span id="accountBannedDisplay">accountBanned</span></h4>
-        <h4>Hacker Badge<span>:</span><span id="accountHackerDisplay">accountHacker</span></h4>
-        <h4>Rich Person Badge<span>:</span><span id="accountRichPersonBadgeDisplay">accountRichBadge</span></h4>
-        <h4>Firebase User ID<span>:</span><span id="accountUID">accountUID</span></h4>
+        <h4>Name<span>:</span><span id="accountNameDisplay">jerome</span></h4>
+        <h4>Free Coin Claimed<span>:</span><span id="accountFreeCoinDisplay">true</span></h4>
+        <h4>Add Coin Used<span>:</span><span id="accountAddCoinDisplay">false</span></h4>
+        <h4>Oricoin Value<span>:</span><span id="accountOricoinValDisplay">38</span></h4>
+        <h4>Admin<span>:</span><span id="accountAdminDisplay">true</span></h4>
+        <h4>Banned<span>:</span><span id="accountBannedDisplay">false</span></h4>
+        <h4>Hacker Badge<span>:</span><span id="accountHackerDisplay">false</span></h4>
+        <h4>Rich Person Badge<span>:</span><span id="accountRichPersonBadgeDisplay">true</span></h4>
+        <h4>Firebase User ID<span>:</span><span id="accountUID">jIMe2140JxNbdE80Pwzn4QNAyXc2</span></h4>
     </div>
     <button class="claimfreecoin" id="updatefreecointxt" style="width: 150px; height: 20px; margin-top: 20px; margin-left: 285px; background-color: rgb(0, 131, 148); color: rgb(255, 255, 255);" onclick="signOut()">Sign Out</button>
 
 
     </div>
-    <form class="riddles" id="riddlesbanner" style="display: block;">
+    <form class="riddles" id="riddlesbanner" style="display: none;">
         <button class="riddlesback" id="ridbac" onclick="hidebanner();">x</button>
         <h1 class="riddlehead">Force inject Oricoins</h1>
         <p></p>
@@ -155,7 +165,7 @@
         <div id="readsys">
         <div class="row">
             <div class="col">
-              <div style="width: 500px; position: relative; padding: 0px; border: 1px solid silver;" id="reader"><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block;"><div style="text-align: center;"><button id="requestcampermission">Request Camera Permissions</button></div></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"></div></div></div></div>
+              <div style="width: 500px; position: relative; padding: 0px; border: 1px solid silver;" id="reader"><div style="text-align: left; margin: 0px; padding: 5px; font-size: 20px; border-bottom: 1px solid rgba(192, 192, 192, 0.18);"><span><a href="https://github.com/mebjas/htm25-qrcode"></a></span><span id="reader__status_span" style="float: right; padding: 5px 7px; font-size: 14px; background: rgb(238, 238, 255); border: 1px solid rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">IDLE</span><div id="reader__header_message" style="display: none; font-size: 14px; padding: 2px 10px; margin-top: 4px; border-top: 1px solid rgb(246, 246, 246);"></div></div><div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center;"><br><img width="64" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNzEuNjQzIDM3MS42NDMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDM3MS42NDMgMzcxLjY0MyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTEwNS4wODQgMzguMjcxaDE2My43Njh2MjBIMTA1LjA4NHoiLz48cGF0aCBkPSJNMzExLjU5NiAxOTAuMTg5Yy03LjQ0MS05LjM0Ny0xOC40MDMtMTYuMjA2LTMyLjc0My0yMC41MjJWMzBjMC0xNi41NDItMTMuNDU4LTMwLTMwLTMwSDEyNS4wODRjLTE2LjU0MiAwLTMwIDEzLjQ1OC0zMCAzMHYxMjAuMTQzaC04LjI5NmMtMTYuNTQyIDAtMzAgMTMuNDU4LTMwIDMwdjEuMzMzYTI5LjgwNCAyOS44MDQgMCAwIDAgNC42MDMgMTUuOTM5Yy03LjM0IDUuNDc0LTEyLjEwMyAxNC4yMjEtMTIuMTAzIDI0LjA2MXYxLjMzM2MwIDkuODQgNC43NjMgMTguNTg3IDEyLjEwMyAyNC4wNjJhMjkuODEgMjkuODEgMCAwIDAtNC42MDMgMTUuOTM4djEuMzMzYzAgMTYuNTQyIDEzLjQ1OCAzMCAzMCAzMGg4LjMyNGMuNDI3IDExLjYzMSA3LjUwMyAyMS41ODcgMTcuNTM0IDI2LjE3Ny45MzEgMTAuNTAzIDQuMDg0IDMwLjE4NyAxNC43NjggNDUuNTM3YTkuOTg4IDkuOTg4IDAgMCAwIDguMjE2IDQuMjg4IDkuOTU4IDkuOTU4IDAgMCAwIDUuNzA0LTEuNzkzYzQuNTMzLTMuMTU1IDUuNjUtOS4zODggMi40OTUtMTMuOTIxLTYuNzk4LTkuNzY3LTkuNjAyLTIyLjYwOC0xMC43Ni0zMS40aDgyLjY4NWMuMjcyLjQxNC41NDUuODE4LjgxNSAxLjIxIDMuMTQyIDQuNTQxIDkuMzcyIDUuNjc5IDEzLjkxMyAyLjUzNCA0LjU0Mi0zLjE0MiA1LjY3Ny05LjM3MSAyLjUzNS0xMy45MTMtMTEuOTE5LTE3LjIyOS04Ljc4Ny0zNS44ODQgOS41ODEtNTcuMDEyIDMuMDY3LTIuNjUyIDEyLjMwNy0xMS43MzIgMTEuMjE3LTI0LjAzMy0uODI4LTkuMzQzLTcuMTA5LTE3LjE5NC0xOC42NjktMjMuMzM3YTkuODU3IDkuODU3IDAgMCAwLTEuMDYxLS40ODZjLS40NjYtLjE4Mi0xMS40MDMtNC41NzktOS43NDEtMTUuNzA2IDEuMDA3LTYuNzM3IDE0Ljc2OC04LjI3MyAyMy43NjYtNy42NjYgMjMuMTU2IDEuNTY5IDM5LjY5OCA3LjgwMyA0Ny44MzYgMTguMDI2IDUuNzUyIDcuMjI1IDcuNjA3IDE2LjYyMyA1LjY3MyAyOC43MzMtLjQxMyAyLjU4NS0uODI0IDUuMjQxLTEuMjQ1IDcuOTU5LTUuNzU2IDM3LjE5NC0xMi45MTkgODMuNDgzLTQ5Ljg3IDExNC42NjEtNC4yMjEgMy41NjEtNC43NTYgOS44Ny0xLjE5NCAxNC4wOTJhOS45OCA5Ljk4IDAgMCAwIDcuNjQ4IDMuNTUxIDkuOTU1IDkuOTU1IDAgMCAwIDYuNDQ0LTIuMzU4YzQyLjY3Mi0zNi4wMDUgNTAuODAyLTg4LjUzMyA1Ni43MzctMTI2Ljg4OC40MTUtMi42ODQuODIxLTUuMzA5IDEuMjI5LTcuODYzIDIuODM0LTE3LjcyMS0uNDU1LTMyLjY0MS05Ljc3Mi00NC4zNDV6bS0yMzIuMzA4IDQyLjYyYy01LjUxNCAwLTEwLTQuNDg2LTEwLTEwdi0xLjMzM2MwLTUuNTE0IDQuNDg2LTEwIDEwLTEwaDE1djIxLjMzM2gtMTV6bS0yLjUtNTIuNjY2YzAtNS41MTQgNC40ODYtMTAgMTAtMTBoNy41djIxLjMzM2gtNy41Yy01LjUxNCAwLTEwLTQuNDg2LTEwLTEwdi0xLjMzM3ptMTcuNSA5My45OTloLTcuNWMtNS41MTQgMC0xMC00LjQ4Ni0xMC0xMHYtMS4zMzNjMC01LjUxNCA0LjQ4Ni0xMCAxMC0xMGg3LjV2MjEuMzMzem0zMC43OTYgMjguODg3Yy01LjUxNCAwLTEwLTQuNDg2LTEwLTEwdi04LjI3MWg5MS40NTdjLS44NTEgNi42NjgtLjQzNyAxMi43ODcuNzMxIDE4LjI3MWgtODIuMTg4em03OS40ODItMTEzLjY5OGMtMy4xMjQgMjAuOTA2IDEyLjQyNyAzMy4xODQgMjEuNjI1IDM3LjA0IDUuNDQxIDIuOTY4IDcuNTUxIDUuNjQ3IDcuNzAxIDcuMTg4LjIxIDIuMTUtMi41NTMgNS42ODQtNC40NzcgNy4yNTEtLjQ4Mi4zNzgtLjkyOS44LTEuMzM1IDEuMjYxLTYuOTg3IDcuOTM2LTExLjk4MiAxNS41Mi0xNS40MzIgMjIuNjg4aC05Ny41NjRWMzBjMC01LjUxNCA0LjQ4Ni0xMCAxMC0xMGgxMjMuNzY5YzUuNTE0IDAgMTAgNC40ODYgMTAgMTB2MTM1LjU3OWMtMy4wMzItLjM4MS02LjE1LS42OTQtOS4zODktLjkxNC0yNS4xNTktMS42OTQtNDIuMzcgNy43NDgtNDQuODk4IDI0LjY2NnoiLz48cGF0aCBkPSJNMTc5LjEyOSA4My4xNjdoLTI0LjA2YTUgNSAwIDAgMC01IDV2MjQuMDYxYTUgNSAwIDAgMCA1IDVoMjQuMDZhNSA1IDAgMCAwIDUtNVY4OC4xNjdhNSA1IDAgMCAwLTUtNXpNMTcyLjYyOSAxNDIuODZoLTEyLjU2VjEzMC44YTUgNSAwIDEgMC0xMCAwdjE3LjA2MWE1IDUgMCAwIDAgNSA1aDE3LjU2YTUgNSAwIDEgMCAwLTEwLjAwMXpNMjE2LjU2OCA4My4xNjdoLTI0LjA2YTUgNSAwIDAgMC01IDV2MjQuMDYxYTUgNSAwIDAgMCA1IDVoMjQuMDZhNSA1IDAgMCAwIDUtNVY4OC4xNjdhNSA1IDAgMCAwLTUtNXptLTUgMjQuMDYxaC0xNC4wNlY5My4xNjdoMTQuMDZ2MTQuMDYxek0yMTEuNjY5IDEyNS45MzZIMTk3LjQxYTUgNSAwIDAgMC01IDV2MTQuMjU3YTUgNSAwIDAgMCA1IDVoMTQuMjU5YTUgNSAwIDAgMCA1LTV2LTE0LjI1N2E1IDUgMCAwIDAtNS01eiIvPjwvc3ZnPg==" style="opacity: 0.3;"></div><div id="reader__dashboard" style="width: 100%;"><div id="reader__dashboard_section" style="width: 100%; padding: 10px; text-align: left;"><div><div id="reader__dashboard_section_csr" style="display: block;"><div style="text-align: center;"><button id="requestcampermission">Request Camera Permissions</button></div></div><div id="reader__dashboard_section_fsr" style="text-align: center; display: none;"><input id="reader__filescan_input" accept="image/*" type="file" disabled="" style="width: 200px;"><span>&nbsp; Select Image</span></div></div><div style="text-align: center;"><a id="reader__dashboard_section_swaplink" href="#scan-using-file" style="text-decoration: underline;"></a></div></div></div></div>
             </div>
             <div class="col" style="padding:30px; display: none;">
               <div id="result">Result Here</div>
@@ -198,23 +208,23 @@
 
 
 
-    <div class="updatebanner login" id="loginbanner" style="display: none;height: 100%;width:100%; background-color:rgb(79, 136, 221); border-radius:0px;z-index: 500;">
+    <div class="updatebanner login" id="loginbanner" style="display: none; height: 3px; width: 3px; background-color: rgb(79, 136, 221); border-radius: 0px; z-index: 500;">
 
-    <div class="login" id="loginbox">
-        <h3 style="text-align:center; margin-top: 100px;" id="hideonstart" data-tilt>Login/Signup</h3>
-        <input placeholder="Name" id="email"><p></p>
-        <input type="password" placeholder="Password" id="psw"><p></p>
-        <button id="signinbutton" onclick="signIn()">Sign In</button>
-        <button id="signupbutton" onclick="signUp()" style="background:linear-gradient(to right, rgba(0, 0, 255, 0.603), rgba(5, 155, 5, 0.672));">Sign Up</button>
-        <h2 id="signinloading">Signing you in...</h2>
+    <div class="login" id="loginbox" style="height: 1px; box-shadow: none; display: none;">
+        <h3 style="text-align: center; margin-top: 100px; display: block;" id="hideonstart" data-tilt="">Login/Signup</h3>
+        <input placeholder="Name" id="email" style="display: block;"><p></p>
+        <input type="password" placeholder="Password" id="psw" style="display: block;"><p></p>
+        <button id="signinbutton" onclick="signIn()" style="display: block;">Sign In</button>
+        <button id="signupbutton" onclick="signUp()" style="background: linear-gradient(to right, rgba(0, 0, 255, 0.604), rgba(5, 155, 5, 0.67)); display: block;">Sign Up</button>
+        <h2 id="signinloading" style="display: none;">Signing you in...</h2>
 
 
     </div>
 
     </div>
    
-</body>
-</html>
+
+
 <script type="text/javascript">
     function onScanSuccess(qrCodeMessage) {
         document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
@@ -228,7 +238,7 @@
     </script>
 <script type="text/javascript" src="mobile.js"></script>
 <script type="module" src="main.js"></script>
-
+<script src="online.js"></script>
 <script>
 
 //declare variables
@@ -1080,3 +1090,4 @@ else{
     //osblock.style.display="block";
 }
 </script>
+</body></html>

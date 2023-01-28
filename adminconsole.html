@@ -19,12 +19,12 @@
         
         
         <div id="body" style="display: block; z-index: 50;">
-        <header>
+        <header id="header1">
             <a class="logo" href="https://oricoins2.github.io"><img src="images/logo.png" alt="logo" height="50%" width="50%"></a>
             <nav>
                 <ul class="nav__links">
                     <li><a href="barcodes.html" class="txt">QR Codes</a></li>
-                    <li onclick="getVal()"><a href="#" class="txt">Check Values</a></li>
+                    <li onclick="getVal(1)"><a href="#" class="txt">Check Values</a></li>
                     <li><a href="#" class="txt">Balance:</a></li>
                     <li><a class="text" id="text" href="#">2</a></li>
                 </ul>
@@ -32,6 +32,9 @@
             <a class="cta" href="index.html">Home</a>
             <p class="menu cta">Menu</p>
         </header>
+        <div id="onlinecontainer" class="onlinecontainer">
+            <span id="statspan"></span>
+        </div>
         <div class="overlay">
             <a class="close">×</a>
             <div class="overlay__content">
@@ -119,7 +122,7 @@
 
 
 <script type="text/javascript" src="mobile.js"></script>
-
+<script src="online.js"></script>
 
 <script>
 if(document.querySelector('.storage')){
@@ -203,7 +206,7 @@ setInterval(() => {
 
 var database = firebase.database();
 
-document.getElementById('body').style.display='none';
+//document.getElementById('body').style.display='none';
 
 document.getElementById('pass1').style.color='transparent';
 
