@@ -87,6 +87,8 @@ function getVal(){
             document.getElementById('select').value = this.innerHTML.replace(' : ' + nexttxt, '');
         })
         document.getElementById('displaynames').appendChild(newText)
+        selectval = document.getElementById('select').value;
+    showVal(selectval)
     
     
 
