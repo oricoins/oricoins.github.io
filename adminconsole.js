@@ -85,10 +85,9 @@ function getVal(){
         newText.addEventListener('click', function(){
             //alert(this.innerHTML)
             document.getElementById('select').value = this.innerHTML.replace(' : ' + nexttxt, '');
+            whenselctchange()
         })
         document.getElementById('displaynames').appendChild(newText)
-        selectval = document.getElementById('select').value;
-    showVal(selectval)
     
     
 
