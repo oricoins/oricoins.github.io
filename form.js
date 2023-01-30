@@ -182,6 +182,6 @@ var signinloading = document.getElementById("signinloading");
       //user is signed in, use email variable to get the user's email
       
     }else{
-      document.getElementById('loginbanner').style.display="block";
+      window.location.href='login.html';
     }
   })
