@@ -2,11 +2,14 @@
 <head>
   <title>Login</title>
    <link rel="stylesheet" href="main.css">
+   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
 </head>
 <body>
-      <div class="updatebanner login" id="loginbanner" style="display: none; height: 3px; width: 3px; background-color: rgb(79, 136, 221); border-radius: 0px; z-index: 500;">
+      <div class="updatebanner login" id="loginbanner" style="display: block;  background-color: black; border-radius: 0px; z-index: 500;">
 
-    <div class="login" id="loginbox" style="height: 1px; box-shadow: none; display: none;">
+
         <h3 style="text-align: center; margin-top: 100px; display: block;" id="hideonstart" data-tilt="">Login/Signup</h3>
         <input placeholder="Name" id="email" style="display: block;"><p></p>
         <input type="password" placeholder="Password" id="psw" style="display: block;"><p></p>
@@ -15,11 +18,10 @@
         <h2 id="signinloading" style="display: none;">Signing you in...</h2>
 
 
-    </div>
 
     </div>
-  <script type="module" src="main.js"></script>
-<script src="online.js"></script>
+  <script src="main.js"></script>
+<!-- <script src="online.js"></script>-->
   <script>
   
   // Your web app's Firebase configuration
@@ -165,7 +167,7 @@ function getsynccoins() {
   var email = document.getElementById("email");
   var user = auth.currentUser;
 
-var loginbox = document.getElementById('loginbox');
+
 var hideonstart = document.getElementById('hideonstart');
 var loginbtn = document.getElementById('signinbutton');
 var psw = document.getElementById('psw');
@@ -191,16 +193,15 @@ var signinloading = document.getElementById("signinloading");
       getsynccoins()
       sleep(1500).then(() => {
         document.getElementById("signinloading").style.display="none";
-        document.getElementById('loginbox').style.boxShadow="none";
-        document.getElementById('loginbox').style.height="1px";
         document.getElementById('loginbanner').style.height="3px";
         document.getElementById('loginbanner').style.width="3px";
         
         sleep(2000).then(() =>{
-        document.getElementById('loginbox').style.display="none";
+
         document.getElementById('loginbanner').style.display="none";
         })
       })
+      window.location.href='index.html';
       //alert("Active user "+usremail);
       //user is signed in, use email variable to get the user's email
       
