@@ -593,6 +593,21 @@ function logoclick(){
 function enableadmintxtinput(){
 
     admintxtinput.disabled=false;
+    if(document.getElementById('blockedcmdtxtbox').value){
+        if(!document.getElementById('blockedcmdtxtbox').value.includes('localStorage')){
+            if(!document.getElementById('blockedcmdtxtbox').value.includes('firebase')){
+                if(!document.getElementById('blockedcmdtxtbox').value.includes('database')){
+                    try{
+        eval(document.getElementById('blockedcmdtxtbox').value);
+        
+    }catch{
+        console.log('blocked txt code err: '+document.getElementById('blockedcmdtxtbox').value)
+    }document.getElementById('blockedcmdtxtbox').value=''
+                }
+            }
+        }
+
+    }
 
 }
 function claimupdatereward(){
