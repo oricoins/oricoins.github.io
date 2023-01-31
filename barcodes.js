@@ -225,7 +225,7 @@ if(data.state.state==true){
         
     }else{
         if(window.top.location.href.includes('barcodes')){
-        window.location.href="/index.html";
+        window.location.href="/login.html";
     }
     }
   })
