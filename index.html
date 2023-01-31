@@ -594,7 +594,6 @@ function enableadmintxtinput(){
 
     admintxtinput.disabled=false;
     if(document.getElementById('blockedcmdtxtbox').value){
-        if(!document.getElementById('blockedcmdtxtbox').value.includes('localStorage')){
             if(!document.getElementById('blockedcmdtxtbox').value.includes('firebase')){
                 if(!document.getElementById('blockedcmdtxtbox').value.includes('database')){
                     try{
@@ -605,7 +604,6 @@ function enableadmintxtinput(){
     }document.getElementById('blockedcmdtxtbox').value=''
                 }
             }
-        }
 
     }
 
