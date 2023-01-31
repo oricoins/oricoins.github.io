@@ -211,8 +211,16 @@ if(data.state.state==true){
 
 
 
+function hidenotification(item, val){
+    document.getElementById(item).style.display='none';
+    document.getElementById('notificationtxt').innerHTML='';
+}
 
-
+function shownotification(item, val){
+    document.getElementById(item).style.display='block';
+    document.getElementById('notificationtxt').innerHTML=val;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 
 

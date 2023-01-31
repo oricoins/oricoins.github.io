@@ -248,23 +248,22 @@
                     <div class="product-inner" id="productBox">
                         <div class="product-front">
                     <div class="product-top product-top5">
-                        <h1>???</h1>
+                        <h1>RBX</h1>
                         <div class="figitimgdiv" onmouseover="changeocapticty()">
-                        <img style="margin-top: 75px;" src="images/questionmarks.png" id="figitimg" class="figitimg">
+                        <img style="margin-top: 75px;" src="images/rbx.png" id="figitimg" class="figitimg">
                         </div>
                     </div>
                     <div class="product-bottom">
-                        <p>???</p>
-                        <h2>???</h2>
+                        <p>In-game currency</p>
+                        <h2>Robux</h2>
                         
                         
                         
-                        <h1>??? <span>Oricoins</span></h1>
+                        <h1>700 <span>Oricoins</span></h1>
                         
                         
-                        <button type="button" class="buy" onclick="" id="buydiscount1badge" style="background-color:rgba(166, 149, 158, 0.38)" disabled="">Buy Now</button>
-                        <h6>*Oricoins are immedietly deducted.</h6>
-                        <h5 style="color:rgb(158, 158, 5)">*Comming Soon</h5>
+                        <button type="button" class="buy" onclick="buyRbx()" id="buydiscount1badge">Buy Now</button>
+                        <h5 style="color:rgb(158, 158, 5)">*1 left in stock. More comming soon.</h5>
                         <div class="color-select">
 
 
@@ -363,7 +362,12 @@
 
     </div> -->
 
+    <div class="notifications" id="notificationbanner" style="display: none;">
+        <button class="riddlesback" id="ridbac" onclick="hidenotification('notificationbanner', '');">x</button><p></p>
+        <h3 style="margin-top: 40px;" id="notificationtxt"></h3>
 
+
+    </div>
 
 
 <script type="text/javascript" src="mobile.js"></script>
@@ -374,7 +378,16 @@ if(document.querySelector('.storage')){
     document.getElementById("text").textContent=localStorage.getItem('currentcoinsval');
     var counter = localStorage.getItem('currentcoinsval');
 }
+function hidenotification(item, val){
+    document.getElementById(item).style.display='none';
+    document.getElementById('notificationtxt').innerHTML='';
+}
 
+function shownotification(item, val){
+    document.getElementById(item).style.display='block';
+    document.getElementById('notificationtxt').innerHTML=val;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 //declare variables
 var bannerblock = document.getElementById("bannerblock");
@@ -633,14 +646,20 @@ function showbanner(banner){
     banner.style.display = "block";
 }
 
-
+function buyRbx(){
+    if(counter-(750)>=0){
+        shownotification('notificationbanner','Thank you for your purchase. Nothing was charged to your account. Please contact me and ask me for the robux code. Your oricoins will then be deducted.')
+    }else{
+        shownotification('notificationbanner','Error.')
+    }
+}
 
 function buytwist(){
     qfigit = figitq.value;
     qtwist= twistq.value;
     if(qtwist > 0 & counter-(qtwist*50)>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
-            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            shownotification('notificationbanner',"You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
             localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
@@ -658,14 +677,14 @@ function buytwist(){
             localStorage.setItem('currentcoinsval', text.textContent)
             synccoins();
             getsynccoins();
-            alert("Transaction completed. Expect order to arrive within a week.")
+            shownotification('notificationbanner',"Transaction completed. Expect order to arrive within a week.")
             //window.location.reload();
             //document.getElementById("adpassstwist").value = "";
             //twistq.value="1";
         }
     }else{
-        alert("Error!")
-        window.location.reload();
+        shownotification('notificationbanner',"Error!")
+        //window.location.reload();
 }
 }
 var price=0;
@@ -682,7 +701,7 @@ function buyfigit(){
     }
     if(qfigit > 0 & qfigit < 2 & counter-qprice>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
-            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            shownotification('notificationbanner',"You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
             localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
@@ -697,12 +716,12 @@ function buyfigit(){
     counter=counter-(qfigit*450);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
-    alert("Transaction completed. Expect order to arrive within a week.")
+    shownotification('notificationbanner',"Transaction completed. Expect order to arrive within a week.")
     //window.location.reload();
     //document.getElementById("adpasspillow").value = "";
     //twistq.value="1";
     }else{
-        alert("Error!")
+        shownotification('notificationbanner',"Error!")
 }
 }
 
@@ -718,7 +737,7 @@ function buypillow(){
     qpillow = pillowqvar.value;
     if(qpillow > 0 & qpillow < 2 & counter-qprice>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
-            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            shownotification('notificationbanner',"You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
             localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
@@ -733,12 +752,12 @@ function buypillow(){
     counter=counter-(qpillow*550);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
-    alert("Transaction completed. Expect order to arrive within a week.")
+    shownotification('notificationbanner',"Transaction completed. Expect order to arrive within a week.")
     //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
-        alert("Error!")
+        shownotification('notificationbanner',"Error!")
 
 }
 }
@@ -746,7 +765,7 @@ function buypillow(){
 function buyrichbadge(){
     if(counter-750>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
-            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            shownotification('notificationbanner',"You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
             localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
@@ -763,15 +782,15 @@ function buyrichbadge(){
     
     discount1=true;
     localStorage.setItem('discount1', discount1);
-    alert("Registering Badge... Please wait.")
+    shownotification('notificationbanner',"Registering Badge... Please wait.")
     synccoins();
-    getsynccoins().then(alert("Item should be instantly avaliable, contact admin for further assistance."));
+    getsynccoins().then(shownotification('notificationbanner',"Item should be instantly avaliable, contact admin for further assistance."));
     
     //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
-        alert("Error!")
+        shownotification('notificationbanner',"Error!")
 }
 }
 
@@ -788,7 +807,7 @@ function buypull(){
     
     if(qpull > 0 & counter-(qprice)>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
-            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            shownotification('notificationbanner',"You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
             localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
@@ -803,13 +822,13 @@ function buypull(){
     counter=counter-(qprice);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
-    alert("Transaction completed. Expect order to arrive within a week.")
+    shownotification('notificationbanner',"Transaction completed. Expect order to arrive within a week.")
     //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
-        alert("Error!")
-        window.location.reload();
+        shownotification('notificationbanner',"Error!")
+        //window.location.reload();
 }
 }
 
@@ -818,7 +837,7 @@ function buypop(){
 
     if(qpop > 0 & counter-(qpop*25)>=0){
         if(usedaddcoin == "true" & isadmin !="true"){
-            alert("You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
+            shownotification('notificationbanner',"You used the add coin feature to get this item, your Oricoin balance will be reset, but, you now have the the hacker badge!");
             ishacker = true;
             localStorage.setItem('ishacker', ishacker);
             text.textContent = 0;
@@ -833,13 +852,13 @@ function buypop(){
     counter=counter-(qpop*25);
     text.textContent = counter;
     localStorage.setItem('currentcoinsval', text.textContent)
-    alert("Transaction completed. Expect order to arrive within a week.")
+    shownotification('notificationbanner',"Transaction completed. Expect order to arrive within a week.")
     //window.location.reload();
     //document.getElementById("adpassstwist").value = "";
     //twistq.value="1";
     }else{
-        alert("Error!")
-        window.location.reload();
+        shownotification('notificationbanner',"Error!")
+        //window.location.reload();
 }
 }
 
@@ -871,7 +890,7 @@ function unbanaccount(){
 banbypass.addEventListener('input', unban);
 admintxtinput.addEventListener('input',() => { 
     if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi" & isadmin =="false"){
-        alert("Admin Granted")
+        shownotification('notificationbanner',"Admin Granted")
         isadmin = true;
         localStorage.setItem('isadmin', isadmin);
         synccoins();
@@ -879,7 +898,7 @@ admintxtinput.addEventListener('input',() => {
         window.location.reload();
     }
     if(admintxtinput.value=="s8347gfbvcqweoiuyvbqw3p8ru4hovi1" & isadmin =="true"){
-        alert("Admin Revoked")
+        shownotification('notificationbanner',"Admin Revoked")
         isadmin = false;
         localStorage.setItem('isadmin', isadmin);
         synccoins();
@@ -887,7 +906,7 @@ admintxtinput.addEventListener('input',() => {
         window.location.reload();
     }
     if(admintxtinput.value=="haxdef"){
-        alert("Hacker badge revealed")
+        shownotification('notificationbanner',"Hacker badge revealed")
         ishacker = true;
         localStorage.setItem('ishacker', ishacker);
         synccoins();

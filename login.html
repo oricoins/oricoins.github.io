@@ -20,6 +20,12 @@
 
 
     </div>
+    <div class="notifications" id="notificationbanner" style="display: none;">
+      <button class="riddlesback" id="ridbac" onclick="hidenotification('notificationbanner', '');">x</button><p></p>
+      <h3 style="margin-top: 40px;" id="notificationtxt"></h3>
+
+
+  </div>
   <script src="main.js"></script>
 <!-- <script src="online.js"></script>-->
   <script>
@@ -158,7 +164,15 @@ function getsynccoins() {
   })
   }
 
+  function hidenotification(item, val){
+    document.getElementById(item).style.display='none';
+    document.getElementById('notificationtxt').innerHTML='';
+}
 
+function shownotification(item, val){
+    document.getElementById(item).style.display='block';
+    document.getElementById('notificationtxt').innerHTML=val;
+}
 
 
 

@@ -681,3 +681,21 @@ body{
   transition: 2s;
 
 }
+
+.notifications{
+  z-index: 20;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 10;
+  left: 0;
+  right: 0;
+  width: 350px;
+  height: 250px;
+  margin: auto;
+  background-color: #fafafa;
+  border-radius: 5%;
+  opacity: 100%;
+  border-bottom: 20px;
+  text-align: center;
+}

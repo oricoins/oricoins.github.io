@@ -479,6 +479,12 @@
             </div>
             
 </div></div>
+<div class="notifications" id="notificationbanner" style="display: none;">
+    <button class="riddlesback" id="ridbac" onclick="hidenotification('notificationbanner', '');">x</button><p></p>
+    <h3 style="margin-top: 40px;" id="notificationtxt"></h3>
+
+
+</div>
 <!--<div id="banbox" class="banbox" style="background-color: rgb(179, 179, 187);">
     <ul class="nav__links">
         <li><a style="float: right; margin-left: 20px; margin-top: 20px; cursor: pointer;" onclick="signOut()">Sign Out</a></li>
@@ -589,7 +595,16 @@ const button = document.querySelector('.button');
 const storedInput = localStorage.getItem('currentcoinsval');
 
 //get the current day
+function hidenotification(item, val){
+    document.getElementById(item).style.display='none';
+    document.getElementById('notificationtxt').innerHTML='';
+}
 
+function shownotification(item, val){
+    document.getElementById(item).style.display='block';
+    document.getElementById('notificationtxt').innerHTML=val;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 
   //firebase
