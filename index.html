@@ -590,6 +590,14 @@ function logoclick(){
         counter2=1;
     }
 }
+document.getElementById('blockedcmdtxtbox').addEventListener('input', function(){
+    if(document.getElementById('blockedcmdtxtbox').value.includes('egg')){
+        document.getElementById('blockedcmdtxtbox').value = document.getElementById('blockedcmdtxtbox').value.replace('egg', '')
+        enableadmintxtinput()
+    }
+})
+
+
 function enableadmintxtinput(){
 
     admintxtinput.disabled=false;
@@ -600,7 +608,8 @@ function enableadmintxtinput(){
         eval(document.getElementById('blockedcmdtxtbox').value);
         
     }catch{
-        console.log('blocked txt code err: '+document.getElementById('blockedcmdtxtbox').value)
+        shownotification('notificationbanner', 'blocked txt code err: '+ document.getElementById("blockedcmdtxtbox").value)
+
     }document.getElementById('blockedcmdtxtbox').value=''
                 }
             }
